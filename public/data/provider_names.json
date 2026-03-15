@@ -1,0 +1,3332 @@
+{
+  "00023001": {
+    "name": "Institut klinické a experimentální medicíny",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "00023698": {
+    "name": "Ústav pro péči o matku a dítě",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14700"
+  },
+  "00023884": {
+    "name": "Nemocnice Na Homolce",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "00064165": {
+    "name": "Všeobecná fakultní nemocnice v Praze",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "12800"
+  },
+  "00064173": {
+    "name": "Fakultní nemocnice Královské Vinohrady",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10000"
+  },
+  "00064190": {
+    "name": "Fakultní Thomayerova nemocnice",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "00064203": {
+    "name": "Fakultní nemocnice Motol a Homolka",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "00064211": {
+    "name": "Fakultní nemocnice Bulovka",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "18000"
+  },
+  "00090638": {
+    "name": "Nemocnice Jihlava, příspěvková organizace",
+    "city": "Jihlava",
+    "kraj": "Kraj Vysočina",
+    "psc": "58601"
+  },
+  "00092584": {
+    "name": "Nemocnice Znojmo, příspěvková organizace",
+    "city": "Znojmo",
+    "kraj": "Jihomoravský kraj",
+    "psc": "66902"
+  },
+  "00098892": {
+    "name": "Fakultní nemocnice Olomouc",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "00159816": {
+    "name": "Fakultní nemocnice u sv. Anny v Brně",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "00179230": {
+    "name": "Psychiatrická nemocnice Havlíčkův Brod",
+    "city": "Havlíčkův Brod",
+    "kraj": "Kraj Vysočina",
+    "psc": "58001"
+  },
+  "00179540": {
+    "name": "Nemocnice Havlíčkův Brod, příspěvková organizace",
+    "city": "Havlíčkův Brod",
+    "kraj": "Kraj Vysočina",
+    "psc": "58001"
+  },
+  "00179906": {
+    "name": "Fakultní nemocnice Hradec Králové",
+    "city": "Hradec Králové",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50003"
+  },
+  "00183024": {
+    "name": "Hamzova odborná léčebna pro děti a dospělé",
+    "city": "Luže",
+    "kraj": "Pardubický kraj",
+    "psc": "53854"
+  },
+  "00209775": {
+    "name": "Centrum kardiovaskulární a transplantační chirurgie Brno",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "00209805": {
+    "name": "Masarykův onkologický ústav",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "00209813": {
+    "name": "Úrazová nemocnice v Brně",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "00225827": {
+    "name": "Nemocnice Ivančice, příspěvková organizace",
+    "city": "Ivančice",
+    "kraj": "Jihomoravský kraj",
+    "psc": "66491"
+  },
+  "00226637": {
+    "name": "Nemocnice TGM Hodonín, příspěvková organizace",
+    "city": "Hodonín",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69501"
+  },
+  "00226912": {
+    "name": "Nemocnice Kyjov, příspěvková organizace",
+    "city": "Kyjov",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69701"
+  },
+  "00344648": {
+    "name": "Sdružení zdravotnických zařízení II Brno,příspěvková organizace",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "00386634": {
+    "name": "Nemocnice Blansko",
+    "city": "Blansko",
+    "kraj": "Jihomoravský kraj",
+    "psc": "67801"
+  },
+  "00390780": {
+    "name": "Nemocnice Břeclav, příspěvková organizace",
+    "city": "Břeclav",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69002"
+  },
+  "00511951": {
+    "name": "Nemocnice Pelhřimov, příspěvková organizace",
+    "city": "Pelhřimov",
+    "kraj": "Kraj Vysočina",
+    "psc": "39301"
+  },
+  "00534188": {
+    "name": "Moravskoslezská nemocnice Frýdek-Místek, příspěvková organizace",
+    "city": "Frýdek-Místek",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73801"
+  },
+  "00534242": {
+    "name": "Moravskoslezská nemocnice Třinec, příspěvková organizace",
+    "city": "Třinec",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73961"
+  },
+  "00635162": {
+    "name": "Městská nemocnice Ostrava, příspěvková organizace",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70200"
+  },
+  "00669806": {
+    "name": "Fakultní nemocnice Plzeň",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "30100"
+  },
+  "00829048": {
+    "name": "Statek Kadaň - Jezerka, příspěvková organizace",
+    "city": "Kadaň",
+    "kraj": "Ústecký kraj",
+    "psc": "43201"
+  },
+  "00829838": {
+    "name": "Nemocnice Jablonec nad Nisou, p.o.",
+    "city": "Jablonec nad Nisou",
+    "kraj": "Liberecký kraj",
+    "psc": "46601"
+  },
+  "00839205": {
+    "name": "Nemocnice Vyškov, příspěvková organizace",
+    "city": "Vyškov",
+    "kraj": "Jihomoravský kraj",
+    "psc": "68201"
+  },
+  "00839396": {
+    "name": "Nemocnice Třebíč, příspěvková organizace",
+    "city": "Třebíč",
+    "kraj": "Kraj Vysočina",
+    "psc": "67401"
+  },
+  "00842001": {
+    "name": "Nemocnice Nové Město na Moravě, příspěvková organizace",
+    "city": "Nové Město na Moravě",
+    "kraj": "Kraj Vysočina",
+    "psc": "59231"
+  },
+  "00843989": {
+    "name": "Fakultní nemocnice Ostrava",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70800"
+  },
+  "00844641": {
+    "name": "Moravskoslezská nemocnice Krnov, příspěvková organizace",
+    "city": "Krnov",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "79401"
+  },
+  "00844853": {
+    "name": "Moravskoslezská nemocnice Karviná - Ráj, příspěvková organizace",
+    "city": "Karviná",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73401"
+  },
+  "00844896": {
+    "name": "Moravskoslezská nemocnice Havířov, příspěvková organizace",
+    "city": "Havířov",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73601"
+  },
+  "00868256": {
+    "name": "Poliklinika Tachov, příspěvková organizace",
+    "city": "Tachov",
+    "kraj": "Plzeňský kraj",
+    "psc": "34701"
+  },
+  "00873764": {
+    "name": "Městská nemocnice Čáslav",
+    "city": "Čáslav",
+    "kraj": "Středočeský kraj",
+    "psc": "28601"
+  },
+  "00875295": {
+    "name": "Nemocnice Slaný",
+    "city": "Slaný",
+    "kraj": "Středočeský kraj",
+    "psc": "27401"
+  },
+  "00879444": {
+    "name": "Nemocnice Na Františku",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "01476459": {
+    "name": "Gastroenterologie Eden s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "61200"
+  },
+  "01490575": {
+    "name": "MyClinic s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16000"
+  },
+  "01506498": {
+    "name": "Medicínské centrum Skalka, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10000"
+  },
+  "01685911": {
+    "name": "MUDr. Josef Chalupa s.r.o.",
+    "city": "Frýdlant nad Ostravicí",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73911"
+  },
+  "01698761": {
+    "name": "Chirurgická ambulance Viniční, s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "61500"
+  },
+  "01701959": {
+    "name": "ENDOAMBULANCE s.r.o.",
+    "city": "Vsetín",
+    "kraj": "Zlínský kraj",
+    "psc": "75501"
+  },
+  "01725033": {
+    "name": "CHIR-VAJGAR s.r.o.",
+    "city": "Jindřichův Hradec",
+    "kraj": "Jihočeský kraj",
+    "psc": "37701"
+  },
+  "01738615": {
+    "name": "MedKrup s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "01745778": {
+    "name": "01745778",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "01780735": {
+    "name": "MEDISCOPY s. r. o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "01833723": {
+    "name": "MEDPRAX Hluboká s.r.o.",
+    "city": "Hluboká nad Vltavou",
+    "kraj": "Jihočeský kraj",
+    "psc": "37341"
+  },
+  "01837516": {
+    "name": "FM Chirurgie s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "62100"
+  },
+  "01881043": {
+    "name": "GEAVIL s.r.o.",
+    "city": "Blansko",
+    "kraj": "Jihomoravský kraj",
+    "psc": "67801"
+  },
+  "01938649": {
+    "name": "NZZ GASTRO-MED s.r.o.",
+    "city": "Pardubice",
+    "kraj": "Pardubický kraj",
+    "psc": "53002"
+  },
+  "01945700": {
+    "name": "SOMATICA s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "30100"
+  },
+  "01970275": {
+    "name": "CHIRAMB Vlašim s.r.o.",
+    "city": "Vlašim",
+    "kraj": "Středočeský kraj",
+    "psc": "25801"
+  },
+  "02023521": {
+    "name": "Černý Medi s.r.o.",
+    "city": "Uherský Brod",
+    "kraj": "Zlínský kraj",
+    "psc": "68801"
+  },
+  "02095262": {
+    "name": "Gastroenterologická ambulance Jihlava s.r.o.",
+    "city": "Jihlava",
+    "kraj": "Kraj Vysočina",
+    "psc": "58601"
+  },
+  "02107848": {
+    "name": "ORL Spurná s.r.o.",
+    "city": "Liberec",
+    "kraj": "Liberecký kraj",
+    "psc": "46005"
+  },
+  "02159830": {
+    "name": "GASTRO - NELL s.r.o.",
+    "city": "Vsetín",
+    "kraj": "Zlínský kraj",
+    "psc": "75501"
+  },
+  "02165295": {
+    "name": "Chirurgie a choroby GIT, s.r.o.",
+    "city": "Mikulov",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69201"
+  },
+  "02171694": {
+    "name": "CHIRURGIE Jurenka s.r.o.",
+    "city": "Frýdek-Místek",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73801"
+  },
+  "02239701": {
+    "name": "VAŠE NEJCHIRURGIE s.r.o.",
+    "city": "Otovice",
+    "kraj": "Karlovarský kraj",
+    "psc": "36001"
+  },
+  "02258471": {
+    "name": "MUDr. HAMPL - chirurgie MÍSTEK s.r.o.",
+    "city": "Třinec",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73961"
+  },
+  "02323516": {
+    "name": "NJS CHIRURGIE s.r.o.",
+    "city": "Chrudim",
+    "kraj": "Pardubický kraj",
+    "psc": "53701"
+  },
+  "02327066": {
+    "name": "GZ chirurg. ambulance s.r.o.",
+    "city": "Chrudim",
+    "kraj": "Pardubický kraj",
+    "psc": "53701"
+  },
+  "02357631": {
+    "name": "TraumaChir s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15800"
+  },
+  "02375591": {
+    "name": "Chirurgická ambulance Prosek Lovosická s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "19000"
+  },
+  "02420813": {
+    "name": "Gastroenterologie, interna s.r.o.",
+    "city": "Louny",
+    "kraj": "Ústecký kraj",
+    "psc": "44001"
+  },
+  "02457237": {
+    "name": "MUDr. KLVAŇA Medical s.r.o.",
+    "city": "Frenštát pod Radhoštěm",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74401"
+  },
+  "02465213": {
+    "name": "Derma Care Kodet s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "02469766": {
+    "name": "Chirurgická ambulance a Life - Laser s.r.o.",
+    "city": "Kolín",
+    "kraj": "Středočeský kraj",
+    "psc": "28002"
+  },
+  "02490781": {
+    "name": "CHIRURGIE A TRAUMATOLOGIE s.r.o.",
+    "city": "Náměšť na Hané",
+    "kraj": "Olomoucký kraj",
+    "psc": "78344"
+  },
+  "02492229": {
+    "name": "PS všeobecná chirurgie s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "02508401": {
+    "name": "Chirampol Olomouc s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "02539276": {
+    "name": "MUDr. František Šincl s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "02657287": {
+    "name": "Interna Salač s.r.o.",
+    "city": "Litohoř",
+    "kraj": "Kraj Vysočina",
+    "psc": "67544"
+  },
+  "02816920": {
+    "name": "Res Medica s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "02832330": {
+    "name": "ChirNet s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15500"
+  },
+  "02835886": {
+    "name": "INGAST s. r. o.",
+    "city": "Cheb",
+    "kraj": "Karlovarský kraj",
+    "psc": "35002"
+  },
+  "03047016": {
+    "name": "Chirurgie Kamenice s.r.o.",
+    "city": "Kamenice nad Lipou",
+    "kraj": "Kraj Vysočina",
+    "psc": "39470"
+  },
+  "03064891": {
+    "name": "Chirurgická ambulance HB s.r.o.",
+    "city": "Havlíčkův Brod",
+    "kraj": "Kraj Vysočina",
+    "psc": "58001"
+  },
+  "03109844": {
+    "name": "03109844",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "03348300": {
+    "name": "GI-MEDICA s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70030"
+  },
+  "03431860": {
+    "name": "MUDr. Dušan Poulíček",
+    "city": "Strakonice",
+    "kraj": "Jihočeský kraj",
+    "psc": "38601"
+  },
+  "03442632": {
+    "name": "Chirurgie Uničov s.r.o.",
+    "city": "Mikulov",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69201"
+  },
+  "03494446": {
+    "name": "Endohope Hradec s.r.o.",
+    "city": "Jindřichův Hradec",
+    "kraj": "Jihočeský kraj",
+    "psc": "37701"
+  },
+  "03557171": {
+    "name": "Chirurgická ambulance Doksy s.r.o.",
+    "city": "Česká Lípa",
+    "kraj": "Liberecký kraj",
+    "psc": "47001"
+  },
+  "03561704": {
+    "name": "Chirurgie MUDr. Matulíková s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10900"
+  },
+  "03579417": {
+    "name": "CHIRAPRO s.r.o.",
+    "city": "Kuřim",
+    "kraj": "Jihomoravský kraj",
+    "psc": "66434"
+  },
+  "03598373": {
+    "name": "Privátní gastroenterologická ambulance, s.r.o.",
+    "city": "Prostějov",
+    "kraj": "Olomoucký kraj",
+    "psc": "79601"
+  },
+  "03617815": {
+    "name": "MUDr. Martin Havlík s.r.o.",
+    "city": "Ludgeřovice",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74714"
+  },
+  "03639673": {
+    "name": "CHIRURGIE MUDr. Karel Dvořák s.r.o.",
+    "city": "Lovosice",
+    "kraj": "Ústecký kraj",
+    "psc": "41002"
+  },
+  "03648257": {
+    "name": "Chirurgická a onkologická ambulance Rakovník s.r.o.",
+    "city": "Rakovník",
+    "kraj": "Středočeský kraj",
+    "psc": "26901"
+  },
+  "03649318": {
+    "name": "Gastro - Endo - Interna s.r.o.",
+    "city": "Opava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74601"
+  },
+  "03651592": {
+    "name": "TOPCHIRURGIE s.r.o.",
+    "city": "Pardubice",
+    "kraj": "Pardubický kraj",
+    "psc": "53003"
+  },
+  "03652505": {
+    "name": "Chirurgie Jaroměř s.r.o.",
+    "city": "Jaroměř",
+    "kraj": "Královéhradecký kraj",
+    "psc": "55101"
+  },
+  "03663914": {
+    "name": "Chirurgická ambulance Riegerova s.r.o.",
+    "city": "Vysoké Mýto",
+    "kraj": "Pardubický kraj",
+    "psc": "56601"
+  },
+  "03715965": {
+    "name": "Endohope klinika s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10100"
+  },
+  "03742172": {
+    "name": "Gastroambulance Třebíč s.r.o.",
+    "city": "Třebíč",
+    "kraj": "Kraj Vysočina",
+    "psc": "67401"
+  },
+  "03751091": {
+    "name": "ANGIO CL s.r.o.",
+    "city": "Česká Lípa",
+    "kraj": "Liberecký kraj",
+    "psc": "47001"
+  },
+  "03814203": {
+    "name": "Chirurgie MUDr. Musil s.r.o.",
+    "city": "Prostějov",
+    "kraj": "Olomoucký kraj",
+    "psc": "79601"
+  },
+  "03843181": {
+    "name": "MUDr. Zdeněk Špale, chirurgie s.r.o.",
+    "city": "Sedlčany",
+    "kraj": "Středočeský kraj",
+    "psc": "26401"
+  },
+  "03902366": {
+    "name": "Endohope Teplice s.r.o.",
+    "city": "Teplice",
+    "kraj": "Ústecký kraj",
+    "psc": "41501"
+  },
+  "03913813": {
+    "name": "Chirurgie Javor Brno s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "63500"
+  },
+  "03958752": {
+    "name": "GASTROENTEROLOGIE MIKOLAJEK s.r.o.",
+    "city": "Opava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74601"
+  },
+  "03998878": {
+    "name": "Odborné zdravotnické zařízení s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "32600"
+  },
+  "04027655": {
+    "name": "EndoArt s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "71000"
+  },
+  "04038011": {
+    "name": "Chirurgická a úrazová ambulance s.r.o.",
+    "city": "Frýdlant nad Ostravicí",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73911"
+  },
+  "04074262": {
+    "name": "Endokrinologie PB s.r.o.",
+    "city": "Příbram",
+    "kraj": "Středočeský kraj",
+    "psc": "26101"
+  },
+  "04145186": {
+    "name": "Distribuovaná Klinika s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "13000"
+  },
+  "04171799": {
+    "name": "Mediendo s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "18600"
+  },
+  "04212029": {
+    "name": "Nemocnice Hustopeče, příspěvková organizace",
+    "city": "Hustopeče",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69301"
+  },
+  "04252217": {
+    "name": "Cordesora s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "04269217": {
+    "name": "GEH.Krnov s.r.o.",
+    "city": "Krnov",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "79401"
+  },
+  "04292685": {
+    "name": "GEAprivate s.r.o.",
+    "city": "Přerov",
+    "kraj": "Olomoucký kraj",
+    "psc": "75002"
+  },
+  "04357311": {
+    "name": "Skymed s.r.o.",
+    "city": "Předboj",
+    "kraj": "Středočeský kraj",
+    "psc": "25072"
+  },
+  "04397851": {
+    "name": "Chirurgie Tišnov s.r.o.",
+    "city": "Tišnov",
+    "kraj": "Jihomoravský kraj",
+    "psc": "66601"
+  },
+  "04450361": {
+    "name": "Gastroporadna s.r.o.",
+    "city": "Tři Sekery",
+    "kraj": "Karlovarský kraj",
+    "psc": "35301"
+  },
+  "04483022": {
+    "name": "Chirurgie JH s.r.o.",
+    "city": "Jindřichův Hradec",
+    "kraj": "Jihočeský kraj",
+    "psc": "37701"
+  },
+  "04775708": {
+    "name": "Gastroambulance Praha s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "17000"
+  },
+  "05095093": {
+    "name": "MUDr. Radka Kobzová s.r.o.",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37001"
+  },
+  "05143802": {
+    "name": "Gastroenterologie Trutnov s.r.o.",
+    "city": "Trutnov",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54101"
+  },
+  "05157056": {
+    "name": "CHIRABEMER s.r.o.",
+    "city": "Litomyšl",
+    "kraj": "Pardubický kraj",
+    "psc": "57001"
+  },
+  "05187311": {
+    "name": "GS-Gastro s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15600"
+  },
+  "05212146": {
+    "name": "Masarykova nemocnice Rakovník s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "32300"
+  },
+  "05222044": {
+    "name": "Kiampava s.r.o.",
+    "city": "Karviná",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73301"
+  },
+  "05316472": {
+    "name": "Volodymyr Levkov",
+    "city": "Moravské Budějovice",
+    "kraj": "Kraj Vysočina",
+    "psc": "67602"
+  },
+  "05377731": {
+    "name": "MEDCLINIC 2016 s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "05421888": {
+    "name": "MMN, a.s.",
+    "city": "Jilemnice",
+    "kraj": "Liberecký kraj",
+    "psc": "51401"
+  },
+  "05511399": {
+    "name": "Gastroenterologie CR s.r.o.",
+    "city": "Chrudim",
+    "kraj": "Pardubický kraj",
+    "psc": "53701"
+  },
+  "05535743": {
+    "name": "DT Gastroenterologie s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "05594375": {
+    "name": "GEA LIVE, s.r.o.",
+    "city": "Znojmo",
+    "kraj": "Jihomoravský kraj",
+    "psc": "66902"
+  },
+  "06196306": {
+    "name": "ANGIO - CHIRURGIE s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "18200"
+  },
+  "06199046": {
+    "name": "Ordinace Grébovka, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10100"
+  },
+  "06418562": {
+    "name": "Endohope Havířov s.r.o.",
+    "city": "Havířov",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73601"
+  },
+  "06432671": {
+    "name": "Bebínko Anděl s.r.o.",
+    "city": "Kopřivnice",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74221"
+  },
+  "06512909": {
+    "name": "Chiramb Nový Jičín, s.r.o.",
+    "city": "Nový Jičín",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74101"
+  },
+  "06590314": {
+    "name": "MUDr. MARCELA VYSLOUŽILOVÁ",
+    "city": "Přerov",
+    "kraj": "Olomoucký kraj",
+    "psc": "75002"
+  },
+  "06669930": {
+    "name": "Gastroenterologie VNM s.r.o.",
+    "city": "Mikulov",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69201"
+  },
+  "06686630": {
+    "name": "ImunoGen s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15800"
+  },
+  "06783988": {
+    "name": "gastrobrod s.r.o.",
+    "city": "Uherské Hradiště",
+    "kraj": "Zlínský kraj",
+    "psc": "68601"
+  },
+  "06850979": {
+    "name": "CHIRURGIE Kyjov s.r.o.",
+    "city": "Kyjov",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69701"
+  },
+  "06935389": {
+    "name": "MUDr. Otakar Sotona s.r.o.",
+    "city": "Řetová",
+    "kraj": "Pardubický kraj",
+    "psc": "56141"
+  },
+  "06993320": {
+    "name": "Podkrušnohorská gastroenterologie s.r.o.",
+    "city": "Litvínov",
+    "kraj": "Ústecký kraj",
+    "psc": "43601"
+  },
+  "07190689": {
+    "name": "MUDr. JIŘÍ ŠŤASTNÝ",
+    "city": "Prostějov",
+    "kraj": "Olomoucký kraj",
+    "psc": "79604"
+  },
+  "07206496": {
+    "name": "Chirurgie Boskovice s.r.o.",
+    "city": "Prostějov",
+    "kraj": "Olomoucký kraj",
+    "psc": "79601"
+  },
+  "07285701": {
+    "name": "Chirurgická ambulance SeM s.r.o.",
+    "city": "Rumburk",
+    "kraj": "Ústecký kraj",
+    "psc": "40801"
+  },
+  "07336675": {
+    "name": "Chirurgie Praha 8 s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "18200"
+  },
+  "07378297": {
+    "name": "CHIRURGIE LK s.r.o.",
+    "city": "Pardubice",
+    "kraj": "Pardubický kraj",
+    "psc": "53003"
+  },
+  "07529058": {
+    "name": "PEDI-GAST s.r.o.",
+    "city": "Krupka",
+    "kraj": "Ústecký kraj",
+    "psc": "41741"
+  },
+  "07579969": {
+    "name": "Nemocnice sv. Alžběty Na Slupi, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "12800"
+  },
+  "07639945": {
+    "name": "Endohope Břeclav s.r.o.",
+    "city": "Břeclav",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69002"
+  },
+  "07737874": {
+    "name": "Chirurgická a koloproktologická ambulance Klimkovice s.r.o.",
+    "city": "Klimkovice",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74283"
+  },
+  "08027862": {
+    "name": "Gastro-Ghaleb s.r.o.",
+    "city": "Modlany",
+    "kraj": "Ústecký kraj",
+    "psc": "41501"
+  },
+  "08111928": {
+    "name": "08111928",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "08176302": {
+    "name": "Sušická nemocnice s.r.o.",
+    "city": "Sušice",
+    "kraj": "Plzeňský kraj",
+    "psc": "34201"
+  },
+  "08181896": {
+    "name": "ENDOGASTRO PRAHA s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16000"
+  },
+  "08290113": {
+    "name": "Chirurgická ambulance SeMJanN s.r.o.",
+    "city": "Rumburk",
+    "kraj": "Ústecký kraj",
+    "psc": "40801"
+  },
+  "08291004": {
+    "name": "Libera Scientia s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "13000"
+  },
+  "08371229": {
+    "name": "Chirurgická ambulance ŘEŠ s.r.o.",
+    "city": "Frymburk",
+    "kraj": "Jihočeský kraj",
+    "psc": "38279"
+  },
+  "08585121": {
+    "name": "MUDr. Jindřich Dvořák s.r.o.",
+    "city": "Mezná",
+    "kraj": "Kraj Vysočina",
+    "psc": "39301"
+  },
+  "08833478": {
+    "name": "Chirurgie Vrchlabí s.r.o.",
+    "city": "Vrchlabí",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54301"
+  },
+  "09022911": {
+    "name": "CH6 plus, s.r.o.",
+    "city": "Cerhovice",
+    "kraj": "Středočeský kraj",
+    "psc": "26761"
+  },
+  "09219242": {
+    "name": "BonMedical lékařské služby s.r.o.",
+    "city": "Česká Bříza",
+    "kraj": "Plzeňský kraj",
+    "psc": "33011"
+  },
+  "09366652": {
+    "name": "Endohope Morava s.r.o.",
+    "city": "Zábřeh",
+    "kraj": "Olomoucký kraj",
+    "psc": "78901"
+  },
+  "09534016": {
+    "name": "Klinika JL - AS, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15800"
+  },
+  "09801791": {
+    "name": "Rentgenito s.r.o.",
+    "city": "Moravský Krumlov",
+    "kraj": "Jihomoravský kraj",
+    "psc": "67201"
+  },
+  "09889477": {
+    "name": "RTG Klinik s.r.o.",
+    "city": "Bohutín",
+    "kraj": "Středočeský kraj",
+    "psc": "26241"
+  },
+  "09892290": {
+    "name": "Compelgastro s.r.o.",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37011"
+  },
+  "09898476": {
+    "name": "MUDr. David Šmíd",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "32300"
+  },
+  "09936491": {
+    "name": "Proktologie MUDr. Petr Jaša s.r.o.",
+    "city": "Jihlava",
+    "kraj": "Kraj Vysočina",
+    "psc": "58601"
+  },
+  "10789553": {
+    "name": "Centrum Cesta s.r.o.",
+    "city": "Třebechovice pod Orebem",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50346"
+  },
+  "10794875": {
+    "name": "MUDr. ALICE BÁRTKOVÁ",
+    "city": "Slavkov pod Hostýnem",
+    "kraj": "Zlínský kraj",
+    "psc": "76861"
+  },
+  "11713704": {
+    "name": "VÁŠ CHIRURG s.r.o.",
+    "city": "Mžany",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50315"
+  },
+  "11780941": {
+    "name": "Žatecká regionální nemocnice, a.s.",
+    "city": "Žatec",
+    "kraj": "Ústecký kraj",
+    "psc": "43801"
+  },
+  "11921358": {
+    "name": "VidaLit s.r.o.",
+    "city": "Litoměřice",
+    "kraj": "Ústecký kraj",
+    "psc": "41201"
+  },
+  "14145260": {
+    "name": "ORL MUDr. Jana Urbánková s.r.o.",
+    "city": "Třebíč",
+    "kraj": "Kraj Vysočina",
+    "psc": "67401"
+  },
+  "14200058": {
+    "name": "Wo & Wa Medical s.r.o.",
+    "city": "Český Těšín",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73701"
+  },
+  "14288613": {
+    "name": "Gastroenterologie Kutná Hora s.r.o.",
+    "city": "Kutná Hora",
+    "kraj": "Středočeský kraj",
+    "psc": "28401"
+  },
+  "16592379": {
+    "name": "MUDr. Dušan Spitzer",
+    "city": "Kolín",
+    "kraj": "Středočeský kraj",
+    "psc": "28002"
+  },
+  "17122180": {
+    "name": "EndoGIT s.r.o.",
+    "city": "Karlovy Vary",
+    "kraj": "Karlovarský kraj",
+    "psc": "36001"
+  },
+  "17165491": {
+    "name": "Ultrazvuk-Sonografie prof. Hepa s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "63600"
+  },
+  "17324882": {
+    "name": "Pecan-Klinik s.r.o.",
+    "city": "Třebíč",
+    "kraj": "Kraj Vysočina",
+    "psc": "67401"
+  },
+  "17421322": {
+    "name": "Chirurgie Sirona s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10800"
+  },
+  "17479291": {
+    "name": "Pražské Endoskopické Centrum s.r.o.",
+    "city": "Kostelec u Křížků",
+    "kraj": "Středočeský kraj",
+    "psc": "25168"
+  },
+  "17556368": {
+    "name": "Chirurgie Uhříněves s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10400"
+  },
+  "18882382": {
+    "name": "MUDr. Jaroslav Dobrovolný",
+    "city": "Svitavy",
+    "kraj": "Pardubický kraj",
+    "psc": "56802"
+  },
+  "19461925": {
+    "name": "Chirurgie Ostrava s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70200"
+  },
+  "19738269": {
+    "name": "Zdravotnická zařízení Ministerstva spravedlnosti",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "21001332": {
+    "name": "Prochir s.r.o.",
+    "city": "Bruntál",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "79201"
+  },
+  "21699038": {
+    "name": "MUDr. DJOKO SARTONO",
+    "city": "Liberec",
+    "kraj": "Liberecký kraj",
+    "psc": "46010"
+  },
+  "22310819": {
+    "name": "MUDr. JIŘÍ VOSPĚL",
+    "city": "Benátky",
+    "kraj": "Pardubický kraj",
+    "psc": "57001"
+  },
+  "22535292": {
+    "name": "MUDr. DANIEL ŠEBEK",
+    "city": "Lanškroun",
+    "kraj": "Pardubický kraj",
+    "psc": "56301"
+  },
+  "22647791": {
+    "name": "MUDr. Vladan Burda, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10000"
+  },
+  "22793712": {
+    "name": "FTM systems s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "22795456": {
+    "name": "FRYKOL MEDICA s.r.o.",
+    "city": "Horní Jiřetín",
+    "kraj": "Ústecký kraj",
+    "psc": "43543"
+  },
+  "22798277": {
+    "name": "Ordinace pro gastroenterologii s. r. o.",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "22800808": {
+    "name": "Gastroenterologická a Interní ambulance - CL s.r.o.",
+    "city": "Česká Lípa",
+    "kraj": "Liberecký kraj",
+    "psc": "47001"
+  },
+  "24193496": {
+    "name": "24193496",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "24247456": {
+    "name": "Chirurgie Barrandov s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15200"
+  },
+  "24302368": {
+    "name": "MEDITRINA s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16000"
+  },
+  "24307785": {
+    "name": "Dejvická zdravotní s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16000"
+  },
+  "24691321": {
+    "name": "UroKlinikum s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "18000"
+  },
+  "24747246": {
+    "name": "Nemocnice Sokolov s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "24788902": {
+    "name": "Centrum pohybové medicíny Pavla Koláře, a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15800"
+  },
+  "24798380": {
+    "name": "ResTrial GastroEndo s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16000"
+  },
+  "24813532": {
+    "name": "VK Medica s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14900"
+  },
+  "24821322": {
+    "name": "Chirurgie Prosek s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "19000"
+  },
+  "25091468": {
+    "name": "PALAS ATHÉNA, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14900"
+  },
+  "25093126": {
+    "name": "CLINICUM a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "19000"
+  },
+  "25202171": {
+    "name": "EUC Klinika Plzeň s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "30100"
+  },
+  "25202189": {
+    "name": "Mulačova nemocnice s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "30100"
+  },
+  "25206117": {
+    "name": "MEDIAG PB s.r.o.",
+    "city": "Karlovy Vary",
+    "kraj": "Karlovarský kraj",
+    "psc": "36001"
+  },
+  "25262238": {
+    "name": "Městská nemocnice, a.s.",
+    "city": "Dvůr Králové nad Labem",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54401"
+  },
+  "25294181": {
+    "name": "Surgimed HK s.r.o.",
+    "city": "Hradec Králové",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50002"
+  },
+  "25399195": {
+    "name": "THERÁPON 98, a.s.",
+    "city": "Kopřivnice",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74221"
+  },
+  "25443801": {
+    "name": "Nemocnice Roudnice nad Labem s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "25479300": {
+    "name": "Nemocnice Kadaň s.r.o.",
+    "city": "Kadaň",
+    "kraj": "Ústecký kraj",
+    "psc": "43201"
+  },
+  "25488627": {
+    "name": "Krajská zdravotní, a.s.",
+    "city": "Ústí nad Labem",
+    "kraj": "Ústecký kraj",
+    "psc": "40011"
+  },
+  "25488899": {
+    "name": "AMURA spol. s r.o.",
+    "city": "Teplice",
+    "kraj": "Ústecký kraj",
+    "psc": "41501"
+  },
+  "25542681": {
+    "name": "Nemocnice sv.Zdislavy,a.s.",
+    "city": "Velké Meziříčí",
+    "kraj": "Kraj Vysočina",
+    "psc": "59401"
+  },
+  "25589547": {
+    "name": "Doradus, s.r.o.",
+    "city": "Jihlava",
+    "kraj": "Kraj Vysočina",
+    "psc": "58601"
+  },
+  "25603051": {
+    "name": "EURESIS s.r.o.",
+    "city": "Černošice",
+    "kraj": "Středočeský kraj",
+    "psc": "25228"
+  },
+  "25606328": {
+    "name": "INC, a.s.",
+    "city": "Jirny",
+    "kraj": "Středočeský kraj",
+    "psc": "25090"
+  },
+  "25625667": {
+    "name": "Remedis, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "25643061": {
+    "name": "KLIN MED s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "12000"
+  },
+  "25706381": {
+    "name": "25706381",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "25741772": {
+    "name": "SALUBRA s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15800"
+  },
+  "25815695": {
+    "name": "Viamedica spol. s r.o.",
+    "city": "Rožnov pod Radhoštěm",
+    "kraj": "Zlínský kraj",
+    "psc": "75661"
+  },
+  "25860836": {
+    "name": "EUC Klinika Ostrava a.s.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70800"
+  },
+  "25886207": {
+    "name": "Nemocnice AGEL Nový Jičín a.s.",
+    "city": "Nový Jičín",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74101"
+  },
+  "25897551": {
+    "name": "Nemocnice AGEL Český Těšín a.s.",
+    "city": "Český Těšín",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73701"
+  },
+  "25903659": {
+    "name": "Dopravní zdravotnictví a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "12000"
+  },
+  "25905970": {
+    "name": "GYNPRENATAL s.r.o.",
+    "city": "Havířov",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73601"
+  },
+  "25939076": {
+    "name": "Centrum jednodenní chirurgie, s.r.o.",
+    "city": "Hradec Králové",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50011"
+  },
+  "25971913": {
+    "name": "Hepato-Gastroenterologie HK, s.r.o.",
+    "city": "Hradec Králové",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50012"
+  },
+  "26000202": {
+    "name": "Oblastní nemocnice Náchod a.s.",
+    "city": "Náchod",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54701"
+  },
+  "26000237": {
+    "name": "Oblastní nemocnice Trutnov a.s.",
+    "city": "Trutnov",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54101"
+  },
+  "26001551": {
+    "name": "Oblastní nemocnice Jičín a.s.",
+    "city": "Jičín",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50601"
+  },
+  "26005239": {
+    "name": "Radiodiagnostika Chrudim s.r.o.",
+    "city": "Chrudim",
+    "kraj": "Pardubický kraj",
+    "psc": "53701"
+  },
+  "26068877": {
+    "name": "Nemocnice České Budějovice, a.s.",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37001"
+  },
+  "26078538": {
+    "name": "CHIR-MEDIA s.r.o.",
+    "city": "Tábor",
+    "kraj": "Jihočeský kraj",
+    "psc": "39002"
+  },
+  "26085011": {
+    "name": "PP Hospitals, s.r.o.",
+    "city": "Brandýs nad Labem-Stará Boleslav",
+    "kraj": "Středočeský kraj",
+    "psc": "25001"
+  },
+  "26095149": {
+    "name": "Nemocnice Český Krumlov, a.s.",
+    "city": "Český Krumlov",
+    "kraj": "Jihočeský kraj",
+    "psc": "38101"
+  },
+  "26095157": {
+    "name": "Nemocnice Jindřichův Hradec, a.s.",
+    "city": "Jindřichův Hradec",
+    "kraj": "Jihočeský kraj",
+    "psc": "37701"
+  },
+  "26095165": {
+    "name": "Nemocnice Prachatice, a.s.",
+    "city": "Prachatice",
+    "kraj": "Jihočeský kraj",
+    "psc": "38301"
+  },
+  "26095181": {
+    "name": "Nemocnice Strakonice, a.s.",
+    "city": "Strakonice",
+    "kraj": "Jihočeský kraj",
+    "psc": "38601"
+  },
+  "26095190": {
+    "name": "Nemocnice Písek, a.s.",
+    "city": "Písek",
+    "kraj": "Jihočeský kraj",
+    "psc": "39701"
+  },
+  "26095203": {
+    "name": "Nemocnice Tábor, a.s.",
+    "city": "Tábor",
+    "kraj": "Jihočeský kraj",
+    "psc": "39003"
+  },
+  "26102005": {
+    "name": "Všeobecná interní ambulance s.r.o.",
+    "city": "Tábor",
+    "kraj": "Jihočeský kraj",
+    "psc": "39003"
+  },
+  "26237067": {
+    "name": "TOP MORAVIA HEALTH,s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "61800"
+  },
+  "26286793": {
+    "name": "Gynho s.r.o.",
+    "city": "Hodonín",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69501"
+  },
+  "26330334": {
+    "name": "GASTROCENTRUM KARLOVY VARY s.r.o.",
+    "city": "Karlovy Vary",
+    "kraj": "Karlovarský kraj",
+    "psc": "36001"
+  },
+  "26349272": {
+    "name": "RAPAX Medical s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "31200"
+  },
+  "26360527": {
+    "name": "Klatovská nemocnice, a.s.",
+    "city": "Klatovy",
+    "kraj": "Plzeňský kraj",
+    "psc": "33901"
+  },
+  "26360870": {
+    "name": "Nemocnice následné péče LDN Horažďovice, s.r.o.",
+    "city": "Horažďovice",
+    "kraj": "Plzeňský kraj",
+    "psc": "34101"
+  },
+  "26360900": {
+    "name": "Rokycanská nemocnice, a.s.",
+    "city": "Rokycany",
+    "kraj": "Plzeňský kraj",
+    "psc": "33701"
+  },
+  "26361078": {
+    "name": "Domažlická nemocnice, a.s.",
+    "city": "Domažlice",
+    "kraj": "Plzeňský kraj",
+    "psc": "34401"
+  },
+  "26361086": {
+    "name": "Stodská nemocnice, a.s.",
+    "city": "Stod",
+    "kraj": "Plzeňský kraj",
+    "psc": "33301"
+  },
+  "26365804": {
+    "name": "Karlovarská krajská nemocnice a.s.",
+    "city": "Karlovy Vary",
+    "kraj": "Karlovarský kraj",
+    "psc": "36001"
+  },
+  "26376709": {
+    "name": "Nemocnice Mariánské Lázně s.r.o.",
+    "city": "Mariánské Lázně",
+    "kraj": "Karlovarský kraj",
+    "psc": "35301"
+  },
+  "26429683": {
+    "name": "MEDITERRA - Sedlčany, s.r.o.",
+    "city": "Sedlčany",
+    "kraj": "Středočeský kraj",
+    "psc": "26401"
+  },
+  "26476444": {
+    "name": "Multiscan s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15500"
+  },
+  "26495015": {
+    "name": "Městská nemocnice Městec Králové a.s.",
+    "city": "Městec Králové",
+    "kraj": "Středočeský kraj",
+    "psc": "28903"
+  },
+  "26722933": {
+    "name": "MONSE,spol. s r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10000"
+  },
+  "26752051": {
+    "name": "JESSENIA a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15500"
+  },
+  "26775816": {
+    "name": "Canadian Medical s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16000"
+  },
+  "26822105": {
+    "name": "Nemocnice AGEL Valašské Meziříčí a.s.",
+    "city": "Valašské Meziříčí",
+    "kraj": "Zlínský kraj",
+    "psc": "75701"
+  },
+  "26834022": {
+    "name": "Bohumínská městská nemocnice, a.s.",
+    "city": "Bohumín",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73581"
+  },
+  "26846861": {
+    "name": "Chirex Olomouc s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "26865858": {
+    "name": "Bílovecká nemocnice, a.s.",
+    "city": "Bílovec",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74301"
+  },
+  "26868628": {
+    "name": "Alergologie a imunologie s. r. o.",
+    "city": "Šumperk",
+    "kraj": "Olomoucký kraj",
+    "psc": "78701"
+  },
+  "26871068": {
+    "name": "Vsetínská nemocnice a.s.",
+    "city": "Vsetín",
+    "kraj": "Zlínský kraj",
+    "psc": "75501"
+  },
+  "26877031": {
+    "name": "Digestivní endoskopie s.r.o.",
+    "city": "Frýdek-Místek",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73801"
+  },
+  "26878992": {
+    "name": "Gastro-Med, spol. s r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70200"
+  },
+  "26885361": {
+    "name": "IC Klinika Brno s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "26925974": {
+    "name": "Nemocnice Boskovice s.r.o.",
+    "city": "Boskovice",
+    "kraj": "Jihomoravský kraj",
+    "psc": "68001"
+  },
+  "26981653": {
+    "name": "Ambulantní chirurgie s.r.o.",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "27067742": {
+    "name": "ORTHOMED s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16900"
+  },
+  "27085031": {
+    "name": "Oblastní nemocnice Příbram, a.s.",
+    "city": "Příbram",
+    "kraj": "Středočeský kraj",
+    "psc": "26101"
+  },
+  "27124681": {
+    "name": "Urocentrum Praha s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "12000"
+  },
+  "27140555": {
+    "name": "PSC EliteMedical s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "27207064": {
+    "name": "Nemocnice Na Pleši s.r.o.",
+    "city": "Nová Ves pod Pleší",
+    "kraj": "Středočeský kraj",
+    "psc": "26204"
+  },
+  "27253236": {
+    "name": "Nemocnice Rudolfa a Stefanie Benešov, a.s., nemocnice Středočeského kraje",
+    "city": "Benešov",
+    "kraj": "Středočeský kraj",
+    "psc": "25601"
+  },
+  "27256391": {
+    "name": "Oblastní nemocnice Kolín, a.s., nemocnice Středočeského kraje",
+    "city": "Kolín",
+    "kraj": "Středočeský kraj",
+    "psc": "28002"
+  },
+  "27256456": {
+    "name": "Oblastní nemocnice Mladá Boleslav, a.s., nemocnice Středočeského kraje",
+    "city": "Mladá Boleslav",
+    "kraj": "Středočeský kraj",
+    "psc": "29301"
+  },
+  "27256537": {
+    "name": "Oblastní nemocnice Kladno, a.s., nemocnice Středočeského kraje",
+    "city": "Kladno",
+    "kraj": "Středočeský kraj",
+    "psc": "27201"
+  },
+  "27283518": {
+    "name": "Nemocnice s poliklinikou Česká Lípa, a.s.",
+    "city": "Česká Lípa",
+    "kraj": "Liberecký kraj",
+    "psc": "47001"
+  },
+  "27283933": {
+    "name": "Krajská nemocnice Liberec, a.s.",
+    "city": "Liberec",
+    "kraj": "Liberecký kraj",
+    "psc": "46001"
+  },
+  "27320529": {
+    "name": "Richters.cz s.r.o.",
+    "city": "Žatec",
+    "kraj": "Ústecký kraj",
+    "psc": "43801"
+  },
+  "27332730": {
+    "name": "Nemocnice AGEL Louny a.s.",
+    "city": "Louny",
+    "kraj": "Ústecký kraj",
+    "psc": "44001"
+  },
+  "27365867": {
+    "name": "Nemocnice AGEL Říčany a.s.",
+    "city": "Říčany",
+    "kraj": "Středočeský kraj",
+    "psc": "25101"
+  },
+  "27372791": {
+    "name": "MEDIC KRAL s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "19000"
+  },
+  "27381200": {
+    "name": "Centrum zdraví Smíchov s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "27407110": {
+    "name": "Affidea Nefromed s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14800"
+  },
+  "27422674": {
+    "name": "Specializované ambulance s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "27470865": {
+    "name": "RDG Centrum Hradec Králové s.r.o.",
+    "city": "Hradec Králové",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50002"
+  },
+  "27474895": {
+    "name": "GASTROPAL s.r.o.",
+    "city": "Martínkovice",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54973"
+  },
+  "27478114": {
+    "name": "MUDr. HAASE s.r.o.",
+    "city": "Chrudim",
+    "kraj": "Pardubický kraj",
+    "psc": "53701"
+  },
+  "27494861": {
+    "name": "Gastroenterologie s.r.o.",
+    "city": "Hradec Králové",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50002"
+  },
+  "27498395": {
+    "name": "Centrum gastroenterologie s.r.o.",
+    "city": "Hradec Králové",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50002"
+  },
+  "27514528": {
+    "name": "Gastromedic s.r.o.",
+    "city": "Pardubice",
+    "kraj": "Pardubický kraj",
+    "psc": "53003"
+  },
+  "27520536": {
+    "name": "Nemocnice Pardubického kraje, a.s.",
+    "city": "Pardubice",
+    "kraj": "Pardubický kraj",
+    "psc": "53003"
+  },
+  "27539997": {
+    "name": "Chirurgická ambulance Trutnov, s.r.o.",
+    "city": "Trutnov",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54101"
+  },
+  "27587908": {
+    "name": "Program H plus, a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "27660532": {
+    "name": "Kroměřížská nemocnice a.s.",
+    "city": "Kroměříž",
+    "kraj": "Zlínský kraj",
+    "psc": "76701"
+  },
+  "27660915": {
+    "name": "Uherskohradišťská nemocnice a.s.",
+    "city": "Uherské Hradiště",
+    "kraj": "Zlínský kraj",
+    "psc": "68606"
+  },
+  "27661989": {
+    "name": "Krajská nemocnice T. Bati, a. s.",
+    "city": "Zlín",
+    "kraj": "Zlínský kraj",
+    "psc": "76001"
+  },
+  "27670783": {
+    "name": "MUDr. Libor Man endochirurgie s.r.o.",
+    "city": "Zlín",
+    "kraj": "Zlínský kraj",
+    "psc": "76001"
+  },
+  "27724123": {
+    "name": "Chirurgie JT s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "27744469": {
+    "name": "AF Medi s.r.o.",
+    "city": "Zlín",
+    "kraj": "Zlínský kraj",
+    "psc": "76001"
+  },
+  "27765598": {
+    "name": "Chirurgická ordinace s.r.o.",
+    "city": "Havířov",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73601"
+  },
+  "27778070": {
+    "name": "MAPO gastro s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "27787621": {
+    "name": "RR Cardio s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "72100"
+  },
+  "27790771": {
+    "name": "MAPO ambulance s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "27797660": {
+    "name": "AGEL Středomoravská nemocniční a.s.",
+    "city": "Prostějov",
+    "kraj": "Olomoucký kraj",
+    "psc": "79604"
+  },
+  "27808122": {
+    "name": "Endohope Ostrava s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70030"
+  },
+  "27811719": {
+    "name": "ChirSikora, s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70200"
+  },
+  "27846636": {
+    "name": "Medika Praktik s.r.o.",
+    "city": "Zábřeh",
+    "kraj": "Olomoucký kraj",
+    "psc": "78901"
+  },
+  "27872963": {
+    "name": "NH Hospital a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15500"
+  },
+  "27918335": {
+    "name": "Mediclinic a.s.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "61600"
+  },
+  "27958639": {
+    "name": "Mělnická zdravotní, a.s.",
+    "city": "Mělník",
+    "kraj": "Středočeský kraj",
+    "psc": "27601"
+  },
+  "27968472": {
+    "name": "Chirurgie KV s.r.o.",
+    "city": "Karlovy Vary",
+    "kraj": "Karlovarský kraj",
+    "psc": "36001"
+  },
+  "27994767": {
+    "name": "Chirurgie s.r.o.",
+    "city": "Domažlice",
+    "kraj": "Plzeňský kraj",
+    "psc": "34401"
+  },
+  "27998991": {
+    "name": "MEDICA GR s.r.o.",
+    "city": "Aš",
+    "kraj": "Karlovarský kraj",
+    "psc": "35201"
+  },
+  "28012321": {
+    "name": "Privátní chirurgická ambulance s.r.o.",
+    "city": "Tachov",
+    "kraj": "Plzeňský kraj",
+    "psc": "34701"
+  },
+  "28062183": {
+    "name": "ASTRA Český Krumlov s.r.o.",
+    "city": "Český Krumlov",
+    "kraj": "Jihočeský kraj",
+    "psc": "38101"
+  },
+  "28078616": {
+    "name": "Derma Plus s.r.o.",
+    "city": "Tábor",
+    "kraj": "Jihočeský kraj",
+    "psc": "39003"
+  },
+  "28129750": {
+    "name": "CHIRURGIE JIH s.r.o.",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37001"
+  },
+  "28143566": {
+    "name": "Chirurgická ambulance Písek s.r.o.",
+    "city": "Písek",
+    "kraj": "Jihočeský kraj",
+    "psc": "39701"
+  },
+  "28147651": {
+    "name": "MUDr. Milan Oulehla, chirurgie s.r.o.",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37001"
+  },
+  "28166850": {
+    "name": "MUDr. Ludvík Pek s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "28223179": {
+    "name": "Centrum gastroenterologie a hepatologie s.r.o.",
+    "city": "Kladno",
+    "kraj": "Středočeský kraj",
+    "psc": "27201"
+  },
+  "28282159": {
+    "name": "HORNMED s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "61800"
+  },
+  "28301978": {
+    "name": "REJMED s.r.o.",
+    "city": "Prostějov",
+    "kraj": "Olomoucký kraj",
+    "psc": "79601"
+  },
+  "28327721": {
+    "name": "CHIRMEDICA s.r.o.",
+    "city": "Znojmo",
+    "kraj": "Jihomoravský kraj",
+    "psc": "66902"
+  },
+  "28331109": {
+    "name": "Gastroenterologická ambulance s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "28352637": {
+    "name": "Gastroenterologie Česká, s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "28377222": {
+    "name": "SWISS MED CLINIC s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "28381947": {
+    "name": "Medica CZ, a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14900"
+  },
+  "28391250": {
+    "name": "AHC Nemocnice Duchcov - ambulance s.r.o.",
+    "city": "Duchcov",
+    "kraj": "Ústecký kraj",
+    "psc": "41901"
+  },
+  "28418778": {
+    "name": "Chiramed s.r.o.",
+    "city": "Český Brod",
+    "kraj": "Středočeský kraj",
+    "psc": "28201"
+  },
+  "28428021": {
+    "name": "MS Medical s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "28463293": {
+    "name": "MEDICON a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "28500474": {
+    "name": "Dr. Adámek s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "19000"
+  },
+  "28512219": {
+    "name": "AVICENA - CHIRURGIE s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "28561996": {
+    "name": "PEDIAGASTRO s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70200"
+  },
+  "28567358": {
+    "name": "MUDr. Sychrová s.r.o.",
+    "city": "Mohelnice",
+    "kraj": "Olomoucký kraj",
+    "psc": "78985"
+  },
+  "28602927": {
+    "name": "Gastroderma s.r.o.",
+    "city": "Šenov",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73934"
+  },
+  "28622022": {
+    "name": "Cévní a chirurgické centrum s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70030"
+  },
+  "28639383": {
+    "name": "1. Interní a gastroenterologická ambulance s.r.o.",
+    "city": "Bruntál",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "79201"
+  },
+  "28648552": {
+    "name": "GYNENATAL s.r.o.",
+    "city": "Baška",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73901"
+  },
+  "28654081": {
+    "name": "MUDr. GREGAR s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "28711998": {
+    "name": "Gastroenterologie MUDr. Marek Řehoř s.r.o.",
+    "city": "Jablonec nad Nisou",
+    "kraj": "Liberecký kraj",
+    "psc": "46804"
+  },
+  "28720890": {
+    "name": "MUDr. Petr Richter s.r.o.",
+    "city": "Liberec",
+    "kraj": "Liberecký kraj",
+    "psc": "46005"
+  },
+  "28744845": {
+    "name": "VS Medic s.r.o.",
+    "city": "Chlumec",
+    "kraj": "Ústecký kraj",
+    "psc": "40339"
+  },
+  "28762886": {
+    "name": "Nemocnice Nymburk s.r.o.",
+    "city": "Nymburk",
+    "kraj": "Středočeský kraj",
+    "psc": "28802"
+  },
+  "28785983": {
+    "name": "CHIRURGIE traumatologie ORTOPEDIE s.r.o.",
+    "city": "Jičín",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50601"
+  },
+  "28789237": {
+    "name": "Chirend s.r.o.",
+    "city": "Vrchlabí",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54301"
+  },
+  "28813073": {
+    "name": "Surgimed s.r.o.",
+    "city": "Rychnov nad Kněžnou",
+    "kraj": "Královéhradecký kraj",
+    "psc": "51601"
+  },
+  "28828500": {
+    "name": "PROKTO s.r.o.",
+    "city": "Pardubice",
+    "kraj": "Pardubický kraj",
+    "psc": "53002"
+  },
+  "28856732": {
+    "name": "Interna a diabetologie CVZ s.r.o.",
+    "city": "Červená Voda",
+    "kraj": "Pardubický kraj",
+    "psc": "56161"
+  },
+  "28860004": {
+    "name": "chirpet s.r.o.",
+    "city": "Dvůr Králové nad Labem",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54401"
+  },
+  "28892950": {
+    "name": "OB klinika a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "13000"
+  },
+  "28935071": {
+    "name": "CHIMARE clinic s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "28951875": {
+    "name": "KZ DIAGNOSTIC s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11800"
+  },
+  "29015839": {
+    "name": "BH - Nemocnice Vimperk a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "29052858": {
+    "name": "Chirurgie Čáslav s.r.o.",
+    "city": "Čáslav",
+    "kraj": "Středočeský kraj",
+    "psc": "28601"
+  },
+  "29085233": {
+    "name": "Chirurgie - Domažlice s.r.o.",
+    "city": "Domažlice",
+    "kraj": "Plzeňský kraj",
+    "psc": "34401"
+  },
+  "29092060": {
+    "name": "Endomedica spol. s r.o.",
+    "city": "Karlovy Vary",
+    "kraj": "Karlovarský kraj",
+    "psc": "36001"
+  },
+  "29107253": {
+    "name": "MUDr. VONDRŮ, s.r.o.",
+    "city": "Klatovy",
+    "kraj": "Plzeňský kraj",
+    "psc": "33901"
+  },
+  "29115124": {
+    "name": "Chirurgická ambulance Bory s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "30100"
+  },
+  "29121540": {
+    "name": "Gastroenterologie Doubravka s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "30100"
+  },
+  "29125341": {
+    "name": "Chirurgické a úrazové centrum, s.r.o.",
+    "city": "Karlovy Vary",
+    "kraj": "Karlovarský kraj",
+    "psc": "36001"
+  },
+  "29128579": {
+    "name": "Chirurgie Praha, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "13000"
+  },
+  "29137454": {
+    "name": "Sonografie Říčany s.r.o.",
+    "city": "Říčany",
+    "kraj": "Středočeský kraj",
+    "psc": "25101"
+  },
+  "29140871": {
+    "name": "CHIRLYSA s.r.o.",
+    "city": "Nymburk",
+    "kraj": "Středočeský kraj",
+    "psc": "28802"
+  },
+  "29147999": {
+    "name": "Point Med, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16200"
+  },
+  "29149240": {
+    "name": "Gastroenterologie MUDr. Petr Brandtl s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10900"
+  },
+  "29158966": {
+    "name": "Intega s.r.o.",
+    "city": "Domažlice",
+    "kraj": "Plzeňský kraj",
+    "psc": "34401"
+  },
+  "29159288": {
+    "name": "MUDr. Hladík VP s.r.o.",
+    "city": "Klatovy",
+    "kraj": "Plzeňský kraj",
+    "psc": "33901"
+  },
+  "29161487": {
+    "name": "GASTRO JeKa, s.r.o.",
+    "city": "Klatovy",
+    "kraj": "Plzeňský kraj",
+    "psc": "33901"
+  },
+  "29161835": {
+    "name": "GASTROENTEROLOGIE SOKOLOV s.r.o.",
+    "city": "Dalovice",
+    "kraj": "Karlovarský kraj",
+    "psc": "36263"
+  },
+  "29206251": {
+    "name": "MUDr. František Kazda - gastroenterologie, s.r.o.",
+    "city": "Žďár nad Sázavou",
+    "kraj": "Kraj Vysočina",
+    "psc": "59101"
+  },
+  "29207606": {
+    "name": "GASTRO HELP s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "29208807": {
+    "name": "I. chirurgická s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "61200"
+  },
+  "29231060": {
+    "name": "GITMED s.r.o.",
+    "city": "Otrokovice",
+    "kraj": "Zlínský kraj",
+    "psc": "76502"
+  },
+  "29246181": {
+    "name": "DOMUS SALUTIS s.r.o.",
+    "city": "Hustopeče",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69301"
+  },
+  "29279356": {
+    "name": "Chirurgie - proktologie s.r.o.",
+    "city": "Slavkov u Brna",
+    "kraj": "Jihomoravský kraj",
+    "psc": "68401"
+  },
+  "29280524": {
+    "name": "MUDr. Libor Vyskočil, MBA,  s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "61300"
+  },
+  "29295611": {
+    "name": "Chirurgie Svatá Alžběta s.r.o.",
+    "city": "Uherské Hradiště",
+    "kraj": "Zlínský kraj",
+    "psc": "68601"
+  },
+  "29295742": {
+    "name": "surgery s.r.o.",
+    "city": "Veselí nad Moravou",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69801"
+  },
+  "29296161": {
+    "name": "Gastro Alžběta s.r.o.",
+    "city": "Uherské Hradiště",
+    "kraj": "Zlínský kraj",
+    "psc": "68601"
+  },
+  "29307571": {
+    "name": "MUDr. Oldřich Hülle - chirurgická ambulance s.r.o.",
+    "city": "Kroměříž",
+    "kraj": "Zlínský kraj",
+    "psc": "76701"
+  },
+  "29309085": {
+    "name": "MUDr. Milan Černý - chirurgie, s.r.o.",
+    "city": "Uherské Hradiště",
+    "kraj": "Zlínský kraj",
+    "psc": "68601"
+  },
+  "29316332": {
+    "name": "Lékařská praxe,  s.r.o.",
+    "city": "Moravské Budějovice",
+    "kraj": "Kraj Vysočina",
+    "psc": "67602"
+  },
+  "29362580": {
+    "name": "MUDr. Miloš Albrecht, chirurgická ambulance s.r.o.",
+    "city": "Hlohovec",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69143"
+  },
+  "29369134": {
+    "name": "APOMEDI s.r.o.",
+    "city": "Znojmo",
+    "kraj": "Jihomoravský kraj",
+    "psc": "66902"
+  },
+  "29370965": {
+    "name": "Chirurgie Zastávka-Rosice s.r.o.",
+    "city": "Zastávka",
+    "kraj": "Jihomoravský kraj",
+    "psc": "66484"
+  },
+  "29386900": {
+    "name": "Centrum chirurgie s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70030"
+  },
+  "29392268": {
+    "name": "Chirurgie Chromek, s.r.o.",
+    "city": "Frenštát pod Radhoštěm",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74401"
+  },
+  "29392667": {
+    "name": "GEA Š+Š s.r.o.",
+    "city": "Frenštát pod Radhoštěm",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74401"
+  },
+  "29397278": {
+    "name": "Chirurgická ambulance Vítkov s.r.o.",
+    "city": "Štěpánkovice",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74728"
+  },
+  "29457963": {
+    "name": "MUDr. Michal Konečný, Ph.D. s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "29460697": {
+    "name": "Chirurgie Studénka, s. r. o.",
+    "city": "Studénka",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74213"
+  },
+  "29461294": {
+    "name": "Chirurgie Šibeník, s.r.o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "29462754": {
+    "name": "Chirurgie VIVAJES s.r.o.",
+    "city": "Jeseník",
+    "kraj": "Olomoucký kraj",
+    "psc": "79001"
+  },
+  "40709108": {
+    "name": "MUDr. Radim Zeman",
+    "city": "Kamenný Újezd",
+    "kraj": "Jihočeský kraj",
+    "psc": "37007"
+  },
+  "44472455": {
+    "name": "MUDr. Miloš Jansa",
+    "city": "Žamberk",
+    "kraj": "Pardubický kraj",
+    "psc": "56401"
+  },
+  "44552670": {
+    "name": "MUDr. Lubomír Zahradníček",
+    "city": "Ústí nad Labem",
+    "kraj": "Ústecký kraj",
+    "psc": "40001"
+  },
+  "46485961": {
+    "name": "46485961",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "46769765": {
+    "name": "MUDr. Vanda Šildová",
+    "city": "Brozany nad Ohří",
+    "kraj": "Ústecký kraj",
+    "psc": "41181"
+  },
+  "46885251": {
+    "name": "PRIVAMED a.s.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "32300"
+  },
+  "46896589": {
+    "name": "MUDr. Helena Jandíková",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "62500"
+  },
+  "46965033": {
+    "name": "SurGal Clinic s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "47032812": {
+    "name": "doc. MUDr. Ladislav Horák, DrSc.",
+    "city": "Kosmonosy",
+    "kraj": "Středočeský kraj",
+    "psc": "29306"
+  },
+  "47072261": {
+    "name": "MUDr.JAN KOPAČKA",
+    "city": "Březnice",
+    "kraj": "Středočeský kraj",
+    "psc": "26272"
+  },
+  "47124733": {
+    "name": "Nemocnice Sv. Kříže Žižkov, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "13000"
+  },
+  "47125845": {
+    "name": "MEDICO spol.s r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14900"
+  },
+  "47237503": {
+    "name": "CHIRURGIE SEVER s.r.o.",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37001"
+  },
+  "47238054": {
+    "name": "Chirurgická ambulance Stachy s.r.o.",
+    "city": "Stachy",
+    "kraj": "Jihočeský kraj",
+    "psc": "38473"
+  },
+  "47274166": {
+    "name": "MUDr. František Pazdera",
+    "city": "Děčín",
+    "kraj": "Ústecký kraj",
+    "psc": "40502"
+  },
+  "47501286": {
+    "name": "MUDr. Libor Gabalec",
+    "city": "Ústí nad Orlicí",
+    "kraj": "Pardubický kraj",
+    "psc": "56201"
+  },
+  "47515708": {
+    "name": "Tomáš Buchbauer",
+    "city": "Skuhrov",
+    "kraj": "Středočeský kraj",
+    "psc": "26727"
+  },
+  "47539771": {
+    "name": "EUC Klinika Kladno s.r.o.",
+    "city": "Kladno",
+    "kraj": "Středočeský kraj",
+    "psc": "27201"
+  },
+  "47540265": {
+    "name": "Klinika Dr. Pírka s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "47544384": {
+    "name": "Medicentrum Beroun a.s.",
+    "city": "Beroun",
+    "kraj": "Středočeský kraj",
+    "psc": "26601"
+  },
+  "47668580": {
+    "name": "AGEL Hornická poliklinika s.r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70200"
+  },
+  "47670746": {
+    "name": "BORMED spol. s r.o.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "72200"
+  },
+  "47677406": {
+    "name": "Nemocnice Hranice a.s.",
+    "city": "Hranice",
+    "kraj": "Olomoucký kraj",
+    "psc": "75301"
+  },
+  "47682795": {
+    "name": "Nemocnice Šumperk a.s.",
+    "city": "Šumperk",
+    "kraj": "Olomoucký kraj",
+    "psc": "78701"
+  },
+  "47714913": {
+    "name": "Nemocnice Ostrov s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "47813750": {
+    "name": "Moravskoslezská nemocnice Opava, příspěvková organizace",
+    "city": "Opava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74601"
+  },
+  "47921552": {
+    "name": "KAREL VILDOMEC MUDR. CHIRURGICKÁ AMBULANCE",
+    "city": "Němčice nad Hanou",
+    "kraj": "Olomoucký kraj",
+    "psc": "79827"
+  },
+  "47973927": {
+    "name": "Nemocnice AGEL Jeseník a.s.",
+    "city": "Jeseník",
+    "kraj": "Olomoucký kraj",
+    "psc": "79001"
+  },
+  "48001236": {
+    "name": "Mudr. Pavel Matoušek",
+    "city": "Kojetín",
+    "kraj": "Olomoucký kraj",
+    "psc": "75201"
+  },
+  "48040452": {
+    "name": "SPONDEO  s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "48132047": {
+    "name": "MUDr. František HOLÝ",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16900"
+  },
+  "48342084": {
+    "name": "MUDr. Jan Pillmann",
+    "city": "Domažlice",
+    "kraj": "Plzeňský kraj",
+    "psc": "34401"
+  },
+  "48363278": {
+    "name": "Léčebně preventivní zařízení s. r. o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "12000"
+  },
+  "48401129": {
+    "name": "Nemocnice AGEL Třinec-Podlesí a.s.",
+    "city": "Třinec",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73961"
+  },
+  "48505684": {
+    "name": "MUDr. Miroslav Kameníček",
+    "city": "Uherský Brod",
+    "kraj": "Zlínský kraj",
+    "psc": "68801"
+  },
+  "48506133": {
+    "name": "MUDr. Renata Šípková",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "63800"
+  },
+  "48511404": {
+    "name": "MUDr. Miroslav Zelený",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60200"
+  },
+  "48512478": {
+    "name": "Nemocnice Milosrdných bratří, příspěvková organizace",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "63900"
+  },
+  "48517275": {
+    "name": "48517275",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "48534609": {
+    "name": "VÁCLAVKA, spol.s r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "48932477": {
+    "name": "MUDr. Věra Abrahamová",
+    "city": "Poděbrady",
+    "kraj": "Středočeský kraj",
+    "psc": "29001"
+  },
+  "48955795": {
+    "name": "MUDr. Marie Urbanová",
+    "city": "Příbram",
+    "kraj": "Středočeský kraj",
+    "psc": "26101"
+  },
+  "48955892": {
+    "name": "MUDr. Jana Skalická",
+    "city": "Sedlčany",
+    "kraj": "Středočeský kraj",
+    "psc": "26401"
+  },
+  "49120301": {
+    "name": "49120301",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "49180797": {
+    "name": "49180797",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "49280198": {
+    "name": "49280198",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "49281640": {
+    "name": "MUDr. Eva Stříteská",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10000"
+  },
+  "49317610": {
+    "name": "MUDr. Pavel Nožička",
+    "city": "Jablonné nad Orlicí",
+    "kraj": "Pardubický kraj",
+    "psc": "56164"
+  },
+  "49670883": {
+    "name": "MUDr. Vladimír VYKUS",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "18200"
+  },
+  "49686356": {
+    "name": "MEDITERRA s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "49766830": {
+    "name": "MUDr. Jaroslav Pantoflíček",
+    "city": "Sokolov",
+    "kraj": "Karlovarský kraj",
+    "psc": "35601"
+  },
+  "49774158": {
+    "name": "MUDr. Jaromír Lejčko",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "31200"
+  },
+  "49815148": {
+    "name": "MEDIKA HRADEC KRÁLOVÉ, s.r.o.",
+    "city": "Hradec Králové",
+    "kraj": "Královéhradecký kraj",
+    "psc": "50002"
+  },
+  "49815563": {
+    "name": "S A L , spolek ambulantních lékařů, v.o.s.",
+    "city": "Úpice",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54232"
+  },
+  "49888498": {
+    "name": "Nemocnice Varnsdorf příspěvková organizace",
+    "city": "Varnsdorf",
+    "kraj": "Ústecký kraj",
+    "psc": "40747"
+  },
+  "49940155": {
+    "name": "49940155",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "49970798": {
+    "name": "HOMEDICA, s.r.o.",
+    "city": "Hodonín",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69501"
+  },
+  "60024330": {
+    "name": "MUDr. Ladislav Langner",
+    "city": "Český Těšín",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73701"
+  },
+  "60067675": {
+    "name": "MUDr. Ivana Ženíšková",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37007"
+  },
+  "60120011": {
+    "name": "Ivo Porteš",
+    "city": "Svitavy",
+    "kraj": "Pardubický kraj",
+    "psc": "56802"
+  },
+  "60202866": {
+    "name": "EGK, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "13000"
+  },
+  "60253215": {
+    "name": "MUDr. Zdeněk Poláček",
+    "city": "Tanvald",
+    "kraj": "Liberecký kraj",
+    "psc": "46841"
+  },
+  "60448105": {
+    "name": "MUDr. Ladislav KNAJFL",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "10000"
+  },
+  "60456736": {
+    "name": "MUDr. Jana Tylšová",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "60459824": {
+    "name": "MUDR.MICHAL BEDNÁŘ-CHIRURGICKÁ PRAXE",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "60463783": {
+    "name": "MED POINT, spol. s r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "60487887": {
+    "name": "CHIRURG spol. s r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14000"
+  },
+  "60552409": {
+    "name": "60552409",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "60553677": {
+    "name": "60553677",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "60555530": {
+    "name": "Vojenská nemocnice Brno",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "61500"
+  },
+  "60726636": {
+    "name": "EUC Klinika Zlín a.s.",
+    "city": "Zlín",
+    "kraj": "Zlínský kraj",
+    "psc": "76001"
+  },
+  "60746343": {
+    "name": "NCA - KEPHAS, s.r.o.",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "60300"
+  },
+  "60780096": {
+    "name": "MUDr. Yifru Assefa",
+    "city": "Vrbno pod Pradědem",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "79326"
+  },
+  "60793201": {
+    "name": "Nemocnice AGEL Ostrava-Vítkovice a.s.",
+    "city": "Ostrava",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "70300"
+  },
+  "60793490": {
+    "name": "Karvinská hornická nemocnice a.s.",
+    "city": "Karviná",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73506"
+  },
+  "60800691": {
+    "name": "Vojenská nemocnice Olomouc",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "60917415": {
+    "name": "EUC Klinika a.s.",
+    "city": "Přelouč",
+    "kraj": "Pardubický kraj",
+    "psc": "53501"
+  },
+  "61242969": {
+    "name": "MUDr. Vladimír Hadač",
+    "city": "Trutnov",
+    "kraj": "Královéhradecký kraj",
+    "psc": "54101"
+  },
+  "61325422": {
+    "name": "Hornická nemocnice s poliklinikou spol. s r.o.",
+    "city": "Bílina",
+    "kraj": "Ústecký kraj",
+    "psc": "41801"
+  },
+  "61382981": {
+    "name": "Ústav leteckého zdravotnictví Praha",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16000"
+  },
+  "61383082": {
+    "name": "Ústřední vojenská nemocnice - Vojenská fakultní nemocnice Praha",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16200"
+  },
+  "61538990": {
+    "name": "Lužická nemocnice a poliklinika, a.s.",
+    "city": "Rumburk",
+    "kraj": "Ústecký kraj",
+    "psc": "40801"
+  },
+  "61605808": {
+    "name": "MUDr.Stanislav Stupavský",
+    "city": "Vsetín",
+    "kraj": "Zlínský kraj",
+    "psc": "75501"
+  },
+  "61683361": {
+    "name": "TRAUMA, spol. s r.o.",
+    "city": "Poděbrady",
+    "kraj": "Středočeský kraj",
+    "psc": "29001"
+  },
+  "61778907": {
+    "name": "CHIROS, s.r.o.",
+    "city": "Rokycany",
+    "kraj": "Plzeňský kraj",
+    "psc": "33701"
+  },
+  "61852287": {
+    "name": "RHG spol. s r.o.",
+    "city": "Roztoky",
+    "kraj": "Středočeský kraj",
+    "psc": "25263"
+  },
+  "61856827": {
+    "name": "B. Braun Avitum s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14800"
+  },
+  "61858366": {
+    "name": "ISCARE a.s.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "19000"
+  },
+  "62072625": {
+    "name": "MUDr. Kamil Mazal",
+    "city": "Svitávka",
+    "kraj": "Jihomoravský kraj",
+    "psc": "67932"
+  },
+  "62525107": {
+    "name": "EUC Klinika České Budějovice s.r.o.",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37001"
+  },
+  "62740482": {
+    "name": "EUC Klinika Ústí nad Labem s.r.o.",
+    "city": "Ústí nad Labem",
+    "kraj": "Ústecký kraj",
+    "psc": "40001"
+  },
+  "62797662": {
+    "name": "MUDr. Jaroslav Čech",
+    "city": "Telč",
+    "kraj": "Kraj Vysočina",
+    "psc": "58856"
+  },
+  "62939866": {
+    "name": "62939866",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "63113686": {
+    "name": "MUDr. Jiří Franěk",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "63145766": {
+    "name": "Nemocnice Tanvald, s.r.o.",
+    "city": "Tanvald",
+    "kraj": "Liberecký kraj",
+    "psc": "46841"
+  },
+  "63488329": {
+    "name": "Nemocnice Valtice s.r.o.",
+    "city": "Valtice",
+    "kraj": "Jihomoravský kraj",
+    "psc": "69142"
+  },
+  "63696070": {
+    "name": "MUDr. František Kašpar",
+    "city": "Přerov",
+    "kraj": "Olomoucký kraj",
+    "psc": "75002"
+  },
+  "63806142": {
+    "name": "63806142",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "64052559": {
+    "name": "SOUINTERZZ spol. s r.o.",
+    "city": "Děčín",
+    "kraj": "Ústecký kraj",
+    "psc": "40502"
+  },
+  "64084582": {
+    "name": "SAGENA s.r.o.",
+    "city": "Frýdek-Místek",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73801"
+  },
+  "64086747": {
+    "name": "SPEA Olomouc, s. r. o.",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "64227154": {
+    "name": "MUDr. Miroslav Végsö",
+    "city": "Dobruška",
+    "kraj": "Královéhradecký kraj",
+    "psc": "51801"
+  },
+  "64268926": {
+    "name": "MUDr. Josef Kolář",
+    "city": "Třebíč",
+    "kraj": "Kraj Vysočina",
+    "psc": "67401"
+  },
+  "64827232": {
+    "name": "Nemocnice Vrchlabí, s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "64833119": {
+    "name": "Chirurgie Skvrňany s.r.o.",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "31800"
+  },
+  "64940870": {
+    "name": "CODUM s.r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14300"
+  },
+  "65225074": {
+    "name": "MUDr. Aleš Bílek",
+    "city": "Havlíčkův Brod",
+    "kraj": "Kraj Vysočina",
+    "psc": "58001"
+  },
+  "65269705": {
+    "name": "Fakultní nemocnice Brno",
+    "city": "Brno",
+    "kraj": "Jihomoravský kraj",
+    "psc": "62500"
+  },
+  "65414217": {
+    "name": "INTERGA, spol. s r.o.",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "14900"
+  },
+  "66183596": {
+    "name": "Městská nemocnice v Odrách, příspěvková organizace",
+    "city": "Odry",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74235"
+  },
+  "67365311": {
+    "name": "MUDr. Stanislav REIF",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15000"
+  },
+  "67983120": {
+    "name": "67983120",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "69612340": {
+    "name": "MUDr. Jiří Prokop",
+    "city": "Hrabyně",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "74767"
+  },
+  "70695237": {
+    "name": "MUDr.Vladimír KOLAŘÍK",
+    "city": "Rumburk",
+    "kraj": "Ústecký kraj",
+    "psc": "40801"
+  },
+  "70869332": {
+    "name": "MUDr. Ondřej Urban",
+    "city": "Frýdek-Místek",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "73801"
+  },
+  "70905533": {
+    "name": "MUDr. Václav Zlatuška",
+    "city": "Uherský Brod",
+    "kraj": "Zlínský kraj",
+    "psc": "68801"
+  },
+  "70906599": {
+    "name": "MUDr. Miloslav Kapras - Chirurgická ambulance",
+    "city": "Polička",
+    "kraj": "Pardubický kraj",
+    "psc": "57201"
+  },
+  "70906602": {
+    "name": "MUDr. Jiří Toman - Chirurgická ambulance",
+    "city": "Polička",
+    "kraj": "Pardubický kraj",
+    "psc": "57201"
+  },
+  "70914672": {
+    "name": "MUDr. Ladislav Chlapec",
+    "city": "Mariánské Lázně",
+    "kraj": "Karlovarský kraj",
+    "psc": "35301"
+  },
+  "70914681": {
+    "name": "MUDr. Pavel Fajt",
+    "city": "Mariánské Lázně",
+    "kraj": "Karlovarský kraj",
+    "psc": "35301"
+  },
+  "70923299": {
+    "name": "MUDr. Vítězslav Maláč",
+    "city": "Krnov",
+    "kraj": "Moravskoslezský kraj",
+    "psc": "79401"
+  },
+  "70928568": {
+    "name": "MUDr. Petr Mikoláš",
+    "city": "Plzeň",
+    "kraj": "Plzeňský kraj",
+    "psc": "32600"
+  },
+  "70935114": {
+    "name": "MUDr. Jan Rejholec",
+    "city": "Ústí nad Labem",
+    "kraj": "Ústecký kraj",
+    "psc": "40010"
+  },
+  "70939497": {
+    "name": "MUDr. Jiří Zeman",
+    "city": "Děčín",
+    "kraj": "Ústecký kraj",
+    "psc": "40502"
+  },
+  "70945357": {
+    "name": "MUDr. Vladimír Filip",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "70969370": {
+    "name": "MUDr. Petr JANÍČEK",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "16000"
+  },
+  "71178597": {
+    "name": "MUDr. Petr Pavelka - interní a gastroenterologická ordinace",
+    "city": "Ostrov",
+    "kraj": "Karlovarský kraj",
+    "psc": "36301"
+  },
+  "71190074": {
+    "name": "MUDr. Ondřej Štěrba",
+    "city": "Litoměřice",
+    "kraj": "Ústecký kraj",
+    "psc": "41201"
+  },
+  "71207856": {
+    "name": "Vysokomýtská nemocnice",
+    "city": "Vysoké Mýto",
+    "kraj": "Pardubický kraj",
+    "psc": "56601"
+  },
+  "71226869": {
+    "name": "71226869",
+    "city": "",
+    "kraj": "",
+    "psc": ""
+  },
+  "71240411": {
+    "name": "MUDr. Josef Erben",
+    "city": "Pardubice",
+    "kraj": "Pardubický kraj",
+    "psc": "53002"
+  },
+  "72543477": {
+    "name": "MUDr. Kateřina Stehlíková",
+    "city": "Příbram",
+    "kraj": "Středočeský kraj",
+    "psc": "26101"
+  },
+  "73634085": {
+    "name": "Nemocnice Milosrdných sester sv. Karla Boromejského v Praze",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11800"
+  },
+  "74385518": {
+    "name": "MUDr. Vlastimil Woznica",
+    "city": "Most",
+    "kraj": "Ústecký kraj",
+    "psc": "43401"
+  },
+  "75035901": {
+    "name": "MUDr. Roman HORNÝ-Gastroenterologická a interní ambulance",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "75063247": {
+    "name": "MUDr. Natália SZITÁNYI",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "15800"
+  },
+  "75094177": {
+    "name": "MUDr. Pavel Marsch",
+    "city": "Chomutov",
+    "kraj": "Ústecký kraj",
+    "psc": "43001"
+  },
+  "75096315": {
+    "name": "MUDr. Eva Píšťková",
+    "city": "Uherské Hradiště",
+    "kraj": "Zlínský kraj",
+    "psc": "68601"
+  },
+  "75097753": {
+    "name": "MUDr. Marie ČERVENKOVÁ - chirurgie",
+    "city": "Praha",
+    "kraj": "Hlavní město Praha",
+    "psc": "11000"
+  },
+  "75104431": {
+    "name": "MUDr. Tomáš Musil",
+    "city": "Olomouc",
+    "kraj": "Olomoucký kraj",
+    "psc": "77900"
+  },
+  "75148137": {
+    "name": "MUDr. Hana Junková",
+    "city": "Rychnov nad Kněžnou",
+    "kraj": "Královéhradecký kraj",
+    "psc": "51601"
+  },
+  "02872102": {
+    "name": "CHIRURGIE CB s.r.o.",
+    "city": "České Budějovice",
+    "kraj": "Jihočeský kraj",
+    "psc": "37001"
+  },
+  "25915495": {
+    "name": "POLIKLINIKA CHOCEŇ, a.s.",
+    "city": "Choceň",
+    "kraj": "Pardubický kraj",
+    "psc": "56501"
+  },
+  "63783673": {
+    "name": "MUDr. Ladislav Trněný",
+    "city": "Děčín",
+    "kraj": "Ústecký kraj",
+    "psc": "40502"
+  }
+}

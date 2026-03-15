@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Vercel
+.vercel/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Windows reserved device names
+nul
+con
+prn
+aux
+
+# Data preparation (raw CSVs are huge – never commit)
+data_prep/__pycache__/
+data_prep/*.pyc
+
+# Log files
+*.log
+npm-debug.log*
