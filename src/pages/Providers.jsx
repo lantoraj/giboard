@@ -124,12 +124,20 @@ export default function Providers() {
   }
 
   // Bar chart data – top 15 from filtered set
-  const barData = useMemo(() =>
-    filtered.slice(0, 15).map((p) => ({
-      name: p.name.length > 35 ? p.name.slice(0, 35) + "…" : p.name,
-      value: p.valYear,
-      ico: p.ico,
-    })), [filtered]);
+  // Build names and deduplicate: if two providers share the same truncated name, append city
+  const barData = useMemo(() => {
+    const rows = filtered.slice(0, 15);
+    const nameCount = {};
+    rows.forEach((p) => {
+      const n = p.name.length > 35 ? p.name.slice(0, 35) + "…" : p.name;
+      nameCount[n] = (nameCount[n] || 0) + 1;
+    });
+    return rows.map((p) => {
+      const base = p.name.length > 35 ? p.name.slice(0, 35) + "…" : p.name;
+      const name = nameCount[base] > 1 ? `${base} (${p.city})` : base;
+      return { name, value: p.valYear, ico: p.ico };
+    });
+  }, [filtered]);
 
   // Trend chart – always top 5 from full ranked (ignores filter)
   const top5 = useMemo(() => ranked.slice(0, 5), [ranked]);
@@ -188,11 +196,11 @@ export default function Providers() {
 
       {/* Bar chart top 15 */}
       <ChartContainer title={`Top 15 pracovišť – ${procLabel} – ${selectedYear}`}>
-        <ResponsiveContainer width="100%" height={420}>
+        <ResponsiveContainer width="100%" height={Math.max(420, barData.length * 38)}>
           <BarChart data={barData} layout="vertical" margin={{ top: 5, right: 40, bottom: 5, left: 260 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" horizontal={false} />
             <XAxis type="number" tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} />
-            <YAxis type="category" dataKey="name" width={255} tick={{ fill: "#d1d5db", fontSize: 14 }} />
+            <YAxis type="category" dataKey="name" width={255} interval={0} tick={{ fill: "#d1d5db", fontSize: 13 }} />
             <Tooltip
               contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
               formatter={(v) => [fmtFull(v), "Výkony"]}
@@ -324,7 +332,7 @@ export default function Providers() {
           </thead>
           <tbody>
             {visible.map((p, idx) => (
-              <tr key={p.ico}
+              <tr key={`${p.ico}-${idx}`}
                 className="border-b border-gray-800/50 hover:bg-gray-800/30 transition-colors"
               >
                 <td className="px-4 py-3 text-gray-600 tabular-nums text-xs">{idx + 1}</td>

@@ -18,12 +18,13 @@ import ProcedureSelect from "../components/ProcedureSelect";
 import KpiCard from "../components/KpiCard";
 import { Activity, Users, BarChart2, ExternalLink } from "lucide-react";
 import { mkn10Label, mkn10Name } from "../mkn10_cs";
+import ProcedureMap from "../components/ProcedureMap";
 
 const fmt = (n) => (n >= 1e3 ? `${(n / 1e3).toFixed(1)} K` : String(Math.round(n)));
 const fmtFull = (n) => Math.round(n).toLocaleString("cs-CZ");
 
 export default function ProcedureDetail() {
-  const { national, ageData, genderData, procedures, diagnoses, icoLoaded, icoLoading, loadIcoData } = useData();
+  const { national, ageData, genderData, procedures, providers, diagnoses, icoLoaded, icoLoading, loadIcoData } = useData();
   useEffect(() => { loadIcoData(); }, [loadIcoData]);
   const [selectedKod, setSelectedKod] = useState("15430");
   const [selectedYear, setSelectedYear] = useState("2024");
@@ -213,6 +214,17 @@ export default function ProcedureDetail() {
           </tbody>
         </table>
       </div>
+
+      {/* ── Providers map ─────────────────────────────────────────────────── */}
+      {icoLoaded && (
+        <>
+          <SectionHeader
+            title="Mapa pracovišť"
+            subtitle={`Geografické rozložení pracovišť vykázávajících výkon ${selectedKod}`}
+          />
+          <ProcedureMap providers={providers} selectedKod={selectedKod} metric={metric} selectedYear={selectedYear} />
+        </>
+      )}
 
       {/* ── Diagnoses section (from NR-04-02) ─────────────────────────────── */}
       {icoLoaded && diagnoses[selectedKod] && (

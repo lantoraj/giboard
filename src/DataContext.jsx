@@ -17,9 +17,10 @@ export function DataProvider({ children }) {
     regional: {},
     ageData: {},
     genderData: {},
-    // ICO dataset – loaded lazily on first visit to Providers / Diagnoses tabs
+    // ICO dataset – loaded lazily on first visit to Providers / Diagnoses / Explorer tabs
     providers: [],
     diagnoses: {},
+    gastroRegistry: [],   // list of gastro providers from NRPZS registry
     icoLoading: false,
     icoLoaded: false,
   });
@@ -45,8 +46,9 @@ export function DataProvider({ children }) {
       Promise.all([
         loadJSON("/data/providers_data.json"),
         loadJSON("/data/diagnosis_data.json"),
-      ]).then(([providers, diagnoses]) => {
-        setState((prev) => ({ ...prev, providers, diagnoses, icoLoading: false, icoLoaded: true }));
+        loadJSON("/data/gastro_providers_registry.json"),
+      ]).then(([providers, diagnoses, gastroRegistry]) => {
+        setState((prev) => ({ ...prev, providers, diagnoses, gastroRegistry, icoLoading: false, icoLoaded: true }));
       }).catch(() => {
         setState((prev) => ({ ...prev, icoLoading: false }));
       });
