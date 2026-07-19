@@ -38,3 +38,5 @@ data_prep/*.pyc
 # Log files
 *.log
 npm-debug.log*
+.vercel
+.env*
