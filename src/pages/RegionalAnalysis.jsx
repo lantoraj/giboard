@@ -6,7 +6,8 @@ import {
 import { MapPin, ExternalLink } from "lucide-react";
 
 import { useData, getRegionalData, getRegionalTimeSeries } from "../DataContext";
-import { KEY_CODES, YEARS, CHART_COLORS } from "../constants";
+import { useT } from "../SettingsContext";
+import { KEY_CODES, YEARS, CHART_COLORS, CHART_UI } from "../constants";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
 import ProcedureSelect from "../components/ProcedureSelect";
@@ -35,14 +36,15 @@ function Sparkline({ data, color = "#3b82f6" }) {
 
 export default function RegionalAnalysis() {
   const { regional } = useData();
+  const t = useT();
   const [selectedKod, setSelectedKod] = useState("15430");
   const [selectedYear, setSelectedYear] = useState("2024");
   const [metric, setMetric] = useState("mnozstvi");
 
   const METRIC_LABELS = {
-    mnozstvi: "Objem výkonů (množství)",
-    pocet_pacientu: "Počet pacientů",
-    pocet_kontaktu: "Počet kontaktů",
+    mnozstvi: t("Objem výkonů (množství)"),
+    pocet_pacientu: t("Počet pacientů"),
+    pocet_kontaktu: t("Počet kontaktů"),
   };
 
   // Bar chart – regions by selected year
@@ -73,8 +75,8 @@ export default function RegionalAnalysis() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">Regionální analýza</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Srovnání krajů ČR dle objemu výkonů</p>
+          <h1 className="text-2xl font-bold text-strong">{t("Regionální analýza")}</h1>
+          <p className="text-sm text-gray-500 mt-0.5">{t("Srovnání krajů ČR dle objemu výkonů")}</p>
         </div>
         <div className="flex flex-wrap gap-2">
           <ProcedureSelect value={selectedKod} onChange={setSelectedKod} />
@@ -94,17 +96,16 @@ export default function RegionalAnalysis() {
       <div className="flex items-start gap-3 px-4 py-3 bg-amber-900/20 border border-amber-700/40 rounded-xl text-sm">
         <MapPin size={16} className="text-amber-400 mt-0.5 flex-shrink-0" />
         <div className="space-y-1">
-          <p className="text-amber-200 font-medium">Data jsou dle okresu bydliště pacienta, nikoli dle sídla poskytovatele péče.</p>
+          <p className="text-amber-200 font-medium">{t("Data jsou dle okresu bydliště pacienta, nikoli dle sídla poskytovatele péče.")}</p>
           <p className="text-amber-300/70 text-xs">
-            Kraj „Praha" znamená, že pacient má trvalé bydliště v Praze – výkon mohl být proveden kdekoliv v ČR.
-            Pro analýzu na úrovni konkrétního poskytovatele využijte{" "}
+            {t("Kraj „Praha“ znamená, že pacient má trvalé bydliště v Praze – výkon mohl být proveden kdekoliv v ČR. Pro analýzu na úrovni konkrétního poskytovatele využijte")}{" "}
             <a
               href="https://www.nzip.cz/data/1910-vykony-zdravotni-pece-verejne-zdravotni-pojisteni-poskytovatel-zdravotnich-sluzeb-interaktivni-vizualizace"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-amber-400 hover:text-amber-300 underline underline-offset-2 transition-colors"
             >
-              data NZIP.cz – výkony dle poskytovatele
+              {t("data NZIP.cz – výkony dle poskytovatele")}
               <ExternalLink size={11} />
             </a>.
           </p>
@@ -122,21 +123,21 @@ export default function RegionalAnalysis() {
       </div>
 
       {/* Horizontal bar – all regions */}
-      <ChartContainer title={`${METRIC_LABELS[metric]} dle kraje – ${selectedYear}`}>
+      <ChartContainer title={t("{metric} dle kraje – {year}", { metric: METRIC_LABELS[metric], year: selectedYear })}>
         <ResponsiveContainer width="100%" height={460}>
           <BarChart data={barData} layout="vertical" margin={{ top: 5, right: 50, bottom: 5, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" horizontal={false} />
-            <XAxis type="number" tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} />
+            <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} horizontal={false} />
+            <XAxis type="number" tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
             <YAxis
               type="category"
               dataKey="region"
               width={200}
               interval={0}
-              tick={{ fill: "#d1d5db", fontSize: 14 }}
+              tick={{ fill: CHART_UI.tickStrong, fontSize: 14 }}
             />
             <Tooltip
-              contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
-              labelStyle={{ color: "#ffffff", fontWeight: 600 }}
+              contentStyle={CHART_UI.tooltip}
+              labelStyle={CHART_UI.tooltipLabel}
               itemStyle={{ color: "#fbbf24" }}
               formatter={(v) => [fmtFull(v), METRIC_LABELS[metric]]}
             />
@@ -150,14 +151,14 @@ export default function RegionalAnalysis() {
       </ChartContainer>
 
       {/* Top 5 regions trend */}
-      <ChartContainer title="Vývoj výkonů – Top 5 krajů" subtitle="2019–2024">
+      <ChartContainer title={t("Vývoj výkonů – Top 5 krajů")} subtitle="2019–2024">
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={multiLineData} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-            <XAxis dataKey="year" tick={{ fill: "#9ca3af", fontSize: 14 }} />
-            <YAxis tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} width={60} />
-            <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }} formatter={(v) => [fmtFull(v), ""]} />
-            <Legend wrapperStyle={{ fontSize: 14, color: "#9ca3af" }} />
+            <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} />
+            <XAxis dataKey="year" tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
+            <YAxis tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} width={60} />
+            <Tooltip contentStyle={CHART_UI.tooltip} formatter={(v) => [fmtFull(v), ""]} />
+            <Legend wrapperStyle={{ fontSize: 14, color: CHART_UI.tick }} />
             {top5Regions.map((reg, i) => (
               <Line key={reg} type="monotone" dataKey={reg} stroke={CHART_COLORS[i]} strokeWidth={2} dot={{ r: 3 }} />
             ))}
@@ -166,16 +167,16 @@ export default function RegionalAnalysis() {
       </ChartContainer>
 
       {/* Region × Year table with sparklines */}
-      <SectionHeader title="Detailní tabulka krajů" subtitle="Vývoj výkonů po rocích + sparkline trendu" />
+      <SectionHeader title={t("Detailní tabulka krajů")} subtitle={t("Vývoj výkonů po rocích + sparkline trendu")} />
       <div className="card overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-gray-800">
-              <th className="text-left px-4 py-3 text-gray-400 font-medium">Kraj</th>
+              <th className="text-left px-4 py-3 text-gray-400 font-medium">{t("Kraj")}</th>
               {YEARS.map((y) => (
                 <th key={y} className="text-right px-3 py-3 text-gray-400 font-medium">{y}</th>
               ))}
-              <th className="text-right px-4 py-3 text-gray-400 font-medium">Trend</th>
+              <th className="text-right px-4 py-3 text-gray-400 font-medium">{t("Trend")}</th>
               <th className="text-right px-4 py-3 text-gray-400 font-medium">YoY %</th>
             </tr>
           </thead>

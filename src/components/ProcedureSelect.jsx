@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Search, ChevronDown, X } from "lucide-react";
 import { useData } from "../DataContext";
+import { useT } from "../SettingsContext";
 
 export default function ProcedureSelect({ value, onChange, multi = false, placeholder = "Vyberte výkon…" }) {
   const { procedures } = useData();
+  const t = useT();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const ref = useRef(null);
@@ -39,11 +41,11 @@ export default function ProcedureSelect({ value, onChange, multi = false, placeh
   const selectedProc = procedures.find((p) => p.kod === value);
   const displayLabel = multi
     ? value?.length
-      ? `${value.length} výkon${value.length > 1 ? "ů" : ""} vybrán`
-      : placeholder
+      ? t("Vybráno: {n}", { n: value.length })
+      : t(placeholder)
     : selectedProc
     ? `${selectedProc.szv_code ?? selectedProc.kod} – ${selectedProc.label}`
-    : placeholder;
+    : t(placeholder);
 
   return (
     <div className="relative" ref={ref}>
@@ -73,13 +75,13 @@ export default function ProcedureSelect({ value, onChange, multi = false, placeh
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="bg-transparent text-sm text-gray-200 outline-none flex-1 placeholder-gray-600"
-                placeholder="Hledat kód nebo název…"
+                placeholder={t("Hledat kód nebo název…")}
               />
             </div>
           </div>
           <div className="max-h-72 overflow-y-auto">
             {filtered.length === 0 && (
-              <p className="text-xs text-gray-500 p-3 text-center">Žádné výsledky</p>
+              <p className="text-xs text-gray-500 p-3 text-center">{t("Žádné výsledky")}</p>
             )}
             {filtered.map((p) => (
               <button

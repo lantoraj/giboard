@@ -6,7 +6,8 @@ import {
 } from "recharts";
 
 import { useData, getMultiCodeTimeSeries, getNationalTimeSeries } from "../DataContext";
-import { KEY_CODES, YEARS, CHART_COLORS } from "../constants";
+import { useT } from "../SettingsContext";
+import { KEY_CODES, YEARS, CHART_COLORS, CHART_UI } from "../constants";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
 import ProcedureSelect from "../components/ProcedureSelect";
@@ -22,12 +23,17 @@ function indexSeries(timeSeries, kod, baseYear = "2019") {
 
 export default function Comparison() {
   const { national, procedures } = useData();
+  const t = useT();
 
   const [selectedCodes, setSelectedCodes] = useState(["15430", "15410", "15024", "15404"]);
   const [metric, setMetric] = useState("mnozstvi");
   const [baseYear, setBaseYear] = useState("2019");
 
-  const METRIC_LABELS = { mnozstvi: "Objem výkonů (množství)", pocet_pacientu: "Počet pacientů", pocet_kontaktu: "Počet kontaktů" };
+  const METRIC_LABELS = {
+    mnozstvi: t("Objem výkonů (množství)"),
+    pocet_pacientu: t("Počet pacientů"),
+    pocet_kontaktu: t("Počet kontaktů"),
+  };
 
   const multiSeries = useMemo(
     () => getMultiCodeTimeSeries(national, selectedCodes, metric),
@@ -44,7 +50,6 @@ export default function Comparison() {
   // Radar chart: each code's value in latest year relative to their own max
   const radarData = useMemo(() => {
     if (!selectedCodes.length) return [];
-    const latestYear = YEARS.at(-1);
     const maxes = {};
     selectedCodes.forEach((kod) => {
       maxes[kod] = Math.max(...YEARS.map((y) => national[kod]?.[y]?.[metric] ?? 0)) || 1;
@@ -80,8 +85,8 @@ export default function Comparison() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">Srovnání výkonů</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Porovnání více procedur najednou</p>
+          <h1 className="text-2xl font-bold text-strong">{t("Srovnání výkonů")}</h1>
+          <p className="text-sm text-gray-500 mt-0.5">{t("Porovnání více procedur najednou")}</p>
         </div>
         <div className="flex flex-wrap gap-2 items-center">
           <ProcedureSelect value={selectedCodes} onChange={setSelectedCodes} multi />
@@ -105,17 +110,17 @@ export default function Comparison() {
       )}
 
       {/* Absolute comparison line chart */}
-      <ChartContainer title="Absolutní vývoj – srovnání výkonů (2019–2024)" subtitle={METRIC_LABELS[metric]}>
+      <ChartContainer title={t("Absolutní vývoj – srovnání výkonů (2019–2024)")} subtitle={METRIC_LABELS[metric]}>
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={multiSeries} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-            <XAxis dataKey="year" tick={{ fill: "#9ca3af", fontSize: 14 }} />
-            <YAxis tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} width={65} />
+            <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} />
+            <XAxis dataKey="year" tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
+            <YAxis tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} width={65} />
             <Tooltip
-              contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
+              contentStyle={CHART_UI.tooltip}
               formatter={(v, name) => [fmtFull(v), getLabelForCode(name)]}
             />
-            <Legend formatter={(val) => getLabelForCode(val)} wrapperStyle={{ fontSize: 14, color: "#9ca3af" }} />
+            <Legend formatter={(val) => getLabelForCode(val)} wrapperStyle={{ fontSize: 14, color: CHART_UI.tick }} />
             <ReferenceLine x="2020" stroke="#ef444440" strokeDasharray="4 4" />
             {selectedCodes.map((kod, i) => (
               <Line key={kod} type="monotone" dataKey={kod} stroke={CHART_COLORS[i % CHART_COLORS.length]}
@@ -127,8 +132,8 @@ export default function Comparison() {
 
       {/* Indexed (normalised) growth chart */}
       <ChartContainer
-        title="Normalizovaný růst (index = 100)"
-        subtitle={`Bazový rok: ${baseYear} – srovnatelný relativní vývoj`}
+        title={t("Normalizovaný růst (index = 100)")}
+        subtitle={t("Bazový rok: {year} – srovnatelný relativní vývoj", { year: baseYear })}
       >
         <div className="flex gap-1 mb-3">
           {YEARS.map((y) => (
@@ -140,13 +145,13 @@ export default function Comparison() {
         </div>
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={indexedSeries} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-            <XAxis dataKey="year" tick={{ fill: "#9ca3af", fontSize: 14 }} />
-            <YAxis tick={{ fill: "#9ca3af", fontSize: 14 }} width={50} unit=" " />
-            <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
+            <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} />
+            <XAxis dataKey="year" tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
+            <YAxis tick={{ fill: CHART_UI.tick, fontSize: 14 }} width={50} unit=" " />
+            <Tooltip contentStyle={CHART_UI.tooltip}
               formatter={(v, name) => [`${parseFloat(v).toFixed(1)}`, getLabelForCode(name)]} />
-            <Legend formatter={(val) => getLabelForCode(val)} wrapperStyle={{ fontSize: 14, color: "#9ca3af" }} />
-            <ReferenceLine y={100} stroke="#6b7280" strokeDasharray="3 3" label={{ value: "Bázová hodnota", position: "right", fill: "#6b7280", fontSize: 14 }} />
+            <Legend formatter={(val) => getLabelForCode(val)} wrapperStyle={{ fontSize: 14, color: CHART_UI.tick }} />
+            <ReferenceLine y={100} stroke="#6b7280" strokeDasharray="3 3" label={{ value: t("Bázová hodnota"), position: "right", fill: "#6b7280", fontSize: 14 }} />
             <ReferenceLine x="2020" stroke="#ef444440" strokeDasharray="4 4" />
             {selectedCodes.map((kod, i) => (
               <Line key={kod} type="monotone" dataKey={kod} stroke={CHART_COLORS[i % CHART_COLORS.length]}
@@ -157,38 +162,38 @@ export default function Comparison() {
       </ChartContainer>
 
       {/* Radar chart – relative performance across years */}
-      <ChartContainer title="Radarový přehled – relativní výkon v % maxima" subtitle="Každý rok jako dimenze, hodnota = % maxima dané procedury">
+      <ChartContainer title={t("Radarový přehled – relativní výkon v % maxima")} subtitle={t("Každý rok jako dimenze, hodnota = % maxima dané procedury")}>
         <ResponsiveContainer width="100%" height={340}>
           <RadarChart data={radarData} margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
-            <PolarGrid stroke="#1f2937" />
-            <PolarAngleAxis dataKey="year" tick={{ fill: "#9ca3af", fontSize: 14 }} />
+            <PolarGrid stroke={CHART_UI.grid} />
+            <PolarAngleAxis dataKey="year" tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
             {selectedCodes.map((kod, i) => (
               <Radar key={kod} name={getLabelForCode(kod)} dataKey={kod}
                 stroke={CHART_COLORS[i % CHART_COLORS.length]}
                 fill={CHART_COLORS[i % CHART_COLORS.length]}
                 fillOpacity={0.1} strokeWidth={2} />
             ))}
-            <Legend formatter={(val) => getLabelForCode(val)} wrapperStyle={{ fontSize: 14, color: "#9ca3af" }} />
-            <Tooltip contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
+            <Legend formatter={(val) => getLabelForCode(val)} wrapperStyle={{ fontSize: 14, color: CHART_UI.tick }} />
+            <Tooltip contentStyle={CHART_UI.tooltip}
               formatter={(v, name) => [`${v}%`, getLabelForCode(name)]} />
           </RadarChart>
         </ResponsiveContainer>
       </ChartContainer>
 
       {/* YoY Heatmap table */}
-      <SectionHeader title="Meziroční změny – heatmapa" subtitle="% změna vs. předchozí rok" />
+      <SectionHeader title={t("Meziroční změny – heatmapa")} subtitle={t("% změna vs. předchozí rok")} />
       <div className="card overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-gray-800">
-              <th className="text-left px-4 py-3 text-gray-400 font-medium">Výkon</th>
+              <th className="text-left px-4 py-3 text-gray-400 font-medium">{t("Výkon")}</th>
               {YEARS.map((y, i) => i > 0 && (
                 <th key={y} className="text-center px-3 py-3 text-gray-400 font-medium">
                   {YEARS[i - 1]}→{y}
                 </th>
               ))}
-              <th className="text-right px-4 py-3 text-gray-400 font-medium">Celkem ({YEARS[0]})</th>
-              <th className="text-right px-4 py-3 text-gray-400 font-medium">Celkem ({YEARS.at(-1)})</th>
+              <th className="text-right px-4 py-3 text-gray-400 font-medium">{t("Celkem ({year})", { year: YEARS[0] })}</th>
+              <th className="text-right px-4 py-3 text-gray-400 font-medium">{t("Celkem ({year})", { year: YEARS.at(-1) })}</th>
             </tr>
           </thead>
           <tbody>

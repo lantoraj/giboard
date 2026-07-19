@@ -2,8 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Themes ───────────────────────────────────────────────────────────────────
+   All neutral + accent shades are CSS variables ("R G B" triplets) consumed by
+   tailwind.config.js. Switching data-theme on <html> swaps the whole palette.
+   - dark     … original blue-tinted dark look (Tailwind gray)
+   - light    … white background, inverted slate scale
+   - graphite … neutral dark gray (zinc)                                       */
+
 @layer base {
-  :root { color-scheme: dark; }
+  :root,
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --g50: 249 250 251; --g100: 243 244 246; --g200: 229 231 235; --g300: 209 213 219;
+    --g400: 156 163 175; --g500: 107 114 128; --g600: 75 85 99; --g700: 55 65 81;
+    --g800: 31 41 55; --g900: 17 24 39; --g950: 3 7 18;
+    --c-strong: 255 255 255;
+
+    --blue200: 191 219 254; --blue300: 147 197 253; --blue400: 96 165 250;
+    --blue700: 29 78 216; --blue800: 30 64 175; --blue900: 30 58 138; --blue950: 23 37 84;
+    --emerald200: 167 243 208; --emerald300: 110 231 183; --emerald400: 52 211 153;
+    --emerald700: 4 120 87; --emerald800: 6 95 70; --emerald900: 6 78 59;
+    --red200: 254 202 202; --red300: 252 165 165; --red400: 248 113 113;
+    --red700: 185 28 28; --red800: 153 27 27; --red900: 127 29 29;
+    --amber200: 253 230 138; --amber300: 252 211 77; --amber400: 251 191 36;
+    --amber700: 180 83 9; --amber800: 146 64 14; --amber900: 120 53 15;
+    --purple200: 233 213 255; --purple300: 216 180 254; --purple400: 192 132 252;
+    --purple700: 126 34 206; --purple800: 107 33 168; --purple900: 88 28 135;
+    --yellow200: 254 240 138; --yellow300: 253 224 71; --yellow400: 250 204 21;
+    --yellow700: 161 98 7; --yellow800: 133 77 14; --yellow900: 113 63 18;
+
+    --chart-grid: #1f2937; --chart-tick: #9ca3af; --chart-tick-strong: #d1d5db;
+    --chart-tick-accent: #93c5fd; --chart-tooltip-bg: #111827;
+    --chart-tooltip-border: #374151; --chart-tooltip-text: #e5e7eb;
+    --chart-tooltip-item: #d1d5db; --map-stroke: #334155; --map-land: #1e3a5f;
+  }
+
+  :root[data-theme="light"] {
+    color-scheme: light;
+    /* inverted slate scale – bg classes become light, text classes become dark */
+    --g50: 2 6 23; --g100: 15 23 42; --g200: 30 41 59; --g300: 51 65 85;
+    --g400: 71 85 105; --g500: 100 116 139; --g600: 148 163 184; --g700: 203 213 225;
+    --g800: 226 232 240; --g900: 255 255 255; --g950: 241 245 249;
+    --c-strong: 15 23 42;
+
+    --blue200: 30 64 175; --blue300: 29 78 216; --blue400: 37 99 235;
+    --blue700: 147 197 253; --blue800: 191 219 254; --blue900: 219 234 254; --blue950: 239 246 255;
+    --emerald200: 6 95 70; --emerald300: 4 120 87; --emerald400: 5 150 105;
+    --emerald700: 110 231 183; --emerald800: 167 243 208; --emerald900: 209 250 229;
+    --red200: 153 27 27; --red300: 185 28 28; --red400: 220 38 38;
+    --red700: 252 165 165; --red800: 254 202 202; --red900: 254 226 226;
+    --amber200: 146 64 14; --amber300: 180 83 9; --amber400: 217 119 6;
+    --amber700: 252 211 77; --amber800: 253 230 138; --amber900: 254 243 199;
+    --purple200: 107 33 168; --purple300: 126 34 206; --purple400: 147 51 234;
+    --purple700: 216 180 254; --purple800: 233 213 255; --purple900: 243 232 255;
+    --yellow200: 133 77 14; --yellow300: 161 98 7; --yellow400: 202 138 4;
+    --yellow700: 253 224 71; --yellow800: 254 240 138; --yellow900: 254 249 195;
+
+    --chart-grid: #e2e8f0; --chart-tick: #64748b; --chart-tick-strong: #334155;
+    --chart-tick-accent: #1d4ed8; --chart-tooltip-bg: #ffffff;
+    --chart-tooltip-border: #cbd5e1; --chart-tooltip-text: #0f172a;
+    --chart-tooltip-item: #334155; --map-stroke: #94a3b8; --map-land: #cbd5e1;
+  }
+
+  :root[data-theme="graphite"] {
+    color-scheme: dark;
+    /* neutral zinc scale – no blue tint */
+    --g50: 250 250 250; --g100: 244 244 245; --g200: 228 228 231; --g300: 212 212 216;
+    --g400: 161 161 170; --g500: 113 113 122; --g600: 82 82 91; --g700: 63 63 70;
+    --g800: 39 39 42; --g900: 24 24 27; --g950: 9 9 11;
+    --c-strong: 255 255 255;
+
+    --blue200: 191 219 254; --blue300: 147 197 253; --blue400: 96 165 250;
+    --blue700: 29 78 216; --blue800: 30 64 175; --blue900: 30 58 138; --blue950: 23 37 84;
+    --emerald200: 167 243 208; --emerald300: 110 231 183; --emerald400: 52 211 153;
+    --emerald700: 4 120 87; --emerald800: 6 95 70; --emerald900: 6 78 59;
+    --red200: 254 202 202; --red300: 252 165 165; --red400: 248 113 113;
+    --red700: 185 28 28; --red800: 153 27 27; --red900: 127 29 29;
+    --amber200: 253 230 138; --amber300: 252 211 77; --amber400: 251 191 36;
+    --amber700: 180 83 9; --amber800: 146 64 14; --amber900: 120 53 15;
+    --purple200: 233 213 255; --purple300: 216 180 254; --purple400: 192 132 252;
+    --purple700: 126 34 206; --purple800: 107 33 168; --purple900: 88 28 135;
+    --yellow200: 254 240 138; --yellow300: 253 224 71; --yellow400: 250 204 21;
+    --yellow700: 161 98 7; --yellow800: 133 77 14; --yellow900: 113 63 18;
+
+    --chart-grid: #27272a; --chart-tick: #a1a1aa; --chart-tick-strong: #d4d4d8;
+    --chart-tick-accent: #93c5fd; --chart-tooltip-bg: #18181b;
+    --chart-tooltip-border: #3f3f46; --chart-tooltip-text: #e4e4e7;
+    --chart-tooltip-item: #d4d4d8; --map-stroke: #52525b; --map-land: #303036;
+  }
+
   html { font-size: 15px; }
   body { @apply bg-gray-950 text-gray-100 antialiased; }
   ::-webkit-scrollbar { width: 6px; height: 6px; }

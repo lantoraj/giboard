@@ -10,11 +10,12 @@ import {
 } from "lucide-react";
 
 import { useData } from "../DataContext";
-import { YEARS, CHART_COLORS } from "../constants";
+import { useT } from "../SettingsContext";
+import { YEARS, CHART_COLORS, CHART_UI } from "../constants";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
 import LoadingSpinner from "../components/LoadingSpinner";
-import MKN10_CS, { mkn10Label, mkn10Name } from "../mkn10_cs";
+import { useMkn10 } from "../mkn10";
 
 const fmt     = (n) => n >= 1e6 ? `${(n/1e6).toFixed(2)} M` : n >= 1e3 ? `${(n/1e3).toFixed(1)} K` : String(Math.round(n));
 const fmtFull = (n) => Math.round(n).toLocaleString("cs-CZ");
@@ -78,6 +79,8 @@ function inGroup(diagCode, group) {
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function DiagAnalysis() {
   const { diagnoses, icoLoading, icoLoaded, loadIcoData } = useData();
+  const t = useT();
+  const { label: mkn10Label, name: mkn10Name } = useMkn10();
 
   const [selectedYear,  setSelectedYear]  = useState("2024");
   const [selectedGroup, setSelectedGroup] = useState(MKN_GROUPS[0]);
@@ -155,7 +158,7 @@ export default function DiagAnalysis() {
       );
     }
     return rows;
-  }, [diagAgg, selectedGroup, selectedArea, selectedYear, metric, sortCol, sortDir, search]);
+  }, [diagAgg, selectedGroup, selectedArea, selectedYear, metric, sortCol, sortDir, search, mkn10Name]);
 
   const visible  = filteredDiags.slice(0, topN);
   const prevYear = String(Number(selectedYear) - 1);
@@ -179,7 +182,7 @@ export default function DiagAnalysis() {
       code:  d.diag,
       value: d.years[selectedYear]?.[metric] ?? 0,
     })),
-    [filteredDiags, selectedYear, metric]
+    [filteredDiags, selectedYear, metric, mkn10Label]
   );
 
   // ── Trend chart – top 5 ──────────────────────────────────────────────────
@@ -193,7 +196,8 @@ export default function DiagAnalysis() {
     [top5, metric]
   );
 
-  const metricLabel = metric === "mn" ? "Počet výkonů" : "Počet pacientů";
+  const metricLabel = metric === "mn" ? t("Počet výkonů") : t("Počet pacientů");
+  const groupLabel  = selectedArea.id !== "all" ? t(selectedArea.label) : selectedGroup.id !== "all" ? selectedGroup.label : t("Vše");
   const groupColor  = selectedArea.id !== "all"
     ? selectedArea.color
     : selectedGroup.id !== "all" ? selectedGroup.color : "#3b82f6";
@@ -207,9 +211,9 @@ export default function DiagAnalysis() {
       {/* ── Header ──────────────────────────────────────────────────────── */}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">MKN-10 Diagnózy</h1>
+          <h1 className="text-2xl font-bold text-strong">{t("MKN-10 Diagnózy")}</h1>
           <p className="text-sm text-gray-500 mt-0.5">
-            Analýza trendů diagnóz v gastroenterologii · NR-04-02 · 2019–2024
+            {t("Analýza trendů diagnóz v gastroenterologii · NR-04-02 · 2019–2024")}
           </p>
         </div>
         <div className="flex flex-wrap gap-2 items-center">
@@ -220,7 +224,7 @@ export default function DiagAnalysis() {
                 className={`px-3 py-1.5 text-xs rounded-md font-medium transition-colors ${
                   metric === val ? "bg-blue-600 text-white" : "text-gray-400 hover:text-gray-200"
                 }`}>
-                {lbl}
+                {t(lbl)}
               </button>
             ))}
           </div>
@@ -242,8 +246,7 @@ export default function DiagAnalysis() {
       <div className="flex items-center gap-3 px-4 py-2.5 bg-gray-800/50 border border-gray-700/50 rounded-xl text-xs text-gray-500">
         <Info size={13} className="flex-shrink-0 text-gray-600" />
         <span>
-          Diagnózy dle MKN-10 z NR-04-02 (výkony pojišťoven dle poskytovatele a hlavní diagnózy).
-          Každý kód odkáže na plný název v&nbsp;
+          {t("Diagnózy dle MKN-10 z NR-04-02 (výkony pojišťoven dle poskytovatele a hlavní diagnózy). Každý kód odkáže na plný název v")}&nbsp;
           <a href="https://mkn10.uzis.cz/prohlizec/K00-K93" target="_blank" rel="noopener noreferrer"
             className="text-blue-400 hover:text-blue-300 inline-flex items-center gap-0.5">
             mkn10.uzis.cz <ExternalLink size={10} />
@@ -257,7 +260,7 @@ export default function DiagAnalysis() {
         {/* Row 1: Chapter (MKN-10 kapitola) */}
         <div>
           <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-2">
-            Kapitola MKN-10
+            {t("Kapitola MKN-10")}
           </p>
           <div className="flex flex-wrap gap-2 items-start">
             {MKN_GROUPS.map((g) => (
@@ -270,11 +273,11 @@ export default function DiagAnalysis() {
                 }`}
                 style={selectedGroup.id === g.id ? { background: g.color, borderColor: g.color } : {}}
               >
-                <span className="text-xs font-mono font-bold leading-tight">{g.label}</span>
+                <span className="text-xs font-mono font-bold leading-tight">{g.id === "all" ? t("Vše") : g.label}</span>
                 {g.subtitle && (
                   <span className={`text-[10px] font-normal leading-tight mt-0.5 ${
                     selectedGroup.id === g.id ? "text-white/80" : "text-gray-600"
-                  }`}>{g.subtitle}</span>
+                  }`}>{t(g.subtitle)}</span>
                 )}
               </button>
             ))}
@@ -287,7 +290,7 @@ export default function DiagAnalysis() {
         {/* Row 2: Clinical gastro area */}
         <div>
           <p className="text-[10px] text-gray-500 uppercase tracking-widest font-semibold mb-2">
-            Oblast gastroenterologie
+            {t("Oblast gastroenterologie")}
           </p>
           <div className="flex flex-wrap gap-1.5 items-center">
             {MKN_AREAS.map((g) => (
@@ -300,7 +303,7 @@ export default function DiagAnalysis() {
                 }`}
                 style={selectedArea.id === g.id ? { background: g.color, borderColor: g.color } : {}}
               >
-                {g.label}
+                {t(g.label)}
               </button>
             ))}
           </div>
@@ -317,7 +320,7 @@ export default function DiagAnalysis() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Hledat dle kódu nebo názvu…"
+              placeholder={t("Hledat dle kódu nebo názvu…")}
               className="bg-gray-900/60 border border-gray-700 rounded-lg pl-8 pr-7 py-1.5 text-xs text-gray-200 placeholder-gray-600 focus:outline-none focus:border-blue-500 transition-colors w-64"
             />
             {search && (
@@ -328,13 +331,13 @@ export default function DiagAnalysis() {
             )}
           </div>
           <span className="text-xs text-gray-500">
-            <span className="text-white font-semibold">{filteredDiags.length}</span>
-            {" "}kódů{search ? " odpovídá hledání" : ""}
+            <span className="text-strong font-semibold">{filteredDiags.length}</span>
+            {" "}{t("kódů")}{search ? ` ${t("odpovídá hledání")}` : ""}
           </span>
           {sortCol && (
             <button onClick={() => { setSortCol(null); setSortDir("desc"); }}
               className="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 bg-gray-800 border border-gray-700 rounded-lg hover:text-gray-200 transition-colors ml-auto">
-              <X size={10} /> Resetovat řazení
+              <X size={10} /> {t("Resetovat řazení")}
             </button>
           )}
         </div>
@@ -346,28 +349,28 @@ export default function DiagAnalysis() {
           <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{metricLabel}</p>
           <p className="text-2xl font-bold" style={{ color: groupColor }}>{fmt(kpiTotal)}</p>
           <p className="text-xs text-gray-500 mt-0.5">
-            rok {selectedYear} · {selectedArea.id !== "all" ? selectedArea.label : selectedGroup.label}
+            {t("rok {year}", { year: selectedYear })} · {groupLabel}
           </p>
         </div>
         <div className="card p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Počet diagnóz</p>
-          <p className="text-2xl font-bold text-white">{filteredDiags.length}</p>
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t("Počet diagnóz")}</p>
+          <p className="text-2xl font-bold text-strong">{filteredDiags.length}</p>
           <p className="text-xs text-gray-500 mt-0.5">
-            kódů MKN-10 · {selectedArea.id !== "all" ? selectedArea.label : selectedGroup.label}
+            {t("kódů MKN-10")} · {groupLabel}
           </p>
         </div>
         <div className="card p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Top diagnóza</p>
-          <p className="text-lg font-bold text-white font-mono leading-tight">{kpiTopDiag?.diag ?? "—"}</p>
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t("Top diagnóza")}</p>
+          <p className="text-lg font-bold text-strong font-mono leading-tight">{kpiTopDiag?.diag ?? "—"}</p>
           {kpiTopDiag && mkn10Name(kpiTopDiag.diag) !== kpiTopDiag.diag && (
             <p className="text-xs text-blue-300 mt-0.5 leading-tight">{mkn10Name(kpiTopDiag.diag)}</p>
           )}
           <p className="text-xs text-gray-500 mt-0.5">
-            {fmtFull(kpiTopDiag?.years[selectedYear]?.[metric] ?? 0)} · rok {selectedYear}
+            {fmtFull(kpiTopDiag?.years[selectedYear]?.[metric] ?? 0)} · {t("rok {year}", { year: selectedYear })}
           </p>
         </div>
         <div className="card p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">YoY (top diagnóza)</p>
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t("YoY (top diagnóza)")}</p>
           <p className={`text-2xl font-bold ${
             kpiTopYoy === null ? "text-gray-600"
             : kpiTopYoy > 0 ? "text-emerald-400"
@@ -375,23 +378,23 @@ export default function DiagAnalysis() {
           }`}>
             {kpiTopYoy !== null ? `${kpiTopYoy > 0 ? "+" : ""}${kpiTopYoy.toFixed(1)}%` : "—"}
           </p>
-          <p className="text-xs text-gray-500 mt-0.5">vs. {prevYear}</p>
+          <p className="text-xs text-gray-500 mt-0.5">{t("vs. {year}", { year: prevYear })}</p>
         </div>
       </div>
 
       {/* ── Bar chart – top 15 ──────────────────────────────────────────── */}
       <ChartContainer
-        title={`Top 15 diagnóz – ${selectedArea.id !== "all" ? selectedArea.label : selectedGroup.label} – ${selectedYear}`}
-        subtitle={`${metricLabel} · kódy MKN-10`}
+        title={t("Top 15 diagnóz – {g} – {year}", { g: groupLabel, year: selectedYear })}
+        subtitle={t("{metric} · kódy MKN-10", { metric: metricLabel })}
       >
         <ResponsiveContainer width="100%" height={490}>
           <BarChart data={barData} layout="vertical" margin={{ top: 5, right: 50, bottom: 5, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" horizontal={false} />
-            <XAxis type="number" tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} />
+            <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} horizontal={false} />
+            <XAxis type="number" tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
             <YAxis type="category" dataKey="name" width={230}
-              tick={{ fill: "#93c5fd", fontSize: 14 }} />
+              tick={{ fill: CHART_UI.tickAccent, fontSize: 14 }} />
             <Tooltip
-              contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
+              contentStyle={CHART_UI.tooltip}
               formatter={(v, _, props) => [fmtFull(v), `${props.payload.name} – ${metricLabel}`]}
             />
             <Bar dataKey="value" fill={groupColor} radius={[0, 4, 4, 0]} />
@@ -402,22 +405,22 @@ export default function DiagAnalysis() {
       {/* ── Trend chart – top 5 ─────────────────────────────────────────── */}
       {top5.length > 0 && (
         <ChartContainer
-          title={`Vývoj Top 5 diagnóz – ${selectedArea.id !== "all" ? selectedArea.label : selectedGroup.label} (2019–2024)`}
+          title={t("Vývoj Top 5 diagnóz – {g} (2019–2024)", { g: groupLabel })}
           subtitle={metricLabel}
         >
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={trendData} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-              <XAxis dataKey="year" tick={{ fill: "#9ca3af", fontSize: 14 }} />
-              <YAxis tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} width={60} />
+              <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} />
+              <XAxis dataKey="year" tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
+              <YAxis tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} width={60} />
               <Tooltip
-                contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
-                labelStyle={{ color: "#e5e7eb", fontWeight: 600 }}
+                contentStyle={CHART_UI.tooltip}
+                labelStyle={CHART_UI.tooltipLabel}
                 formatter={(v, name) => [fmtFull(v), mkn10Label(name)]}
               />
               <Legend
                 formatter={(val) => mkn10Label(val)}
-                wrapperStyle={{ fontSize: 14, color: "#93c5fd" }}
+                wrapperStyle={{ fontSize: 14, color: CHART_UI.tickAccent }}
               />
               <ReferenceLine x="2020" stroke="#ef444455" strokeDasharray="4 4"
                 label={{ value: "COVID-19", position: "top", fill: "#ef4444", fontSize: 14 }} />
@@ -433,15 +436,15 @@ export default function DiagAnalysis() {
 
       {/* ── Table ───────────────────────────────────────────────────────── */}
       <SectionHeader
-        title={`Všechny diagnózy – ${selectedArea.id !== "all" ? selectedArea.label : selectedGroup.label}`}
-        subtitle={`${filteredDiags.length} kódů MKN-10 · ${metricLabel} · seřazeno dle ${sortCol ?? selectedYear}`}
+        title={t("Všechny diagnózy – {g}", { g: groupLabel })}
+        subtitle={t("{n} kódů MKN-10 · {metric} · seřazeno dle {col}", { n: filteredDiags.length, metric: metricLabel, col: sortCol ?? selectedYear })}
       />
       <div className="card overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-gray-800">
               <th className="text-left px-4 py-3 text-gray-400 font-medium w-8">#</th>
-              <th className="text-left px-4 py-3 text-gray-400 font-medium">MKN-10 kód</th>
+              <th className="text-left px-4 py-3 text-gray-400 font-medium">{t("MKN-10 kód")}</th>
               {YEARS.map((y) => (
                 <th key={y} onClick={() => handleSort(y)}
                   className={`text-right px-3 py-3 font-medium cursor-pointer select-none transition-colors ${
@@ -488,7 +491,7 @@ export default function DiagAnalysis() {
                       href={`https://mkn10.uzis.cz/prohlizec/${d.diag.slice(0, 3)}`}
                       target="_blank" rel="noopener noreferrer"
                       className="font-mono text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center gap-1 group"
-                      title="Otevřít v MKN-10 prohlížeči"
+                      title={t("Otevřít v MKN-10 prohlížeči")}
                     >
                       {d.diag}
                       <ExternalLink size={10} className="opacity-0 group-hover:opacity-60 transition-opacity" />
@@ -524,7 +527,7 @@ export default function DiagAnalysis() {
           <div className="px-4 py-3 border-t border-gray-800 text-center">
             <button onClick={() => setTopN((n) => n + 20)}
               className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-              Zobrazit dalších 20 z {filteredDiags.length - topN} zbývajících
+              {t("Zobrazit dalších 20 z {n} zbývajících", { n: filteredDiags.length - topN })}
             </button>
           </div>
         )}

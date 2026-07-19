@@ -6,7 +6,8 @@ import {
 import { Activity, Users, Hash, TrendingUp, Info } from "lucide-react";
 
 import { useData, getNationalTimeSeries, getMultiCodeTimeSeries } from "../DataContext";
-import { KEY_CODES, CHART_COLORS, YEARS } from "../constants";
+import { useT } from "../SettingsContext";
+import { KEY_CODES, CHART_COLORS, CHART_UI, YEARS } from "../constants";
 import KpiCard from "../components/KpiCard";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
@@ -32,6 +33,7 @@ const CHART_LINE_LIMIT = 20; // max lines rendered in trend chart
 
 export default function Overview() {
   const { national, procedures } = useData();
+  const t = useT();
   const [selectedYear, setSelectedYear] = useState("2024");
   const [compFilter, setCompFilter]     = useState("key");
 
@@ -45,9 +47,15 @@ export default function Overview() {
     return { totalMn, totalPp, totalKk };
   }, [national, selectedYear]);
 
+  // Localized key codes (labels for chart legend / table)
+  const keyCodes = useMemo(
+    () => KEY_CODES.map((k) => ({ ...k, label: t(k.label) })),
+    [t]
+  );
+
   // ── Filtered procedure list (with color assigned) ────────────────────────
   const compProcs = useMemo(() => {
-    if (compFilter === "key") return KEY_CODES;
+    if (compFilter === "key") return keyCodes;
 
     const allSorted = procedures
       .map((p) => ({ ...p, vol: national[p.kod]?.[selectedYear]?.mnozstvi ?? 0 }))
@@ -64,7 +72,7 @@ export default function Overview() {
       color:    CHART_COLORS[i % CHART_COLORS.length],
       szv_code: p.szv_code ?? p.kod,
     }));
-  }, [compFilter, procedures, national, selectedYear]);
+  }, [compFilter, keyCodes, procedures, national, selectedYear]);
 
   // For chart: cap lines to keep chart readable
   const chartProcs  = useMemo(() => compProcs.slice(0, CHART_LINE_LIMIT), [compProcs]);
@@ -91,18 +99,18 @@ export default function Overview() {
 
   // ── Dynamic labels ────────────────────────────────────────────────────────
   const trendTitle =
-    compFilter === "key"   ? "Vývoj klíčových endoskopických výkonů (2019–2024)"
-    : compFilter === "top10" ? `Vývoj Top 10 výkonů dle objemu – rok ${selectedYear} (2019–2024)`
-    : compFilter === "top20" ? `Vývoj Top 20 výkonů dle objemu – rok ${selectedYear} (2019–2024)`
-    : `Vývoj výkonů – zobrazeno Top ${CHART_LINE_LIMIT} z ${compProcs.length} (2019–2024)`;
+    compFilter === "key"   ? t("Vývoj klíčových endoskopických výkonů (2019–2024)")
+    : compFilter === "top10" ? t("Vývoj Top 10 výkonů dle objemu – rok {year} (2019–2024)", { year: selectedYear })
+    : compFilter === "top20" ? t("Vývoj Top 20 výkonů dle objemu – rok {year} (2019–2024)", { year: selectedYear })
+    : t("Vývoj výkonů – zobrazeno Top {n} z {total} (2019–2024)", { n: CHART_LINE_LIMIT, total: compProcs.length });
 
   const tableTitle = compFilter === "key"
-    ? "Meziroční srovnání klíčových výkonů"
-    : "Meziroční srovnání výkonů";
+    ? t("Meziroční srovnání klíčových výkonů")
+    : t("Meziroční srovnání výkonů");
 
   const tableSubtitle = compFilter === "key"
-    ? "Absolutní hodnoty + změna vs. předchozí rok"
-    : `${compProcs.length} výkonů · seřazeno dle objemu ${selectedYear} · absolutní hodnoty + YoY %`;
+    ? t("Absolutní hodnoty + změna vs. předchozí rok")
+    : t("{n} výkonů · seřazeno dle objemu {year} · absolutní hodnoty + YoY %", { n: compProcs.length, year: selectedYear });
 
   // ── Filter toggle buttons (rendered inside ChartContainer header) ────────
   const filterControls = (
@@ -117,7 +125,7 @@ export default function Overview() {
               : "bg-gray-700/70 text-gray-400 hover:bg-gray-600 hover:text-gray-200"
           }`}
         >
-          {opt.label}
+          {t(opt.label)}
         </button>
       ))}
     </div>
@@ -129,8 +137,8 @@ export default function Overview() {
       {/* ── Year selector ───────────────────────────────────────────────── */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold text-white">Přehled</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Gastroenterologie & endoskopie – ČR</p>
+          <h1 className="text-2xl font-bold text-strong">{t("Přehled")}</h1>
+          <p className="text-sm text-gray-500 mt-0.5">{t("Gastroenterologie & endoskopie – ČR")}</p>
         </div>
         <div className="flex gap-1">
           {YEARS.map((y) => (
@@ -148,22 +156,22 @@ export default function Overview() {
       <div className="flex items-start gap-3 px-4 py-3 bg-blue-950/40 border border-blue-800/50 rounded-xl text-xs text-blue-300">
         <Info size={14} className="mt-0.5 flex-shrink-0 text-blue-400" />
         <span>
-          Data pocházejí z <strong>NRHZS (ÚZIS ČR)</strong>, období 2019–2024.
-          Pole <em>množství výkonů</em> odpovídá součtu vykázaných množství z pojišťoven – pro každý kód může jít o bodové hodnoty, počty úkonů nebo jiné jednotky dle sazebníku.
-          Pro klinické srovnání doporučujeme metriku <em>Počet pacientů</em>.
-          Data neobsahují identifikátor poskytovatele – regionální analýza je dle okresu <em>bydliště pacienta</em>.
+          {t("Data pocházejí z")} <strong>NRHZS (ÚZIS ČR)</strong>, {t("období 2019–2024.")}{" "}
+          {t("Pole")} <em>{t("množství výkonů")}</em> {t("odpovídá součtu vykázaných množství z pojišťoven – pro každý kód může jít o bodové hodnoty, počty úkonů nebo jiné jednotky dle sazebníku.")}{" "}
+          {t("Pro klinické srovnání doporučujeme metriku")} <em>{t("Počet pacientů")}</em>.{" "}
+          {t("Data neobsahují identifikátor poskytovatele – regionální analýza je dle okresu")} <em>{t("bydliště pacienta")}</em>.
         </span>
       </div>
 
       {/* ── KPI row ─────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard title="Objem výkonů"     value={fmt(kpiData.totalMn)} subtitle={`Rok ${selectedYear} – všechny GIT výkony`} icon={Activity}   color="#3b82f6" />
-        <KpiCard title="Unikátní pacienti" value={fmt(kpiData.totalPp)} subtitle={`Rok ${selectedYear}`}                       icon={Users}      color="#10b981" />
-        <KpiCard title="Kontakty"          value={fmt(kpiData.totalKk)} subtitle={`Rok ${selectedYear}`}                       icon={Hash}       color="#8b5cf6" />
-        <KpiCard title="ERCP – trend"
+        <KpiCard title={t("Objem výkonů")}      value={fmt(kpiData.totalMn)} subtitle={t("Rok {year} – všechny GIT výkony", { year: selectedYear })} icon={Activity} color="#3b82f6" />
+        <KpiCard title={t("Unikátní pacienti")} value={fmt(kpiData.totalPp)} subtitle={t("Rok {year}", { year: selectedYear })}                      icon={Users}    color="#10b981" />
+        <KpiCard title={t("Kontakty")}          value={fmt(kpiData.totalKk)} subtitle={t("Rok {year}", { year: selectedYear })}                      icon={Hash}     color="#8b5cf6" />
+        <KpiCard title={t("ERCP – trend")}
           value={fmt(ercpSeries.at(-1)?.mnozstvi ?? 0)}
-          subtitle="Počet ERCP – poslední rok"
-          delta={ercpDelta} deltaLabel="vs. předchozí rok"
+          subtitle={t("Počet ERCP – poslední rok")}
+          delta={ercpDelta} deltaLabel={t("vs. předchozí rok")}
           icon={TrendingUp} color="#f59e0b"
         />
       </div>
@@ -171,18 +179,18 @@ export default function Overview() {
       {/* ── Trend line chart (filter-controlled) ────────────────────────── */}
       <ChartContainer
         title={trendTitle}
-        subtitle="Počet výkonů dle roku – celostátně"
+        subtitle={t("Počet výkonů dle roku – celostátně")}
         controls={filterControls}
       >
         <ResponsiveContainer width="100%" height={chartProcs.length > 8 ? 420 : 340}>
           <LineChart data={compSeries} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-            <XAxis dataKey="year" tick={{ fill: "#9ca3af", fontSize: 14 }} />
-            <YAxis tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} width={60} />
+            <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} />
+            <XAxis dataKey="year" tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
+            <YAxis tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} width={60} />
             <Tooltip
-              contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
-              labelStyle={{ color: "#e5e7eb", fontWeight: 600 }}
-              itemStyle={{ color: "#d1d5db" }}
+              contentStyle={CHART_UI.tooltip}
+              labelStyle={CHART_UI.tooltipLabel}
+              itemStyle={CHART_UI.tooltipItem}
               formatter={(v, name) => {
                 const c = chartProcs.find((x) => x.kod === name);
                 return [fmt(v), c ? `${c.szv_code ?? c.kod} – ${c.label}` : name];
@@ -193,7 +201,7 @@ export default function Overview() {
                 const c = chartProcs.find((x) => x.kod === val);
                 return c ? `${c.szv_code ?? c.kod} – ${c.label}` : val;
               }}
-              wrapperStyle={{ fontSize: compFilter === "key" ? 14 : 13, color: "#9ca3af" }}
+              wrapperStyle={{ fontSize: compFilter === "key" ? 14 : 13, color: CHART_UI.tick }}
             />
             <ReferenceLine x="2020" stroke="#ef444455" strokeDasharray="4 4"
               label={{ value: "COVID-19", position: "top", fill: "#ef4444", fontSize: 14 }} />
@@ -209,28 +217,28 @@ export default function Overview() {
 
         {chartCapped && (
           <p className="text-xs text-amber-500/80 mt-2 text-center">
-            Graf zobrazuje Top {CHART_LINE_LIMIT} výkonů. Tabulka níže obsahuje všech {compProcs.length} výkonů.
+            {t("Graf zobrazuje Top {n} výkonů. Tabulka níže obsahuje všech {total} výkonů.", { n: CHART_LINE_LIMIT, total: compProcs.length })}
           </p>
         )}
       </ChartContainer>
 
       {/* ── Top 15 bar chart (always full list, year-sensitive) ─────────── */}
       <ChartContainer
-        title={`Top 15 výkonů dle objemu – rok ${selectedYear}`}
-        subtitle="Celkový počet vykázaných výkonů"
+        title={t("Top 15 výkonů dle objemu – rok {year}", { year: selectedYear })}
+        subtitle={t("Celkový počet vykázaných výkonů")}
       >
         <ResponsiveContainer width="100%" height={540}>
           <BarChart data={topProcs} layout="vertical" margin={{ top: 5, right: 30, bottom: 5, left: 200 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" horizontal={false} />
-            <XAxis type="number" tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} />
-            <YAxis type="category" dataKey="label" tick={{ fill: "#d1d5db", fontSize: 14 }} width={195} />
+            <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} horizontal={false} />
+            <XAxis type="number" tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
+            <YAxis type="category" dataKey="label" tick={{ fill: CHART_UI.tickStrong, fontSize: 14 }} width={195} />
             <Tooltip
-              contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
-              itemStyle={{ color: "#d1d5db" }}
+              contentStyle={CHART_UI.tooltip}
+              itemStyle={CHART_UI.tooltipItem}
               formatter={(v, _name, props) => {
                 const p = props?.payload;
                 const code = p?.szv_code ? `${p.szv_code} – ` : "";
-                return [fmt(v), `${code}${p?.label ?? "Počet výkonů"}`];
+                return [fmt(v), `${code}${p?.label ?? t("Počet výkonů")}`];
               }}
             />
             <Bar dataKey="value" fill="#3b82f6" radius={[0, 4, 4, 0]} />
@@ -244,8 +252,8 @@ export default function Overview() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b border-gray-800">
-              <th className="text-left px-4 py-3 text-gray-400 font-medium">Výkon</th>
-              <th className="text-left px-4 py-3 text-gray-400 font-medium font-mono">SZV kód</th>
+              <th className="text-left px-4 py-3 text-gray-400 font-medium">{t("Výkon")}</th>
+              <th className="text-left px-4 py-3 text-gray-400 font-medium font-mono">{t("SZV kód")}</th>
               {YEARS.map((y) => (
                 <th key={y} className={`text-right px-3 py-3 font-medium ${y === selectedYear ? "text-blue-400" : "text-gray-400"}`}>{y}</th>
               ))}

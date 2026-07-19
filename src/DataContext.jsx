@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { useSettings } from "./SettingsContext";
+import { procLabelEn } from "./i18n";
 
 const DataContext = createContext(null);
 
@@ -56,7 +58,14 @@ export function DataProvider({ children }) {
     });
   }, []);
 
-  return <DataContext.Provider value={{ ...state, loadIcoData }}>{children}</DataContext.Provider>;
+  // Localize procedure labels for the active UI language
+  const { lang } = useSettings();
+  const procedures = useMemo(
+    () => (lang === "en" ? state.procedures.map((p) => ({ ...p, label: procLabelEn(p) })) : state.procedures),
+    [state.procedures, lang]
+  );
+
+  return <DataContext.Provider value={{ ...state, procedures, loadIcoData }}>{children}</DataContext.Provider>;
 }
 
 export function useData() {

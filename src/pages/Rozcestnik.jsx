@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ExternalLink, Database, List, Hash, Package, Building2, BarChart2, BookOpen, ChevronDown, ChevronUp, Quote } from "lucide-react";
+import { useT } from "../SettingsContext";
 
 const RESOURCES = [
   {
@@ -86,6 +87,7 @@ const TAG_COLORS = {
 };
 
 function DatasetCard({ title, url, description, citation, tag }) {
+  const t = useT();
   const [open, setOpen] = useState(false);
   return (
     <div className="card p-5 flex flex-col gap-3">
@@ -104,7 +106,7 @@ function DatasetCard({ title, url, description, citation, tag }) {
           target="_blank"
           rel="noopener noreferrer"
           className="flex-shrink-0 mt-0.5 text-gray-600 hover:text-gray-300 transition-colors"
-          title="Otevřít datovou sadu"
+          title={t("Otevřít datovou sadu")}
         >
           <ExternalLink size={14} />
         </a>
@@ -116,11 +118,11 @@ function DatasetCard({ title, url, description, citation, tag }) {
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-semibold text-gray-100 hover:text-white transition-colors leading-snug"
+          className="text-sm font-semibold text-gray-100 hover:text-strong transition-colors leading-snug"
         >
-          {title}
+          {t(title)}
         </a>
-        <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">{description}</p>
+        <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">{t(description)}</p>
       </div>
 
       {/* Citation toggle */}
@@ -130,7 +132,7 @@ function DatasetCard({ title, url, description, citation, tag }) {
           className="flex items-center gap-1.5 text-xs text-gray-500 hover:text-gray-300 transition-colors"
         >
           <Quote size={11} />
-          Citace
+          {t("Citace")}
           {open ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
         </button>
         {open && (
@@ -144,14 +146,15 @@ function DatasetCard({ title, url, description, citation, tag }) {
 }
 
 export default function Rozcestnik() {
+  const t = useT();
   return (
     <div className="space-y-8">
 
       {/* ── Section 1: Resources ──────────────────────────────────────────── */}
       <div>
         <div className="mb-4">
-          <h1 className="text-2xl font-bold text-white">Rozcestník</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Užitečné zdroje a registry ke zdravotním výkonům v ČR</p>
+          <h1 className="text-2xl font-bold text-strong">{t("Rozcestník")}</h1>
+          <p className="text-sm text-gray-500 mt-0.5">{t("Užitečné zdroje a registry ke zdravotním výkonům v ČR")}</p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
@@ -175,10 +178,10 @@ export default function Rozcestnik() {
                 <ExternalLink size={14} className="text-gray-600 group-hover:text-gray-400 transition-colors flex-shrink-0 mt-1" />
               </div>
               <div>
-                <h2 className="text-sm font-semibold text-gray-100 group-hover:text-white transition-colors leading-snug">
-                  {title}
+                <h2 className="text-sm font-semibold text-gray-100 group-hover:text-strong transition-colors leading-snug">
+                  {t(title)}
                 </h2>
-                <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">{description}</p>
+                <p className="text-xs text-gray-500 mt-1.5 leading-relaxed">{t(description)}</p>
               </div>
               <p className="text-[11px] text-gray-600 group-hover:text-gray-500 font-mono truncate transition-colors mt-auto pt-1 border-t border-gray-800">
                 {url.length > 60 ? url.slice(0, 60) + "…" : url}
@@ -191,15 +194,15 @@ export default function Rozcestnik() {
       {/* ── Divider ───────────────────────────────────────────────────────── */}
       <div className="flex items-center gap-4">
         <div className="flex-1 h-px bg-gray-800" />
-        <span className="text-[10px] text-gray-600 uppercase tracking-widest font-medium">datové sady</span>
+        <span className="text-[10px] text-gray-600 uppercase tracking-widest font-medium">{t("datové sady")}</span>
         <div className="flex-1 h-px bg-gray-800" />
       </div>
 
       {/* ── Section 2: Datasets ──────────────────────────────────────────── */}
       <div>
         <div className="mb-4">
-          <h2 className="text-lg font-semibold text-white">Datové sady – časové pokrytí: 1. 1. 2019 – 31. 12. 2024</h2>
-          <p className="text-sm text-gray-500 mt-0.5">Zdrojová otevřená data NZIP · ÚZIS ČR použitá v tomto dashboardu</p>
+          <h2 className="text-lg font-semibold text-strong">{t("Datové sady – časové pokrytí: 1. 1. 2019 – 31. 12. 2024")}</h2>
+          <p className="text-sm text-gray-500 mt-0.5">{t("Zdrojová otevřená data NZIP · ÚZIS ČR použitá v tomto dashboardu")}</p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">

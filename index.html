@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gastroenterologie & Endoskopie – Analytický dashboard</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Apply saved theme before first paint to avoid a flash of the default theme
+      try {
+        var t = localStorage.getItem("giboard.theme");
+        if (t === "light" || t === "graphite") document.documentElement.dataset.theme = t;
+        var l = localStorage.getItem("giboard.lang");
+        if (l === "en") document.documentElement.lang = "en";
+      } catch (e) {}
+    </script>
   </head>
   <body class="bg-gray-950">
     <div id="root"></div>

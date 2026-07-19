@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import { geoMercator, geoPath } from "d3-geo";
 import { MapPin, Info, ZoomIn, ZoomOut, RotateCcw } from "lucide-react";
+import { useT } from "../SettingsContext";
 
 const MAP_W = 800;
 const MAP_H = 420;
@@ -57,6 +58,7 @@ function hashJitter(ico) {
 }
 
 export default function ProcedureMap({ providers, selectedKod, metric, selectedYear }) {
+  const t = useT();
   const [cityCoords, setCityCoords] = useState(null);
   const [geojson, setGeojson] = useState(null);
   const [tooltip, setTooltip] = useState(null);
@@ -120,7 +122,7 @@ export default function ProcedureMap({ providers, selectedKod, metric, selectedY
     return `rgb(${r},${g},${b})`;
   };
 
-  const metricLabel = { mnozstvi: "výkonů", pocet_pacientu: "pacientů", pocet_kontaktu: "kontaktů" }[metric] || "výkonů";
+  const metricLabel = t({ mnozstvi: "výkonů", pocet_pacientu: "pacientů", pocet_kontaktu: "kontaktů" }[metric] || "výkonů");
 
   // Zoom handlers
   const handleWheel = useCallback((e) => {
@@ -162,7 +164,7 @@ export default function ProcedureMap({ providers, selectedKod, metric, selectedY
   if (!cityCoords || !geojson) {
     return (
       <div className="card p-6 flex items-center justify-center h-64 text-gray-500 text-sm">
-        Načítám data mapy…
+        {t("Načítám data mapy…")}
       </div>
     );
   }
@@ -177,27 +179,27 @@ export default function ProcedureMap({ providers, selectedKod, metric, selectedY
         <div className="flex items-center gap-2">
           <MapPin size={16} className="text-blue-400" />
           <span className="text-sm font-semibold text-gray-200">
-            Mapa pracovišť – výkon {selectedKod} · rok {selectedYear}
+            {t("Mapa pracovišť – výkon {kod} · rok {year}", { kod: selectedKod, year: selectedYear })}
           </span>
           <span className="text-xs text-gray-500">
-            ({markers.length} pracovišť s daty)
+            {t("({n} pracovišť s daty)", { n: markers.length })}
           </span>
         </div>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 text-xs text-gray-500">
             <span className="flex items-center gap-1">
               <span className="inline-block rounded-full border border-blue-300/30" style={{ width: 8, height: 8, background: "#bfdbfe" }} />
-              méně
+              {t("méně")}
             </span>
             <span className="flex items-center gap-1">
               <span className="inline-block rounded-full border border-blue-600/30" style={{ width: 16, height: 16, background: "#1d4ed8" }} />
-              více {metricLabel}
+              {t("více {metric}", { metric: metricLabel })}
             </span>
           </div>
           {/* Zoom buttons */}
           <div className="flex items-center gap-1">
-            <button onClick={() => setZoom(z => Math.min(8, z * 1.3))} className="p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400" title="Přiblížit"><ZoomIn size={14} /></button>
-            <button onClick={() => setZoom(z => Math.max(0.8, z / 1.3))} className="p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400" title="Oddálit"><ZoomOut size={14} /></button>
+            <button onClick={() => setZoom(z => Math.min(8, z * 1.3))} className="p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400" title={t("Přiblížit")}><ZoomIn size={14} /></button>
+            <button onClick={() => setZoom(z => Math.max(0.8, z / 1.3))} className="p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400" title={t("Oddálit")}><ZoomOut size={14} /></button>
             <button onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }} className="p-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-400" title="Reset"><RotateCcw size={14} /></button>
           </div>
         </div>
@@ -222,14 +224,14 @@ export default function ProcedureMap({ providers, selectedKod, metric, selectedY
             {/* Kraje */}
             {geojson.features.map((feat) => {
               const nutsId = feat.properties.NUTS_ID;
-              const color = KRAJ_COLORS[nutsId] || "#1e3a5f";
+              const color = KRAJ_COLORS[nutsId] || "var(--map-land)";
               return (
                 <path
                   key={nutsId}
                   d={pathGen(feat)}
                   fill={color}
                   fillOpacity={0.35}
-                  stroke="#334155"
+                  stroke="var(--map-stroke)"
                   strokeWidth={0.6}
                 />
               );
@@ -264,7 +266,7 @@ export default function ProcedureMap({ providers, selectedKod, metric, selectedY
             }}
           >
             <div className="bg-gray-900/95 border border-gray-700 rounded-lg p-3 shadow-xl w-52">
-              <p className="text-xs font-semibold text-white leading-tight truncate">{tooltip.name}</p>
+              <p className="text-xs font-semibold text-strong leading-tight truncate">{tooltip.name}</p>
               <p className="text-xs text-gray-400 mt-0.5 truncate">
                 {tooltip.city}{tooltip.kraj ? ` · ${tooltip.kraj}` : ""}
               </p>
@@ -279,14 +281,14 @@ export default function ProcedureMap({ providers, selectedKod, metric, selectedY
         {/* Zoom hint */}
         <div className="absolute bottom-2 left-3 text-xs text-gray-600 flex items-center gap-1 pointer-events-none">
           <Info size={11} />
-          Kolečko myši = zoom · Tažení = posun · Hover = detail pracoviště
+          {t("Kolečko myši = zoom · Tažení = posun · Hover = detail pracoviště")}
         </div>
       </div>
 
       {/* Top 5 list */}
       {markers.length > 0 && (
         <div className="px-4 py-3 border-t border-gray-800">
-          <p className="text-xs text-gray-500 mb-2 font-medium uppercase tracking-wide">Top 5 pracovišť</p>
+          <p className="text-xs text-gray-500 mb-2 font-medium uppercase tracking-wide">{t("Top 5 pracovišť")}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
             {sortedMarkers.slice(0, 5).map((m, i) => (
               <div key={`${m.ico}-${i}`} className="flex items-center gap-2">

@@ -30,6 +30,21 @@ export const KEY_CODES = [
   { kod: "15470", szv_code: "15470", label: "Kapslová enteroskopie", color: "#84cc16" },
 ];
 
+// Theme-aware chart UI colors (resolved from CSS variables set per data-theme)
+export const CHART_UI = {
+  grid:       "var(--chart-grid)",
+  tick:       "var(--chart-tick)",
+  tickStrong: "var(--chart-tick-strong)",
+  tickAccent: "var(--chart-tick-accent)",
+  tooltip: {
+    background: "var(--chart-tooltip-bg)",
+    border: "1px solid var(--chart-tooltip-border)",
+    borderRadius: 8,
+  },
+  tooltipLabel: { color: "var(--chart-tooltip-text)", fontWeight: 600 },
+  tooltipItem:  { color: "var(--chart-tooltip-item)" },
+};
+
 // Recharts colour palette for multi-series
 export const CHART_COLORS = [
   "#3b82f6","#8b5cf6","#10b981","#f59e0b","#ef4444",

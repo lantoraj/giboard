@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
 import { Search, ArrowUpDown, TrendingUp, TrendingDown, Minus, Building2, BarChart2, X } from "lucide-react";
 import { useData, getNationalTimeSeries } from "../DataContext";
+import { useT } from "../SettingsContext";
 import { YEARS, CHART_COLORS } from "../constants";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
 
@@ -19,10 +20,11 @@ function MiniSparkline({ series, color }) {
 }
 
 // Strip diacritics for fuzzy matching (handles composed vs. decomposed unicode)
-const norm = (s) => (s ?? "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const norm = (s) => (s ?? "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
 
 // ── Provider search dropdown ────────────────────────────────────────────────
 function ProviderSearch({ providers, selected, onSelect }) {
+  const t = useT();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
@@ -73,7 +75,7 @@ function ProviderSearch({ providers, selected, onSelect }) {
             onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
             onFocus={() => setOpen(true)}
             className="bg-transparent text-sm text-gray-200 outline-none flex-1 placeholder-gray-600"
-            placeholder="Hledat pracoviště (název nebo IČO)…"
+            placeholder={t("Hledat pracoviště (název nebo IČO)…")}
           />
           {query && (
             <button onClick={() => setQuery("")} className="text-gray-500 hover:text-gray-300">
@@ -86,7 +88,7 @@ function ProviderSearch({ providers, selected, onSelect }) {
       {open && !selected && (
         <div className="absolute top-full left-0 right-0 mt-1 bg-gray-900 border border-gray-700 rounded-lg shadow-xl z-50 max-h-72 overflow-y-auto">
           {results.length === 0 ? (
-            <p className="px-4 py-3 text-sm text-gray-500">Žádné výsledky</p>
+            <p className="px-4 py-3 text-sm text-gray-500">{t("Žádné výsledky")}</p>
           ) : (
             results.map((p, i) => (
               <button
@@ -108,6 +110,7 @@ function ProviderSearch({ providers, selected, onSelect }) {
 // ── Main component ──────────────────────────────────────────────────────────
 export default function Explorer() {
   const { procedures, national, providers, gastroRegistry, icoLoaded, icoLoading, loadIcoData } = useData();
+  const t = useT();
   const [query, setQuery] = useState("");
   const [sortKey, setSortKey] = useState("total");
   const [sortDir, setSortDir] = useState("desc");
@@ -163,7 +166,6 @@ export default function Explorer() {
     return enriched
       .filter((p) => {
         const matchesSearch = p.label.toLowerCase().includes(q) || p.kod.includes(q) || (p.szv_code && p.szv_code.includes(q));
-        // In provider mode, optionally hide procedures with 0 total when a provider is selected
         return matchesSearch;
       })
       .sort((a, b) => {
@@ -212,8 +214,8 @@ export default function Explorer() {
       {/* Header */}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">Průzkumník výkonů</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Všechny GIT výkony – vyhledávání a řazení</p>
+          <h1 className="text-2xl font-bold text-strong">{t("Průzkumník výkonů")}</h1>
+          <p className="text-sm text-gray-500 mt-0.5">{t("Všechny GIT výkony – vyhledávání a řazení")}</p>
         </div>
 
         {/* View mode toggle */}
@@ -224,7 +226,7 @@ export default function Explorer() {
               viewMode === "national" ? "bg-blue-600 text-white" : "text-gray-400 hover:text-gray-200"
             }`}
           >
-            <BarChart2 size={14} /> Národní přehled
+            <BarChart2 size={14} /> {t("Národní přehled")}
           </button>
           <button
             onClick={() => switchMode("provider")}
@@ -232,7 +234,7 @@ export default function Explorer() {
               viewMode === "provider" ? "bg-blue-600 text-white" : "text-gray-400 hover:text-gray-200"
             }`}
           >
-            <Building2 size={14} /> Podle pracoviště
+            <Building2 size={14} /> {t("Podle pracoviště")}
           </button>
         </div>
       </div>
@@ -244,14 +246,14 @@ export default function Explorer() {
           <Search size={15} className="text-gray-500" />
           <input value={query} onChange={(e) => { setQuery(e.target.value); setPage(0); }}
             className="bg-transparent text-sm text-gray-200 outline-none flex-1 placeholder-gray-600"
-            placeholder="Hledat kód nebo název…" />
+            placeholder={t("Hledat kód nebo název…")} />
           {query && <button onClick={() => setQuery("")} className="text-gray-500 hover:text-gray-300"><X size={13} /></button>}
         </div>
 
         {/* Provider picker – only in provider mode */}
         {viewMode === "provider" && (
           icoLoading ? (
-            <p className="text-sm text-gray-500 animate-pulse">Načítám data pracovišť…</p>
+            <p className="text-sm text-gray-500 animate-pulse">{t("Načítám data pracovišť…")}</p>
           ) : (
             <ProviderSearch
               providers={gastroRegistry}
@@ -266,8 +268,8 @@ export default function Explorer() {
       {viewMode === "provider" && selectedProvider && (
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div className="card p-4 col-span-2 sm:col-span-1">
-            <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Pracoviště</p>
-            <p className="text-sm font-semibold text-white leading-snug">{selectedProvider.name}</p>
+            <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">{t("Pracoviště")}</p>
+            <p className="text-sm font-semibold text-strong leading-snug">{selectedProvider.name}</p>
             <p className="text-xs text-gray-500 mt-0.5">{selectedProvider.city} · {selectedProvider.kraj}</p>
             <p className="text-[10px] text-gray-600 mt-1 capitalize">{selectedProvider.obor}</p>
           </div>
@@ -275,17 +277,17 @@ export default function Explorer() {
             <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">IČO</p>
             <p className="text-lg font-bold text-blue-400 font-mono">{selectedProvider.ico}</p>
             {selectedProviderData
-              ? <p className="text-[10px] text-emerald-500 mt-1">✓ Data výkonů dostupná</p>
-              : <p className="text-[10px] text-gray-600 mt-1">Žádná data výkonů (2019–2024)</p>
+              ? <p className="text-[10px] text-emerald-500 mt-1">✓ {t("Data výkonů dostupná")}</p>
+              : <p className="text-[10px] text-gray-600 mt-1">{t("Žádná data výkonů (2019–2024)")}</p>
             }
           </div>
           <div className="card p-4">
-            <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Celkem výkonů (2019–2024)</p>
-            <p className="text-lg font-bold text-white">{providerTotal > 0 ? fmt(providerTotal) : "—"}</p>
+            <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">{t("Celkem výkonů (2019–2024)")}</p>
+            <p className="text-lg font-bold text-strong">{providerTotal > 0 ? fmt(providerTotal) : "—"}</p>
           </div>
           <div className="card p-4">
-            <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">Aktivní kódy</p>
-            <p className="text-lg font-bold text-white">
+            <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1">{t("Aktivní kódy")}</p>
+            <p className="text-lg font-bold text-strong">
               {providerActiveProcs > 0 ? providerActiveProcs : "—"}
               {providerActiveProcs > 0 && <span className="text-sm text-gray-500 font-normal"> / {procedures.length}</span>}
             </p>
@@ -297,9 +299,9 @@ export default function Explorer() {
       {viewMode === "provider" && !selectedProvider && !icoLoading && (
         <div className="card flex flex-col items-center justify-center py-16 text-gray-600">
           <Building2 size={36} className="mb-3 opacity-30" />
-          <p className="text-sm font-medium">Vyberte pracoviště</p>
+          <p className="text-sm font-medium">{t("Vyberte pracoviště")}</p>
           <p className="text-xs mt-1 opacity-70">
-            Vyhledejte z {gastroRegistry.length} gastroenterologických pracovišť v ČR
+            {t("Vyhledejte z {n} gastroenterologických pracovišť v ČR", { n: gastroRegistry.length })}
           </p>
         </div>
       )}
@@ -309,22 +311,22 @@ export default function Explorer() {
         <>
           <p className="text-xs text-gray-500">
             {filtered.filter((p) => viewMode === "provider" ? p.total > 0 : true).length !== filtered.length
-              ? `${filtered.length} výkonů · ${filtered.filter(p => p.total > 0).length} s daty`
-              : `${filtered.length} výkonů celkem`}
+              ? t("{n} výkonů · {m} s daty", { n: filtered.length, m: filtered.filter(p => p.total > 0).length })
+              : t("{n} výkonů celkem", { n: filtered.length })}
           </p>
 
           <div className="card overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-gray-800">
-                  <th className="text-left px-4 py-3"><SortBtn k="kod" label="SZV kód" /></th>
-                  <th className="text-left px-4 py-3 text-gray-400 font-medium">Název</th>
+                  <th className="text-left px-4 py-3"><SortBtn k="kod" label={t("SZV kód")} /></th>
+                  <th className="text-left px-4 py-3 text-gray-400 font-medium">{t("Název")}</th>
                   {YEARS.map((y) => (
                     <th key={y} className="text-right px-3 py-3 text-gray-400 font-medium">{y}</th>
                   ))}
-                  <th className="text-right px-4 py-3"><SortBtn k="total" label="Celkem" /></th>
+                  <th className="text-right px-4 py-3"><SortBtn k="total" label={t("Celkem")} /></th>
                   <th className="text-right px-4 py-3"><SortBtn k="yoy" label="YoY %" /></th>
-                  <th className="text-right px-4 py-3 text-gray-400 font-medium">Trend</th>
+                  <th className="text-right px-4 py-3 text-gray-400 font-medium">{t("Trend")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -373,12 +375,12 @@ export default function Explorer() {
               <div className="flex items-center justify-center gap-2 p-4 border-t border-gray-800">
                 <button onClick={() => setPage((p) => Math.max(0, p - 1))} disabled={page === 0}
                   className="px-3 py-1 text-sm bg-gray-800 text-gray-300 rounded-lg disabled:opacity-40 hover:bg-gray-700 transition-colors">
-                  ← Předchozí
+                  {t("← Předchozí")}
                 </button>
                 <span className="text-sm text-gray-500">{page + 1} / {pages}</span>
                 <button onClick={() => setPage((p) => Math.min(pages - 1, p + 1))} disabled={page >= pages - 1}
                   className="px-3 py-1 text-sm bg-gray-800 text-gray-300 rounded-lg disabled:opacity-40 hover:bg-gray-700 transition-colors">
-                  Další →
+                  {t("Další →")}
                 </button>
               </div>
             )}

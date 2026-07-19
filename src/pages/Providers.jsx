@@ -6,7 +6,8 @@ import {
 import { Building2, TrendingUp, TrendingDown, Minus, ChevronUp, ChevronDown, ChevronsUpDown, X } from "lucide-react";
 
 import { useData } from "../DataContext";
-import { YEARS, CHART_COLORS } from "../constants";
+import { useT } from "../SettingsContext";
+import { YEARS, CHART_COLORS, CHART_UI } from "../constants";
 import ProcedureSelect from "../components/ProcedureSelect";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
@@ -36,6 +37,7 @@ function SortIcon({ col, sortCol, sortDir }) {
 
 export default function Providers() {
   const { providers, icoLoading, icoLoaded, loadIcoData, procedures } = useData();
+  const t = useT();
   const [selectedKod, setSelectedKod]   = useState("15430");
   const [selectedYear, setSelectedYear] = useState("2024");
   const [topN, setTopN]                 = useState(20);
@@ -159,8 +161,8 @@ export default function Providers() {
       {/* Header */}
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">Poskytovatelé</h1>
-          <p className="text-sm text-gray-500 mt-0.5">Žebříček pracovišť dle objemu výkonů · NR-04-02</p>
+          <h1 className="text-2xl font-bold text-strong">{t("Poskytovatelé")}</h1>
+          <p className="text-sm text-gray-500 mt-0.5">{t("Žebříček pracovišť dle objemu výkonů · NR-04-02")}</p>
         </div>
         <div className="flex flex-wrap gap-2 items-center">
           <ProcedureSelect value={selectedKod} onChange={setSelectedKod} />
@@ -178,32 +180,32 @@ export default function Providers() {
       {/* KPI strip */}
       <div className="grid grid-cols-3 gap-4">
         <div className="card p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Pracovišť s výkonem</p>
-          <p className="text-2xl font-bold text-white">{ranked.length}</p>
-          <p className="text-xs text-gray-500 mt-0.5">rok {selectedYear}</p>
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t("Pracovišť s výkonem")}</p>
+          <p className="text-2xl font-bold text-strong">{ranked.length}</p>
+          <p className="text-xs text-gray-500 mt-0.5">{t("rok {year}", { year: selectedYear })}</p>
         </div>
         <div className="card p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Celkem výkonů</p>
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t("Celkem výkonů")}</p>
           <p className="text-2xl font-bold text-blue-400">{fmtFull(ranked.reduce((s, p) => s + p.valYear, 0))}</p>
-          <p className="text-xs text-gray-500 mt-0.5">rok {selectedYear}</p>
+          <p className="text-xs text-gray-500 mt-0.5">{t("rok {year}", { year: selectedYear })}</p>
         </div>
         <div className="card p-4">
-          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">Top pracoviště</p>
-          <p className="text-lg font-bold text-white leading-tight truncate">{ranked[0]?.name ?? "—"}</p>
-          <p className="text-xs text-gray-500 mt-0.5">{fmtFull(ranked[0]?.valYear ?? 0)} výkonů · {ranked[0]?.city}</p>
+          <p className="text-xs text-gray-500 uppercase tracking-wider mb-1">{t("Top pracoviště")}</p>
+          <p className="text-lg font-bold text-strong leading-tight truncate">{ranked[0]?.name ?? "—"}</p>
+          <p className="text-xs text-gray-500 mt-0.5">{t("{n} výkonů · {city}", { n: fmtFull(ranked[0]?.valYear ?? 0), city: ranked[0]?.city ?? "" })}</p>
         </div>
       </div>
 
       {/* Bar chart top 15 */}
-      <ChartContainer title={`Top 15 pracovišť – ${procLabel} – ${selectedYear}`}>
+      <ChartContainer title={t("Top 15 pracovišť – {proc} – {year}", { proc: procLabel, year: selectedYear })}>
         <ResponsiveContainer width="100%" height={Math.max(420, barData.length * 38)}>
           <BarChart data={barData} layout="vertical" margin={{ top: 5, right: 40, bottom: 5, left: 260 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" horizontal={false} />
-            <XAxis type="number" tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} />
-            <YAxis type="category" dataKey="name" width={255} interval={0} tick={{ fill: "#d1d5db", fontSize: 13 }} />
+            <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} horizontal={false} />
+            <XAxis type="number" tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
+            <YAxis type="category" dataKey="name" width={255} interval={0} tick={{ fill: CHART_UI.tickStrong, fontSize: 13 }} />
             <Tooltip
-              contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
-              formatter={(v) => [fmtFull(v), "Výkony"]}
+              contentStyle={CHART_UI.tooltip}
+              formatter={(v) => [fmtFull(v), t("Výkony")]}
             />
             <Bar dataKey="value" fill="#3b82f6" radius={[0, 4, 4, 0]} />
           </BarChart>
@@ -212,14 +214,14 @@ export default function Providers() {
 
       {/* Trend top 5 */}
       {top5.length > 0 && (
-        <ChartContainer title={`Vývoj – Top 5 pracovišť · ${procLabel}`} subtitle="2019–2024">
+        <ChartContainer title={t("Vývoj – Top 5 pracovišť · {proc}", { proc: procLabel })} subtitle="2019–2024">
           <ResponsiveContainer width="100%" height={280}>
             <LineChart data={trendData} margin={{ top: 5, right: 20, bottom: 5, left: 10 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-              <XAxis dataKey="year" tick={{ fill: "#9ca3af", fontSize: 14 }} />
-              <YAxis tickFormatter={fmt} tick={{ fill: "#9ca3af", fontSize: 14 }} width={55} />
+              <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} />
+              <XAxis dataKey="year" tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
+              <YAxis tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} width={55} />
               <Tooltip
-                contentStyle={{ background: "#111827", border: "1px solid #374151", borderRadius: 8 }}
+                contentStyle={CHART_UI.tooltip}
                 formatter={(v, name) => {
                   const p = top5.find((x) => x.ico === name);
                   return [fmtFull(v), p?.name ?? name];
@@ -227,7 +229,7 @@ export default function Providers() {
               />
               <Legend
                 formatter={(name) => top5.find((x) => x.ico === name)?.name?.slice(0, 40) ?? name}
-                wrapperStyle={{ fontSize: 14, color: "#9ca3af" }}
+                wrapperStyle={{ fontSize: 14, color: CHART_UI.tick }}
               />
               {top5.map((p, i) => (
                 <Line key={p.ico} type="monotone" dataKey={p.ico} stroke={CHART_COLORS[i]}
@@ -240,34 +242,34 @@ export default function Providers() {
 
       {/* ── Table section ─────────────────────────────────────────────────── */}
       <SectionHeader
-        title={`Všechna pracoviště – ${procLabel}`}
-        subtitle={`Rok ${selectedYear} · ${isFiltered ? `${filtered.length} / ` : ""}${ranked.length} pracovišť`}
+        title={t("Všechna pracoviště – {proc}", { proc: procLabel })}
+        subtitle={t("Rok {year} · {list} pracovišť", { year: selectedYear, list: `${isFiltered ? `${filtered.length} / ` : ""}${ranked.length}` })}
       />
 
       {/* Filter row */}
       <div className="flex flex-wrap gap-3 items-center">
         {/* City filter */}
         <div className="flex items-center gap-2">
-          <label className="text-xs text-gray-500 whitespace-nowrap">Město:</label>
+          <label className="text-xs text-gray-500 whitespace-nowrap">{t("Město:")}</label>
           <select
             value={filterCity}
             onChange={(e) => setFilterCity(e.target.value)}
             className="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-xs text-gray-200 outline-none focus:border-gray-500 min-w-[160px]"
           >
-            <option value="">Vše</option>
+            <option value="">{t("Vše")}</option>
             {cities.map((c) => <option key={c} value={c}>{c}</option>)}
           </select>
         </div>
 
         {/* Kraj filter */}
         <div className="flex items-center gap-2">
-          <label className="text-xs text-gray-500 whitespace-nowrap">Kraj:</label>
+          <label className="text-xs text-gray-500 whitespace-nowrap">{t("Kraj:")}</label>
           <select
             value={filterKraj}
             onChange={(e) => setFilterKraj(e.target.value)}
             className="px-3 py-1.5 bg-gray-800 border border-gray-700 rounded-lg text-xs text-gray-200 outline-none focus:border-gray-500 min-w-[160px]"
           >
-            <option value="">Vše</option>
+            <option value="">{t("Vše")}</option>
             {regions.map((r) => <option key={r} value={r}>{r}</option>)}
           </select>
         </div>
@@ -278,13 +280,13 @@ export default function Providers() {
             onClick={resetFilters}
             className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs text-gray-400 bg-gray-800 border border-gray-700 rounded-lg hover:border-gray-500 hover:text-gray-200 transition-colors"
           >
-            <X size={11} /> Resetovat
+            <X size={11} /> {t("Resetovat")}
           </button>
         )}
 
         {isFiltered && (
           <span className="text-xs text-gray-500">
-            Zobrazeno {filtered.length} z {ranked.length} pracovišť
+            {t("Zobrazeno {n} z {m} pracovišť", { n: filtered.length, m: ranked.length })}
           </span>
         )}
       </div>
@@ -295,9 +297,9 @@ export default function Providers() {
           <thead>
             <tr className="border-b border-gray-800">
               <th className="text-left px-4 py-3 text-gray-400 font-medium w-8">#</th>
-              <th className="text-left px-4 py-3 text-gray-400 font-medium">Pracoviště</th>
-              <th className="text-left px-3 py-3 text-gray-400 font-medium">Město</th>
-              <th className="text-left px-3 py-3 text-gray-400 font-medium">Kraj</th>
+              <th className="text-left px-4 py-3 text-gray-400 font-medium">{t("Pracoviště")}</th>
+              <th className="text-left px-3 py-3 text-gray-400 font-medium">{t("Město:").replace(":", "")}</th>
+              <th className="text-left px-3 py-3 text-gray-400 font-medium">{t("Kraj")}</th>
               <th className="text-left px-3 py-3 text-gray-400 font-medium font-mono text-xs">IČO</th>
 
               {/* Sortable year columns */}
@@ -368,7 +370,7 @@ export default function Providers() {
           <div className="px-4 py-3 border-t border-gray-800 text-center">
             <button onClick={() => setTopN((n) => n + 20)}
               className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-              Zobrazit dalších 20 z {filtered.length - topN} zbývajících
+              {t("Zobrazit dalších 20 z {n} zbývajících", { n: filtered.length - topN })}
             </button>
           </div>
         )}
