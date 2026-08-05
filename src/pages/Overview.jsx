@@ -228,11 +228,15 @@ export default function Overview() {
         title={t("Top 15 výkonů dle objemu – rok {year}", { year: selectedYear })}
         subtitle={t("Celkový počet vykázaných výkonů")}
       >
-        <ResponsiveContainer width="100%" height={540}>
-          <BarChart data={topProcs} layout="vertical" margin={{ top: 5, right: 30, bottom: 5, left: 200 }}>
+        {/* Chirurgie/endo mají výrazně delší názvy než gastro – menší písmo,
+            širší osa a víc místa na řádek, aby se popisky nepřekrývaly. */}
+        <ResponsiveContainer width="100%" height={660}>
+          {/* pozor: margin.left se SČÍTÁ s YAxis width – místo pro popisky
+              rezervuje width, margin nechat malý, jinak se sloupce zmáčknou */}
+          <BarChart data={topProcs} layout="vertical" margin={{ top: 5, right: 40, bottom: 5, left: 10 }}>
             <CartesianGrid strokeDasharray="3 3" stroke={CHART_UI.grid} horizontal={false} />
-            <XAxis type="number" tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 14 }} />
-            <YAxis type="category" dataKey="label" tick={{ fill: CHART_UI.tickStrong, fontSize: 14 }} width={195} />
+            <XAxis type="number" tickFormatter={fmt} tick={{ fill: CHART_UI.tick, fontSize: 12 }} />
+            <YAxis type="category" dataKey="label" tick={{ fill: CHART_UI.tickStrong, fontSize: 11 }} width={255} interval={0} />
             <Tooltip
               contentStyle={CHART_UI.tooltip}
               itemStyle={CHART_UI.tooltipItem}
