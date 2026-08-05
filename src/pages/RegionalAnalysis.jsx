@@ -6,8 +6,8 @@ import {
 import { MapPin, ExternalLink } from "lucide-react";
 
 import { useData, getRegionalData, getRegionalTimeSeries } from "../DataContext";
-import { useT } from "../SettingsContext";
-import { KEY_CODES, YEARS, CHART_COLORS, CHART_UI } from "../constants";
+import { useSettings } from "../SettingsContext";
+import { YEARS, CHART_COLORS, CHART_UI, getSpec } from "../constants";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
 import ProcedureSelect from "../components/ProcedureSelect";
@@ -36,8 +36,8 @@ function Sparkline({ data, color = "#3b82f6" }) {
 
 export default function RegionalAnalysis() {
   const { regional } = useData();
-  const t = useT();
-  const [selectedKod, setSelectedKod] = useState("15430");
+  const { spec, t } = useSettings();
+  const [selectedKod, setSelectedKod] = useState(getSpec(spec).defaultKod);
   const [selectedYear, setSelectedYear] = useState("2024");
   const [metric, setMetric] = useState("mnozstvi");
 

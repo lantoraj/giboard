@@ -6,8 +6,8 @@ import {
 import { Building2, TrendingUp, TrendingDown, Minus, ChevronUp, ChevronDown, ChevronsUpDown, X } from "lucide-react";
 
 import { useData } from "../DataContext";
-import { useT } from "../SettingsContext";
-import { YEARS, CHART_COLORS, CHART_UI } from "../constants";
+import { useSettings } from "../SettingsContext";
+import { YEARS, CHART_COLORS, CHART_UI, getSpec } from "../constants";
 import ProcedureSelect from "../components/ProcedureSelect";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
@@ -37,8 +37,8 @@ function SortIcon({ col, sortCol, sortDir }) {
 
 export default function Providers() {
   const { providers, icoLoading, icoLoaded, loadIcoData, procedures } = useData();
-  const t = useT();
-  const [selectedKod, setSelectedKod]   = useState("15430");
+  const { spec, t } = useSettings();
+  const [selectedKod, setSelectedKod]   = useState(getSpec(spec).defaultKod);
   const [selectedYear, setSelectedYear] = useState("2024");
   const [topN, setTopN]                 = useState(20);
   const [filterCity, setFilterCity]     = useState("");

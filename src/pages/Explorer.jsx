@@ -109,7 +109,7 @@ function ProviderSearch({ providers, selected, onSelect }) {
 
 // ── Main component ──────────────────────────────────────────────────────────
 export default function Explorer() {
-  const { procedures, national, providers, gastroRegistry, icoLoaded, icoLoading, loadIcoData } = useData();
+  const { procedures, national, providers, registry, icoLoaded, icoLoading, loadIcoData } = useData();
   const t = useT();
   const [query, setQuery] = useState("");
   const [sortKey, setSortKey] = useState("total");
@@ -215,7 +215,7 @@ export default function Explorer() {
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-strong">{t("Průzkumník výkonů")}</h1>
-          <p className="text-sm text-gray-500 mt-0.5">{t("Všechny GIT výkony – vyhledávání a řazení")}</p>
+          <p className="text-sm text-gray-500 mt-0.5">{t("Všechny výkony odbornosti – vyhledávání a řazení")}</p>
         </div>
 
         {/* View mode toggle */}
@@ -256,7 +256,7 @@ export default function Explorer() {
             <p className="text-sm text-gray-500 animate-pulse">{t("Načítám data pracovišť…")}</p>
           ) : (
             <ProviderSearch
-              providers={gastroRegistry}
+              providers={registry}
               selected={selectedProvider}
               onSelect={(p) => { setSelectedProvider(p); setPage(0); setSortKey("total"); setSortDir("desc"); }}
             />
@@ -301,7 +301,7 @@ export default function Explorer() {
           <Building2 size={36} className="mb-3 opacity-30" />
           <p className="text-sm font-medium">{t("Vyberte pracoviště")}</p>
           <p className="text-xs mt-1 opacity-70">
-            {t("Vyhledejte z {n} gastroenterologických pracovišť v ČR", { n: gastroRegistry.length })}
+            {t("Vyhledejte z {n} pracovišť dané odbornosti v ČR", { n: registry.length })}
           </p>
         </div>
       )}

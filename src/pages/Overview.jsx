@@ -6,8 +6,8 @@ import {
 import { Activity, Users, Hash, TrendingUp, Info } from "lucide-react";
 
 import { useData, getNationalTimeSeries, getMultiCodeTimeSeries } from "../DataContext";
-import { useT } from "../SettingsContext";
-import { KEY_CODES, CHART_COLORS, CHART_UI, YEARS } from "../constants";
+import { useSettings } from "../SettingsContext";
+import { KEY_CODES_BY_SPEC, CHART_COLORS, CHART_UI, YEARS, getSpec } from "../constants";
 import KpiCard from "../components/KpiCard";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
@@ -33,7 +33,8 @@ const CHART_LINE_LIMIT = 20; // max lines rendered in trend chart
 
 export default function Overview() {
   const { national, procedures } = useData();
-  const t = useT();
+  const { spec, t } = useSettings();
+  const specCfg = getSpec(spec);
   const [selectedYear, setSelectedYear] = useState("2024");
   const [compFilter, setCompFilter]     = useState("key");
 
@@ -49,8 +50,8 @@ export default function Overview() {
 
   // Localized key codes (labels for chart legend / table)
   const keyCodes = useMemo(
-    () => KEY_CODES.map((k) => ({ ...k, label: t(k.label) })),
-    [t]
+    () => (KEY_CODES_BY_SPEC[spec] ?? []).map((k) => ({ ...k, label: t(k.label) })),
+    [spec, t]
   );
 
   // ── Filtered procedure list (with color assigned) ────────────────────────
@@ -93,9 +94,9 @@ export default function Overview() {
     [procedures, national, selectedYear]
   );
 
-  // ── YoY delta for ERCP KPI card ──────────────────────────────────────────
-  const ercpSeries = useMemo(() => getNationalTimeSeries(national, "15430"), [national]);
-  const ercpDelta  = yoyDelta(ercpSeries);
+  // ── YoY delta for the per-specialty trend KPI card ───────────────────────
+  const trendSeries = useMemo(() => getNationalTimeSeries(national, specCfg.trendKod), [national, specCfg.trendKod]);
+  const trendDelta  = yoyDelta(trendSeries);
 
   // ── Dynamic labels ────────────────────────────────────────────────────────
   const trendTitle =
@@ -138,7 +139,7 @@ export default function Overview() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-strong">{t("Přehled")}</h1>
-          <p className="text-sm text-gray-500 mt-0.5">{t("Gastroenterologie & endoskopie – ČR")}</p>
+          <p className="text-sm text-gray-500 mt-0.5">{t(specCfg.label)} – ČR</p>
         </div>
         <div className="flex gap-1">
           {YEARS.map((y) => (
@@ -165,13 +166,13 @@ export default function Overview() {
 
       {/* ── KPI row ─────────────────────────────────────────────────────── */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <KpiCard title={t("Objem výkonů")}      value={fmt(kpiData.totalMn)} subtitle={t("Rok {year} – všechny GIT výkony", { year: selectedYear })} icon={Activity} color="#3b82f6" />
+        <KpiCard title={t("Objem výkonů")}      value={fmt(kpiData.totalMn)} subtitle={t("Rok {year} – všechny výkony odbornosti", { year: selectedYear })} icon={Activity} color="#3b82f6" />
         <KpiCard title={t("Unikátní pacienti")} value={fmt(kpiData.totalPp)} subtitle={t("Rok {year}", { year: selectedYear })}                      icon={Users}    color="#10b981" />
         <KpiCard title={t("Kontakty")}          value={fmt(kpiData.totalKk)} subtitle={t("Rok {year}", { year: selectedYear })}                      icon={Hash}     color="#8b5cf6" />
-        <KpiCard title={t("ERCP – trend")}
-          value={fmt(ercpSeries.at(-1)?.mnozstvi ?? 0)}
-          subtitle={t("Počet ERCP – poslední rok")}
-          delta={ercpDelta} deltaLabel={t("vs. předchozí rok")}
+        <KpiCard title={t(specCfg.trendLabel)}
+          value={fmt(trendSeries.at(-1)?.mnozstvi ?? 0)}
+          subtitle={t(specCfg.trendSubtitle)}
+          delta={trendDelta} deltaLabel={t("vs. předchozí rok")}
           icon={TrendingUp} color="#f59e0b"
         />
       </div>

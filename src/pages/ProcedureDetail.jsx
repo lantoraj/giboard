@@ -11,8 +11,8 @@ import {
   getAgeData,
   getGenderData,
 } from "../DataContext";
-import { useT } from "../SettingsContext";
-import { KEY_CODES, YEARS, GENDER_COLORS, CHART_COLORS, CHART_UI } from "../constants";
+import { useSettings, useT } from "../SettingsContext";
+import { YEARS, GENDER_COLORS, CHART_COLORS, CHART_UI, getSpec } from "../constants";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
 import ProcedureSelect from "../components/ProcedureSelect";
@@ -26,9 +26,9 @@ const fmtFull = (n) => Math.round(n).toLocaleString("cs-CZ");
 
 export default function ProcedureDetail() {
   const { national, ageData, genderData, procedures, providers, diagnoses, icoLoaded, icoLoading, loadIcoData } = useData();
-  const t = useT();
+  const { spec, t } = useSettings();
   useEffect(() => { loadIcoData(); }, [loadIcoData]);
-  const [selectedKod, setSelectedKod] = useState("15430");
+  const [selectedKod, setSelectedKod] = useState(getSpec(spec).defaultKod);
   const [selectedYear, setSelectedYear] = useState("2024");
   const [metric, setMetric] = useState("mnozstvi");
 

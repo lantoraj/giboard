@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useSettings } from "./SettingsContext";
 import { procLabelEn } from "./i18n";
 
@@ -10,62 +10,107 @@ async function loadJSON(path) {
   return res.json();
 }
 
+const EMPTY = {
+  loading: true,
+  error: null,
+  procedures: [],
+  national: {},
+  regional: {},
+  ageData: {},
+  genderData: {},
+  // ICO dataset – loaded lazily on first visit to Providers / Diagnoses / Explorer tabs
+  providers: [],
+  diagnoses: {},
+  registry: [],   // provider registry (NRPZS) for the active specialty
+  icoLoading: false,
+  icoLoaded: false,
+};
+
 export function DataProvider({ children }) {
-  const [state, setState] = useState({
-    loading: true,
-    error: null,
-    procedures: [],
-    national: {},
-    regional: {},
-    ageData: {},
-    genderData: {},
-    // ICO dataset – loaded lazily on first visit to Providers / Diagnoses / Explorer tabs
-    providers: [],
-    diagnoses: {},
-    gastroRegistry: [],   // list of gastro providers from NRPZS registry
-    icoLoading: false,
-    icoLoaded: false,
-  });
+  const { lang, spec } = useSettings();
+  const [state, setState] = useState(EMPTY);
+  // Guards against a stale fetch finishing after the user switched specialty
+  const specRef = useRef(spec);
+  specRef.current = spec;
 
   useEffect(() => {
+    if (!spec) return; // specialty not chosen yet – landing screen is shown
+    setState({ ...EMPTY, loading: true });
+    const base = `/data/${spec}`;
     Promise.all([
-      loadJSON("/data/procedures.json"),
-      loadJSON("/data/national_trends.json"),
-      loadJSON("/data/regional_data.json"),
-      loadJSON("/data/age_data.json"),
-      loadJSON("/data/gender_data.json"),
+      loadJSON(`${base}/procedures.json`),
+      loadJSON(`${base}/national_trends.json`),
+      loadJSON(`${base}/regional_data.json`),
+      loadJSON(`${base}/age_data.json`),
+      loadJSON(`${base}/gender_data.json`),
     ])
       .then(([procedures, national, regional, ageData, genderData]) => {
+        if (specRef.current !== spec) return;
         setState((s) => ({ ...s, loading: false, error: null, procedures, national, regional, ageData, genderData }));
       })
-      .catch((err) => setState((s) => ({ ...s, loading: false, error: err.message })));
-  }, []);
+      .catch((err) => {
+        if (specRef.current !== spec) return;
+        setState((s) => ({ ...s, loading: false, error: err.message }));
+      });
+  }, [spec]);
 
   // Lazy loader – called by pages that need ICO data
   const loadIcoData = React.useCallback(() => {
+    const forSpec = specRef.current;
+    if (!forSpec) return;
     setState((s) => {
       if (s.icoLoaded || s.icoLoading) return s;
+      const base = `/data/${forSpec}`;
       Promise.all([
-        loadJSON("/data/providers_data.json"),
-        loadJSON("/data/diagnosis_data.json"),
-        loadJSON("/data/gastro_providers_registry.json"),
-      ]).then(([providers, diagnoses, gastroRegistry]) => {
-        setState((prev) => ({ ...prev, providers, diagnoses, gastroRegistry, icoLoading: false, icoLoaded: true }));
+        loadJSON(`${base}/providers_data.json`),
+        loadJSON(`${base}/diagnosis_data.json`),
+        loadJSON(`${base}/providers_registry.json`),
+      ]).then(([providers, diagnoses, registry]) => {
+        if (specRef.current !== forSpec) return;
+        setState((prev) => ({ ...prev, providers, diagnoses, registry, icoLoading: false, icoLoaded: true }));
       }).catch(() => {
+        if (specRef.current !== forSpec) return;
         setState((prev) => ({ ...prev, icoLoading: false }));
       });
       return { ...s, icoLoading: true };
     });
   }, []);
 
+  // ── DRG (separate data model: hospitalisation cases, own pages) ───────────
+  const [drg, setDrg] = useState({ loading: false, loaded: false, error: null, meta: null, levels: {}, providers: null });
+
+  /** Loads DRG meta + one indicator level on demand; providers only when asked. */
+  const loadDrg = React.useCallback((level = "mdc", withProviders = false) => {
+    setDrg((s) => {
+      const needLevel = !s.levels[level];
+      const needProviders = withProviders && !s.providers;
+      if (s.loading || (!needLevel && !needProviders && s.loaded)) return s;
+
+      const jobs = [
+        s.meta ? Promise.resolve(s.meta) : loadJSON("/data/drg/meta.json"),
+        needLevel ? loadJSON(`/data/drg/indicators_${level}.json`) : Promise.resolve(s.levels[level]),
+        needProviders ? loadJSON("/data/drg/providers.json") : Promise.resolve(s.providers),
+      ];
+      Promise.all(jobs)
+        .then(([meta, levelData, providers]) => {
+          setDrg((prev) => ({
+            ...prev, loading: false, loaded: true, error: null, meta,
+            levels: { ...prev.levels, [level]: levelData },
+            providers: providers ?? prev.providers,
+          }));
+        })
+        .catch((err) => setDrg((prev) => ({ ...prev, loading: false, error: err.message })));
+      return { ...s, loading: true };
+    });
+  }, []);
+
   // Localize procedure labels for the active UI language
-  const { lang } = useSettings();
   const procedures = useMemo(
     () => (lang === "en" ? state.procedures.map((p) => ({ ...p, label: procLabelEn(p) })) : state.procedures),
     [state.procedures, lang]
   );
 
-  return <DataContext.Provider value={{ ...state, procedures, loadIcoData }}>{children}</DataContext.Provider>;
+  return <DataContext.Provider value={{ ...state, procedures, loadIcoData, drg, loadDrg }}>{children}</DataContext.Provider>;
 }
 
 export function useData() {

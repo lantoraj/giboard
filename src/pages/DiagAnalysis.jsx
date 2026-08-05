@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import { useData } from "../DataContext";
-import { useT } from "../SettingsContext";
+import { useSettings } from "../SettingsContext";
 import { YEARS, CHART_COLORS, CHART_UI } from "../constants";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
@@ -44,31 +44,74 @@ function SortIcon({ col, sortCol, sortDir }) {
     : <ChevronUp   size={11} className="text-blue-400" />;
 }
 
-// ── MKN-10 chapter filter groups (K → C → Q → rest) ─────────────────────────
-const MKN_GROUPS = [
-  { id: "all",     label: "Vše",       subtitle: "",                                              color: "#3b82f6", ranges: [] },
-  { id: "travici", label: "K00–K93",   subtitle: "Nemoci trávicí soustavy",                       color: "#06b6d4", ranges: [{from:"K00",to:"K93"}] },
-  { id: "novot",   label: "C00–D48",   subtitle: "Novotvary",                                     color: "#ec4899", ranges: [{from:"C00",to:"D48"}] },
-  { id: "vrozene", label: "Q38–Q45",   subtitle: "Jiné vrozené vady trávicí soustavy",            color: "#8b5cf6", ranges: [{from:"Q38",to:"Q45"}] },
-  { id: "krev",    label: "D50–D89",   subtitle: "Nemoci krve a krvetvorných orgánů",             color: "#f59e0b", ranges: [{from:"D50",to:"D89"}] },
-  { id: "endokr",  label: "E00–E90",   subtitle: "Nemoci endokrinní, výživy a přeměny látek",    color: "#10b981", ranges: [{from:"E00",to:"E90"}] },
-  { id: "sympt",   label: "R10–R19",   subtitle: "Příznaky trávicí soustavy a břicha",            color: "#9ca3af", ranges: [{from:"R10",to:"R19"}] },
-];
+// ── MKN-10 chapter filter groups, per specialty ──────────────────────────────
+const MKN_GROUPS_BY_SPEC = {
+  gastro: [
+    { id: "all",     label: "Vše",       subtitle: "",                                              color: "#3b82f6", ranges: [] },
+    { id: "travici", label: "K00–K93",   subtitle: "Nemoci trávicí soustavy",                       color: "#06b6d4", ranges: [{from:"K00",to:"K93"}] },
+    { id: "novot",   label: "C00–D48",   subtitle: "Novotvary",                                     color: "#ec4899", ranges: [{from:"C00",to:"D48"}] },
+    { id: "vrozene", label: "Q38–Q45",   subtitle: "Jiné vrozené vady trávicí soustavy",            color: "#8b5cf6", ranges: [{from:"Q38",to:"Q45"}] },
+    { id: "krev",    label: "D50–D89",   subtitle: "Nemoci krve a krvetvorných orgánů",             color: "#f59e0b", ranges: [{from:"D50",to:"D89"}] },
+    { id: "endokr",  label: "E00–E90",   subtitle: "Nemoci endokrinní, výživy a přeměny látek",    color: "#10b981", ranges: [{from:"E00",to:"E90"}] },
+    { id: "sympt",   label: "R10–R19",   subtitle: "Příznaky trávicí soustavy a břicha",            color: "#9ca3af", ranges: [{from:"R10",to:"R19"}] },
+  ],
+  chir: [
+    { id: "all",     label: "Vše",       subtitle: "",                                              color: "#3b82f6", ranges: [] },
+    { id: "travici", label: "K00–K93",   subtitle: "Nemoci trávicí soustavy",                       color: "#06b6d4", ranges: [{from:"K00",to:"K93"}] },
+    { id: "novot",   label: "C00–D48",   subtitle: "Novotvary",                                     color: "#ec4899", ranges: [{from:"C00",to:"D48"}] },
+    { id: "porane",  label: "S00–T98",   subtitle: "Poranění a otravy",                             color: "#ef4444", ranges: [{from:"S00",to:"T98"}] },
+    { id: "kuze",    label: "L00–L99",   subtitle: "Nemoci kůže a podkožního vaziva",               color: "#f59e0b", ranges: [{from:"L00",to:"L99"}] },
+    { id: "endokr",  label: "E00–E90",   subtitle: "Nemoci endokrinní, výživy a přeměny látek",    color: "#10b981", ranges: [{from:"E00",to:"E90"}] },
+    { id: "sympt",   label: "R00–R99",   subtitle: "Příznaky a abnormální nálezy",                  color: "#9ca3af", ranges: [{from:"R00",to:"R99"}] },
+  ],
+  endo: [
+    { id: "all",     label: "Vše",       subtitle: "",                                              color: "#3b82f6", ranges: [] },
+    { id: "endokr",  label: "E00–E90",   subtitle: "Nemoci endokrinní, výživy a přeměny látek",    color: "#10b981", ranges: [{from:"E00",to:"E90"}] },
+    { id: "novot",   label: "C73–D44",   subtitle: "Novotvary žláz s vnitřní sekrecí",              color: "#ec4899", ranges: [{from:"C73",to:"C75"},{from:"D34",to:"D35"},{from:"D44",to:"D44"}] },
+    { id: "sympt",   label: "R00–R99",   subtitle: "Příznaky a abnormální nálezy",                  color: "#9ca3af", ranges: [{from:"R00",to:"R99"}] },
+    { id: "tehot",   label: "O00–O99",   subtitle: "Těhotenství, porod a šestinedělí",              color: "#8b5cf6", ranges: [{from:"O00",to:"O99"}] },
+    { id: "obeh",    label: "I00–I99",   subtitle: "Nemoci oběhové soustavy",                       color: "#f59e0b", ranges: [{from:"I00",to:"I99"}] },
+  ],
+};
 
-// ── Clinical gastro area sub-filter ──────────────────────────────────────────
-const MKN_AREAS = [
-  { id: "all",      label: "Celá oblast",          color: "#6b7280", ranges: [] },
-  { id: "horni",    label: "Horní GIT",            color: "#10b981", ranges: [{from:"K20",to:"K31"}] },
-  { id: "ibd",      label: "IBD",                  color: "#f59e0b", ranges: [{from:"K50",to:"K52"}] },
-  { id: "kolon",    label: "Kolon / proktologie",  color: "#06b6d4", ranges: [{from:"K55",to:"K64"}] },
-  { id: "hepato",   label: "Hepatologie",          color: "#8b5cf6", ranges: [{from:"K70",to:"K77"},{from:"B15",to:"B19"}] },
-  { id: "biliarni", label: "Biliární / pankreas",  color: "#f97316", ranges: [{from:"K80",to:"K87"}] },
-  { id: "krvaceni", label: "Krvácení GIT",         color: "#ef4444", ranges: [{from:"K92",to:"K92"}] },
-  { id: "onko",     label: "Onkologie GIT",        color: "#ec4899", ranges: [{from:"C15",to:"C26"},{from:"D00",to:"D13"},{from:"D37",to:"D48"}] },
-  { id: "infekce",  label: "Infekční",             color: "#84cc16", ranges: [{from:"A00",to:"A09"}] },
-  { id: "malabs",   label: "Malabsorpce",          color: "#a78bfa", ranges: [{from:"K90",to:"K93"}] },
-  { id: "sympt2",   label: "Symptomy",             color: "#9ca3af", ranges: [{from:"R10",to:"R19"}] },
-];
+// ── Clinical area sub-filter, per specialty ──────────────────────────────────
+const MKN_AREAS_BY_SPEC = {
+  gastro: [
+    { id: "all",      label: "Celá oblast",          color: "#6b7280", ranges: [] },
+    { id: "horni",    label: "Horní GIT",            color: "#10b981", ranges: [{from:"K20",to:"K31"}] },
+    { id: "ibd",      label: "IBD",                  color: "#f59e0b", ranges: [{from:"K50",to:"K52"}] },
+    { id: "kolon",    label: "Kolon / proktologie",  color: "#06b6d4", ranges: [{from:"K55",to:"K64"}] },
+    { id: "hepato",   label: "Hepatologie",          color: "#8b5cf6", ranges: [{from:"K70",to:"K77"},{from:"B15",to:"B19"}] },
+    { id: "biliarni", label: "Biliární / pankreas",  color: "#f97316", ranges: [{from:"K80",to:"K87"}] },
+    { id: "krvaceni", label: "Krvácení GIT",         color: "#ef4444", ranges: [{from:"K92",to:"K92"}] },
+    { id: "onko",     label: "Onkologie GIT",        color: "#ec4899", ranges: [{from:"C15",to:"C26"},{from:"D00",to:"D13"},{from:"D37",to:"D48"}] },
+    { id: "infekce",  label: "Infekční",             color: "#84cc16", ranges: [{from:"A00",to:"A09"}] },
+    { id: "malabs",   label: "Malabsorpce",          color: "#a78bfa", ranges: [{from:"K90",to:"K93"}] },
+    { id: "sympt2",   label: "Symptomy",             color: "#9ca3af", ranges: [{from:"R10",to:"R19"}] },
+  ],
+  chir: [
+    { id: "all",      label: "Celá oblast",          color: "#6b7280", ranges: [] },
+    { id: "kyly",     label: "Kýly",                 color: "#10b981", ranges: [{from:"K40",to:"K46"}] },
+    { id: "apendix",  label: "Apendix",              color: "#f59e0b", ranges: [{from:"K35",to:"K38"}] },
+    { id: "biliarni", label: "Žlučník / žlučové cesty", color: "#f97316", ranges: [{from:"K80",to:"K87"}] },
+    { id: "prokto",   label: "Proktologie",          color: "#06b6d4", ranges: [{from:"K55",to:"K64"},{from:"I84",to:"I84"}] },
+    { id: "stitna",   label: "Štítná žláza",         color: "#8b5cf6", ranges: [{from:"E00",to:"E07"},{from:"C73",to:"C73"}] },
+    { id: "onko",     label: "Onkologie",            color: "#ec4899", ranges: [{from:"C00",to:"C97"},{from:"D00",to:"D48"}] },
+    { id: "porane",   label: "Poranění",             color: "#ef4444", ranges: [{from:"S00",to:"T14"}] },
+    { id: "kuze",     label: "Kůže a rány",          color: "#84cc16", ranges: [{from:"L00",to:"L99"}] },
+    { id: "zily",     label: "Žíly / cévy",          color: "#a78bfa", ranges: [{from:"I80",to:"I89"}] },
+  ],
+  endo: [
+    { id: "all",      label: "Celá oblast",          color: "#6b7280", ranges: [] },
+    { id: "dm",       label: "Diabetes mellitus",    color: "#10b981", ranges: [{from:"E10",to:"E14"}] },
+    { id: "stitna",   label: "Štítná žláza",         color: "#8b5cf6", ranges: [{from:"E00",to:"E07"},{from:"C73",to:"C73"},{from:"D34",to:"D34"}] },
+    { id: "hypofyza", label: "Hypofýza",             color: "#f59e0b", ranges: [{from:"E22",to:"E23"},{from:"D35",to:"D35"}] },
+    { id: "nadledv",  label: "Nadledviny",           color: "#f97316", ranges: [{from:"E24",to:"E27"}] },
+    { id: "obezita",  label: "Obezita / výživa",     color: "#06b6d4", ranges: [{from:"E65",to:"E68"}] },
+    { id: "metabol",  label: "Poruchy metabolismu",  color: "#ec4899", ranges: [{from:"E70",to:"E90"}] },
+    { id: "kalcium",  label: "Kalcium / kosti",      color: "#84cc16", ranges: [{from:"E20",to:"E21"},{from:"E55",to:"E55"},{from:"M80",to:"M85"}] },
+  ],
+};
 
 function inGroup(diagCode, group) {
   if (group.id === "all") return true;
@@ -79,8 +122,11 @@ function inGroup(diagCode, group) {
 // ── Component ─────────────────────────────────────────────────────────────────
 export default function DiagAnalysis() {
   const { diagnoses, icoLoading, icoLoaded, loadIcoData } = useData();
-  const t = useT();
+  const { spec, t } = useSettings();
   const { label: mkn10Label, name: mkn10Name } = useMkn10();
+
+  const MKN_GROUPS = MKN_GROUPS_BY_SPEC[spec] ?? MKN_GROUPS_BY_SPEC.gastro;
+  const MKN_AREAS  = MKN_AREAS_BY_SPEC[spec]  ?? MKN_AREAS_BY_SPEC.gastro;
 
   const [selectedYear,  setSelectedYear]  = useState("2024");
   const [selectedGroup, setSelectedGroup] = useState(MKN_GROUPS[0]);
@@ -213,7 +259,7 @@ export default function DiagAnalysis() {
         <div>
           <h1 className="text-2xl font-bold text-strong">{t("MKN-10 Diagnózy")}</h1>
           <p className="text-sm text-gray-500 mt-0.5">
-            {t("Analýza trendů diagnóz v gastroenterologii · NR-04-02 · 2019–2024")}
+            {t("Analýza trendů diagnóz dané odbornosti · NR-04-02 · 2019–2024")}
           </p>
         </div>
         <div className="flex flex-wrap gap-2 items-center">

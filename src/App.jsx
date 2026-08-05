@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { LayoutDashboard, Activity, Map, GitCompare, Search, ChevronLeft, ChevronRight, AlertCircle, Compass, Building2, ChartNoAxesCombined, Stethoscope, Bell, Settings } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { LayoutDashboard, Activity, Map, GitCompare, Search, ChevronLeft, ChevronRight, ChevronDown, Check, AlertCircle, Compass, Building2, ChartNoAxesCombined, Stethoscope, Bell, Settings, Layers } from "lucide-react";
 
 import { DataProvider, useData } from "./DataContext";
-import { SettingsProvider, useT } from "./SettingsContext";
+import { SettingsProvider, useSettings, useT } from "./SettingsContext";
+import { SPECIALTIES, getSpec } from "./constants";
 import LoadingSpinner from "./components/LoadingSpinner";
 import Overview from "./pages/Overview";
 import ProcedureDetail from "./pages/ProcedureDetail";
@@ -13,6 +14,7 @@ import Rozcestnik from "./pages/Rozcestnik";
 import Providers from "./pages/Providers";
 import DiagAnalysis from "./pages/DiagAnalysis";
 import SettingsPage from "./pages/Settings";
+import Drg from "./pages/Drg";
 
 const NAV = [
   { id: "overview",    label: "Přehled",            icon: LayoutDashboard },
@@ -24,9 +26,121 @@ const NAV = [
   { id: "explorer",    label: "Průzkumník",         icon: Search },
   { id: "rozcestnik",  label: "Rozcestník",         icon: Compass },
   { separator: true },
+  { id: "drg",         label: "CZ-DRG",             icon: Layers },
+  { separator: true },
   { id: "upozorneni",  label: "Upozornění",         icon: Bell },
   { id: "nastaveni",   label: "Nastavení",          icon: Settings },
 ];
+
+function SpecialtySwitcher({ collapsed }) {
+  const { spec, setSpec, t } = useSettings();
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  const active = getSpec(spec);
+
+  // Close on outside click / Escape
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e) => { if (ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    const onKey = (e) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  const choose = (id) => { setSpec(id); setOpen(false); };
+
+  return (
+    <div ref={ref} className={`relative pt-3 ${collapsed ? "px-2" : "px-3"}`}>
+      {!collapsed && (
+        <p className="text-[10px] text-gray-500 uppercase tracking-widest mb-1.5 px-1">{t("Odbornost")}</p>
+      )}
+
+      {/* Trigger – shows the active specialty */}
+      <button
+        onClick={() => setOpen((v) => !v)}
+        title={collapsed ? t(active.short) : undefined}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className={`w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+          open
+            ? "bg-gray-800 text-gray-100 border-gray-600"
+            : "bg-gray-800/60 text-gray-200 border-gray-700 hover:border-gray-500"
+        } ${collapsed ? "justify-center" : ""}`}
+      >
+        <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: active.color }} />
+        {!collapsed && (
+          <>
+            <span className="truncate flex-1 text-left">{t(active.short)}</span>
+            <ChevronDown size={13} className={`flex-shrink-0 text-gray-500 transition-transform ${open ? "rotate-180" : ""}`} />
+          </>
+        )}
+      </button>
+
+      {/* Dropdown */}
+      {open && (
+        <div
+          role="listbox"
+          className={`absolute z-50 mt-1 bg-gray-900 border border-gray-700 rounded-lg shadow-2xl overflow-hidden py-1 ${
+            collapsed ? "left-full ml-2 top-3 w-52" : "left-3 right-3"
+          }`}
+        >
+          {SPECIALTIES.map((s) => (
+            <button
+              key={s.id}
+              role="option"
+              aria-selected={spec === s.id}
+              onClick={() => choose(s.id)}
+              className={`w-full flex items-center gap-2 px-2.5 py-2 text-xs font-medium transition-colors ${
+                spec === s.id ? "bg-gray-800 text-gray-100" : "text-gray-400 hover:bg-gray-800/70 hover:text-gray-200"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: s.color }} />
+              <span className="truncate flex-1 text-left">{t(s.short)}</span>
+              {spec === s.id && <Check size={12} className="flex-shrink-0 text-blue-400" />}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SpecialtyLanding() {
+  const { setSpec, t } = useSettings();
+  return (
+    <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center p-6">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
+          <ChartNoAxesCombined size={20} className="text-white" />
+        </div>
+        <p className="text-3xl font-bold text-strong tracking-wide">GI-Board</p>
+      </div>
+      <p className="text-sm text-gray-500 mb-10">{t("Analytický dashboard zdravotních výkonů · NRHZS · ÚZIS ČR · 2019–2024")}</p>
+
+      <h1 className="text-xl font-semibold text-gray-100 mb-6">{t("Vyberte odbornost")}</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl w-full">
+        {SPECIALTIES.map((s) => (
+          <button
+            key={s.id}
+            onClick={() => setSpec(s.id)}
+            className="card p-6 text-left hover:border-gray-500 transition-all group flex flex-col gap-3"
+          >
+            <span className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: `${s.color}22` }}>
+              <span className="w-3.5 h-3.5 rounded-full" style={{ background: s.color }} />
+            </span>
+            <span className="text-base font-semibold text-gray-100 group-hover:text-strong leading-snug">{t(s.label)}</span>
+            <span className="text-xs text-gray-500 leading-relaxed">{t(s.description)}</span>
+          </button>
+        ))}
+      </div>
+      <p className="text-xs text-gray-600 mt-8">{t("Odbornost lze kdykoli přepnout v levém panelu.")}</p>
+    </div>
+  );
+}
 
 function Sidebar({ active, onNavigate, collapsed, onToggle }) {
   const t = useT();
@@ -44,6 +158,10 @@ function Sidebar({ active, onNavigate, collapsed, onToggle }) {
           </div>
         )}
       </div>
+
+      {/* Specialty switcher */}
+      <SpecialtySwitcher collapsed={collapsed} />
+      <hr className="border-gray-700/70 mx-3 mt-3" />
 
       {/* Nav items */}
       <nav className="flex-1 py-4 px-2 flex flex-col">
@@ -180,15 +298,19 @@ const PAGES = {
   providers:   Providers,
   diagnoses:   DiagAnalysis,
   rozcestnik:  Rozcestnik,
+  drg:         Drg,
   upozorneni:  UpozorneniPage,
   nastaveni:   SettingsPage,
 };
 
 function AppContent() {
   const { loading, error } = useData();
+  const { spec } = useSettings();
   const t = useT();
   const [page, setPage] = useState("overview");
   const [collapsed, setCollapsed] = useState(false);
+
+  if (!spec) return <SpecialtyLanding />;
 
   const Page = PAGES[page];
 
@@ -197,7 +319,13 @@ function AppContent() {
       <Sidebar active={page} onNavigate={setPage} collapsed={collapsed} onToggle={() => setCollapsed((v) => !v)} />
       <main className="flex-1 overflow-auto">
         <div className="max-w-7xl mx-auto p-6">
-          {loading ? <LoadingSpinner message={t("Načítám data výkonů…")} /> : error ? <DataErrorBanner error={error} /> : <Page />}
+          {/* key={spec} remounts specialty pages so their defaults reset; DRG is
+              specialty-independent and keeps its own state across switches */}
+          {page === "drg"
+            ? <Page />
+            : loading ? <LoadingSpinner message={t("Načítám data výkonů…")} />
+            : error ? <DataErrorBanner error={error} />
+            : <Page key={spec} />}
         </div>
       </main>
     </div>

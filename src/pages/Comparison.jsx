@@ -6,8 +6,8 @@ import {
 } from "recharts";
 
 import { useData, getMultiCodeTimeSeries, getNationalTimeSeries } from "../DataContext";
-import { useT } from "../SettingsContext";
-import { KEY_CODES, YEARS, CHART_COLORS, CHART_UI } from "../constants";
+import { useSettings } from "../SettingsContext";
+import { YEARS, CHART_COLORS, CHART_UI, getSpec } from "../constants";
 import ChartContainer from "../components/ChartContainer";
 import SectionHeader from "../components/SectionHeader";
 import ProcedureSelect from "../components/ProcedureSelect";
@@ -23,9 +23,9 @@ function indexSeries(timeSeries, kod, baseYear = "2019") {
 
 export default function Comparison() {
   const { national, procedures } = useData();
-  const t = useT();
+  const { spec, t } = useSettings();
 
-  const [selectedCodes, setSelectedCodes] = useState(["15430", "15410", "15024", "15404"]);
+  const [selectedCodes, setSelectedCodes] = useState(getSpec(spec).comparisonDefaults);
   const [metric, setMetric] = useState("mnozstvi");
   const [baseYear, setBaseYear] = useState("2019");
 
